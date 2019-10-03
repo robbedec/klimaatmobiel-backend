@@ -14,9 +14,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long GroepId { get; set; }
         public Groep Groep { get; set; }
 
-        public long PromotieId { get; set; }
-        public Promotie Promotie { get; set; }
-
         public ICollection<BestellingsItem> BestellingsItems { get; set; } = new List<BestellingsItem>();
 
         public Bestelling()

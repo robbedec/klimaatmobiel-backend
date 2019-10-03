@@ -21,7 +21,6 @@ namespace projecten3_1920_backend_klim03.Data
         public DbSet<Leerling> Leerlingen { get; set; }
         public DbSet<Product> Producten { get; set; }
         public DbSet<Project> Projecten { get; set; }
-        public DbSet<Promotie> Promoties { get; set; }
         public DbSet<School> Scholen { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -42,7 +41,6 @@ namespace projecten3_1920_backend_klim03.Data
             builder.ApplyConfiguration(new LeerlingConfig());
             builder.ApplyConfiguration(new ProductConfig());
             builder.ApplyConfiguration(new ProjectConfig());
-            builder.ApplyConfiguration(new PromotieConfig());
             builder.ApplyConfiguration(new AdresConfig());
             builder.ApplyConfiguration(new SchoolConfig());
         }
