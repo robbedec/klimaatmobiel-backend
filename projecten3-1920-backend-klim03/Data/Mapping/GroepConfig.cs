@@ -16,6 +16,7 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.HasKey(g => g.GroepId);
 
             builder.HasMany(g => g.Leerlingen).WithOne();
+            builder.HasOne(g => g.Bestelling).WithOne().HasForeignKey<Bestelling>(g => g.GroepId).OnDelete(DeleteBehavior.Cascade);
         }
     }
 }

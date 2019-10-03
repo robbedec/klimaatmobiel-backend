@@ -15,7 +15,7 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("BestellingsItem");
             builder.HasKey(g => g.BestellingsItemId);
 
-            builder.HasOne(g => g.Product).WithOne().HasForeignKey<BestellingsItem>(g => g.ProductId).OnDelete(DeleteBehavior.Cascade);
+            builder.HasOne(g => g.Product).WithOne().HasForeignKey<BestellingsItem>(g => g.ProductId);
 
         }
     }
