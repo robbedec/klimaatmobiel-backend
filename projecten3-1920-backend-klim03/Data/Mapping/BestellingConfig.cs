@@ -15,7 +15,7 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("Bestelling");
             builder.HasKey(g => g.BestellingId);
 
-            builder.HasMany(g => g.BestellingsItems).WithOne(g => g.Bestelling).HasForeignKey(g => g.BestellingId).OnDelete(DeleteBehavior.Cascade);    
+            builder.HasMany(g => g.BestellingsItems).WithOne(g => g.Bestelling).HasForeignKey(g => g.BestellingId);    
         }
     }
 }

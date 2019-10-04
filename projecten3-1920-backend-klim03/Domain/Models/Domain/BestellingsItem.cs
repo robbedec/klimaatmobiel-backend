@@ -11,7 +11,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public long Aantal { get; set; }
 
-        public long ProductId { get; set; }
+        public long? ProductId { get; set; } // nullable anders db error
         public Product Product { get; set; }
 
         public long BestellingId { get; set; }

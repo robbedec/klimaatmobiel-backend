@@ -15,7 +15,6 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("Klas");
             builder.HasKey(g => g.KlasId);
 
-            builder.HasMany(g => g.Leerlingen).WithOne(g => g.Klas).HasForeignKey(g => g.KlasId).OnDelete(DeleteBehavior.Cascade);
             builder.HasMany(g => g.Projecten).WithOne(g => g.Klas).HasForeignKey(g => g.KlasId);
         }
     }
