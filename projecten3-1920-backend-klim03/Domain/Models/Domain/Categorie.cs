@@ -15,5 +15,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public bool StandaardCategorie { get; set; } // geeft aan of dit een categorie is die door het GO is aangemaakt
 
         public ICollection<Product> Producten { get; set; } = new List<Product>();
+        public ICollection<Project> Projecten { get; set; } = new List<Project>();
+
     }
 }
