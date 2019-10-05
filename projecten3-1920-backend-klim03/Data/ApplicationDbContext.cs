@@ -22,6 +22,10 @@ namespace projecten3_1920_backend_klim03.Data
         public DbSet<Project> Projecten { get; set; }
         public DbSet<School> Scholen { get; set; }
 
+        public DbSet<ProjectTemplate> ProjectTemplates { get; set; }
+        public DbSet<CategorieTemplate> CategorieTemplates { get; set; }
+        public DbSet<ProductTemplate> ProductTemplates { get; set; }
+
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
         {
 
@@ -41,6 +45,11 @@ namespace projecten3_1920_backend_klim03.Data
             builder.ApplyConfiguration(new ProjectConfig());
             builder.ApplyConfiguration(new AdresConfig());
             builder.ApplyConfiguration(new SchoolConfig());
+
+            builder.ApplyConfiguration(new ProjectTemplateConfig());
+            builder.ApplyConfiguration(new CategorieTemplateConfig());
+            builder.ApplyConfiguration(new ProductTemplateConfig());
+            builder.ApplyConfiguration(new ProductTemplateProjectTemplateConfig());
         }
     }
 }

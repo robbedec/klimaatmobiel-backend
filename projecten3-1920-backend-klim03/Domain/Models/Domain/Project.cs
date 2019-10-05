@@ -22,6 +22,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long CategorieId { get; set; }
         public Categorie Categorie { get; set; }
 
+        public ICollection<Product> Producten { get; set; } = new List<Product>();
         public ICollection<Groep> Groepen { get; set; } = new List<Groep>();
     }
 }

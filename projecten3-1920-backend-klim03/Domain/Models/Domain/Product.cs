@@ -14,7 +14,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProductAfbeelding { get; set; }
         public decimal Prijs { get; set; }
 
-        public bool StandaardProduct { get; set; } // geeft aan of dit een product is die door het GO is aangemaakt
+        public long ProjectId { get; set; }
+        public Project Project { get; set; }
 
         public long CategorieId { get; set; }
         public Categorie Categorie { get; set; }
