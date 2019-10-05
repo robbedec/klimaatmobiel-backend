@@ -13,6 +13,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectNaam { get; set; }
         public string ProjectOmschijving { get; set; }
         public string ProjectAfbeelding { get; set; }
+        public bool Standaard { get; set; }
 
         public long CategorieTemplateId { get; set; }
         public CategorieTemplate CategorieTemplate { get; set; }
