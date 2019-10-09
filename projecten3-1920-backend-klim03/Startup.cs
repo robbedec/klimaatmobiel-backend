@@ -45,6 +45,7 @@ namespace projecten3_1920_backend_klim03
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
                 .AddJsonOptions(options =>
                 {
+                    // Add option to ignore looping in JSON response (usefull for N:N relations)
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 }); 
@@ -53,8 +54,11 @@ namespace projecten3_1920_backend_klim03
              options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
 
             // Swagger configuration
+            // Swagger authentication is included and configured, add [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
+            // to the controller class / method to force authentication
             services.AddOpenApiDocument(c =>
             {
+                // TODO: Authentication key in project secrets
                 c.DocumentName = "apidocs";
                 c.Title = "Klimaatmobiel api";
                 c.Version = "v1";
