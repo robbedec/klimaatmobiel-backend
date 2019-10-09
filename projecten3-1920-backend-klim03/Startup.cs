@@ -1,4 +1,4 @@
-﻿ using System;
+﻿using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Text;
@@ -15,6 +15,9 @@ using Microsoft.Extensions.DependencyInjection;
 using Microsoft.Extensions.Logging;
 using Microsoft.Extensions.Options;
 using Microsoft.IdentityModel.Tokens;
+using Newtonsoft.Json.Serialization;
+using NSwag;
+using NSwag.Generation.Processors.Security;
 using projecten3_1920_backend_klim03.Data;
 
 namespace projecten3_1920_backend_klim03
@@ -38,10 +41,36 @@ namespace projecten3_1920_backend_klim03
                        .AllowAnyHeader();
             }));
 
-            services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_2);
+            services.AddMvc()
+                .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
+                .AddJsonOptions(options =>
+                {
+                    options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
+                    options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
+                }); 
 
             services.AddDbContext<ApplicationDbContext>(options =>
              options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
+
+            // Swagger configuration
+            services.AddOpenApiDocument(c =>
+            {
+                c.DocumentName = "apidocs";
+                c.Title = "Klimaatmobiel api";
+                c.Version = "v1";
+                c.Description = "api documentation";
+                c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
+                {
+                    Type = OpenApiSecuritySchemeType.ApiKey,
+                    Name = "Authorization",
+                    In = OpenApiSecurityApiKeyLocation.Header,
+                    Description = "Type into the textbox: Bearer {your JWT token}"
+                });
+
+                //c.OperationProcessors.Add(new AspNetCoreOperationSecurityScopeProcessor("JWT Token"));
+                c.OperationProcessors.Add(new OperationSecurityScopeProcessor("JWT"));
+
+            });
 
             services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<ApplicationDbContext>();
 
@@ -84,14 +113,6 @@ namespace projecten3_1920_backend_klim03
 
             services.AddScoped<DataInit>();
 
-
-
-
-
-
-
-
-
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline.
@@ -111,6 +132,9 @@ namespace projecten3_1920_backend_klim03
             app.UseAuthentication();
             app.UseCors("AllCors");
             app.UseMvc();
+
+            app.UseSwaggerUi3();
+            app.UseOpenApi();
 
             dataInit.InitializeData();
         }
