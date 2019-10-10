@@ -10,6 +10,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long BestellingId { get; set; }
 
         public DateTime Tijd { get; set; }
+        public bool Afgerond { get; set; }
 
         public long GroepId { get; set; }
         public Groep Groep { get; set; }
