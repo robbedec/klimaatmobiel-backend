@@ -19,8 +19,4 @@
     <PackageReference Include="NSwag.Core" Version="13.1.2" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Domain\Models\DTOs\" />
-  </ItemGroup>
-
 </Project>
