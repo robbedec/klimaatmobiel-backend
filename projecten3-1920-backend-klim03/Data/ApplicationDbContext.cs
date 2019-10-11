@@ -10,7 +10,7 @@ using System.Threading.Tasks;
 
 namespace projecten3_1920_backend_klim03.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<IdentityUser>
+    public class ApplicationDbContext : IdentityDbContext<Gebruiker, ApplicationRole, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
         public DbSet<Adres> Adres { get; set; }
         public DbSet<Bestelling> Bestellingen { get; set; }

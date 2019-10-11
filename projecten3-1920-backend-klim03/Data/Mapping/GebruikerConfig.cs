@@ -13,7 +13,7 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
         public void Configure(EntityTypeBuilder<Gebruiker> builder)
         {
             builder.ToTable("Gebruiker");
-            builder.HasKey(g => g.GebruikerId);
+            builder.HasKey(g => g.Id);
 
         }
     }

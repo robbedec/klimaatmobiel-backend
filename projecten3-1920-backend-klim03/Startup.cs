@@ -19,6 +19,7 @@ using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using projecten3_1920_backend_klim03.Data;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
 
 namespace projecten3_1920_backend_klim03
 {
@@ -76,7 +77,8 @@ namespace projecten3_1920_backend_klim03
 
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<Gebruiker, ApplicationRole>(cfg => cfg.User.RequireUniqueEmail = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication(x =>
             {
