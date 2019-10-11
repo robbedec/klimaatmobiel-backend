@@ -34,11 +34,11 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
         /// <summary>
-        /// Login
+        /// Login to a user account, available for [UserName and Email]
         /// </summary>
         /// <param name="model">the login details</param>
         [AllowAnonymous]
-        [HttpPost]
+        [HttpPost("login")]
         [ProducesResponseType(StatusCodes.Status201Created)]
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<String>> CreateToken(LoginDTO model)

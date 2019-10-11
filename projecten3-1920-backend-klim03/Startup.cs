@@ -62,7 +62,7 @@ namespace projecten3_1920_backend_klim03
                 // TODO: Authentication key in project secrets
                 c.DocumentName = "apidocs";
                 c.Title = "Klimaatmobiel api";
-                c.Version = "v1";
+                c.Version = "v2";
                 c.Description = "api documentation";
                 c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {

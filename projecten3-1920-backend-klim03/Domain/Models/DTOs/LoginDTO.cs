@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.Linq;
 using System.Threading.Tasks;
+using NJsonSchema;
 
 namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 {
@@ -12,7 +13,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
 
         /// <example>
-        /// "robbedec"
+        /// "leerkracht"
         /// </example>
         [Required]
         public string UserName { get; set; }
