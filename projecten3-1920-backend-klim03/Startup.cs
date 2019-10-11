@@ -142,7 +142,7 @@ namespace projecten3_1920_backend_klim03
             app.UseSwaggerUi3();
             app.UseOpenApi();
 
-            dataInit.InitializeData();
+            dataInit.InitializeData().Wait();
         }
     }
 }

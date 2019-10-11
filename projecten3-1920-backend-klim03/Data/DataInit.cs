@@ -20,19 +20,26 @@ namespace projecten3_1920_backend_klim03.Data
 
 
 
-        public void InitializeData()
+        public async Task InitializeData()
         {
             _dbContext.Database.EnsureDeleted();
             if (_dbContext.Database.EnsureCreated())
             {
 
-                //seeding     
-                
+                //seeding
+                Gebruiker leraar = new Gebruiker
+                {
+                    UserName = "leraar",
+                    Email = "leerkracht@school.be"
+                };
 
-
-
-
+                await CreateUser(leraar, "P@ssword1");
             }
+        }
+
+        private async Task CreateUser(Gebruiker user, string password)
+        {
+            await _userManager.CreateAsync(user, password);
         }
     }
 }
