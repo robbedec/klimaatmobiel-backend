@@ -19,6 +19,7 @@ using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
 using projecten3_1920_backend_klim03.Data;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
 
 namespace projecten3_1920_backend_klim03
 {
@@ -61,7 +62,7 @@ namespace projecten3_1920_backend_klim03
                 // TODO: Authentication key in project secrets
                 c.DocumentName = "apidocs";
                 c.Title = "Klimaatmobiel api";
-                c.Version = "v1";
+                c.Version = "v2";
                 c.Description = "api documentation";
                 c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {
@@ -76,7 +77,8 @@ namespace projecten3_1920_backend_klim03
 
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<Gebruiker, ApplicationRole>(cfg => cfg.User.RequireUniqueEmail = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication(x =>
             {
@@ -140,7 +142,7 @@ namespace projecten3_1920_backend_klim03
             app.UseSwaggerUi3();
             app.UseOpenApi();
 
-            dataInit.InitializeData();
+            dataInit.InitializeData().Wait();
         }
     }
 }

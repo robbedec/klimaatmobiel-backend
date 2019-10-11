@@ -1,4 +1,4 @@
-<Project Sdk="Microsoft.NET.Sdk.Web">
+﻿<Project Sdk="Microsoft.NET.Sdk.Web">
 
   <PropertyGroup>
     <TargetFramework>netcoreapp2.2</TargetFramework>
@@ -6,6 +6,11 @@
     <RootNamespace>projecten3_1920_backend_klim03</RootNamespace>
     <UserSecretsId>6be17f62-083f-4277-9c4b-e9be26b2f38b</UserSecretsId>
     <DockerDefaultTargetOS>Linux</DockerDefaultTargetOS>
+    <GenerateDocumentationFile>true</GenerateDocumentationFile>
+  </PropertyGroup>
+
+  <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|AnyCPU'">
+    <NoWarn>1701;1702;1591</NoWarn>
   </PropertyGroup>
 
   <ItemGroup>
@@ -15,12 +20,11 @@
     </PackageReference>
     <PackageReference Include="Microsoft.AspNetCore.Razor.Design" Version="2.2.0" PrivateAssets="All" />
     <PackageReference Include="Microsoft.VisualStudio.Azure.Containers.Tools.Targets" Version="1.7.9" />
+    <PackageReference Include="NJsonSchema" Version="10.0.27" />
     <PackageReference Include="NSwag.AspNetCore" Version="13.1.2" />
     <PackageReference Include="NSwag.Core" Version="13.1.2" />
-  </ItemGroup>
-
-  <ItemGroup>
-    <Folder Include="Domain\Models\DTOs\" />
+    <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
+    <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
 
 </Project>
