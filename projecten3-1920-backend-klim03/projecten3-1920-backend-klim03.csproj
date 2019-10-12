@@ -27,4 +27,7 @@
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Domain\Models\Domain\ToepassingsGebiedTemplate.cs" />
+  </ItemGroup>
 </Project>

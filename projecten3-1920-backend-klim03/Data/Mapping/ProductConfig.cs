@@ -15,6 +15,9 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("Product");
             builder.HasKey(g => g.ProductId);
 
+            builder.HasOne(g => g.Categorie).WithMany();
+            builder.HasMany(g => g.ProductWeergaves).WithOne();
+
         }
     }
 }

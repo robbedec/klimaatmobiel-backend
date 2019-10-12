@@ -19,8 +19,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long KlasId { get; set; }
         public Klas Klas { get; set; }
 
-        public long CategorieId { get; set; }
-        public Categorie Categorie { get; set; }
+        public long ToepassingsGebiedId { get; set; }
+        public ToepassingsGebied ToepassingsGebied { get; set; }
 
         public ICollection<Product> Producten { get; set; } = new List<Product>();
         public ICollection<Groep> Groepen { get; set; } = new List<Groep>();
