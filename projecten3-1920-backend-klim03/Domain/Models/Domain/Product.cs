@@ -9,10 +9,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long ProductId { get; set; }
 
-        public string ProductNaam { get; set; }
-        public string ProductOmschrijving { get; set; } 
         public string ProductAfbeelding { get; set; }
-        public decimal Prijs { get; set; }
+
+        public ICollection<ProductWeergave> ProductWeergaves { get; set; } = new List<ProductWeergave>();
 
         public long ProjectId { get; set; }
         public Project Project { get; set; }

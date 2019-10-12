@@ -14,6 +14,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string Achternaam { get; set; }
         public string Email { get; set; }
 
-        public GebruikerType GebruikerType { get; set; }
+        public EGebruikerType GebruikerType { get; set; }
     }
 }
