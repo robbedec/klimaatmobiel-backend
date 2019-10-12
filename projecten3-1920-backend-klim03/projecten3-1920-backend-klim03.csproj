@@ -25,9 +25,11 @@
     <PackageReference Include="NSwag.Core" Version="13.1.2" />
     <PackageReference Include="System.IO.FileSystem" Version="4.3.0" />
     <PackageReference Include="System.Xml.XPath.XDocument" Version="4.3.0" />
+    <PackageReference Include="Pomelo.EntityFrameworkCore.MySql" Version="2.2.0" />
   </ItemGroup>
 
   <ItemGroup>
     <Compile Remove="Domain\Models\Domain\ToepassingsGebiedTemplate.cs" />
+    <Compile Remove="Controllers\SchoolController.cs" />
   </ItemGroup>
 </Project>

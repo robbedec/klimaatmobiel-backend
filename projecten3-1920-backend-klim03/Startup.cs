@@ -18,6 +18,7 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using projecten3_1920_backend_klim03.Data;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 
@@ -51,8 +52,14 @@ namespace projecten3_1920_backend_klim03
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 }); 
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
+            //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
+
+            string connectionString = $"Server=127.0.0.1;Database=dbKlimaatMobiel;User=root;Password=rootroot";
+            services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
+            {
+                mySqlOptions.ServerVersion(new Version(8, 0, 13), ServerType.MySql).DisableBackslashEscaping();
+            }
+            ));
 
             // Swagger configuration
             // Swagger authentication is included and configured, add [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
