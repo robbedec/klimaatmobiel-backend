@@ -15,8 +15,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectAfbeelding { get; set; }
         public bool Standaard { get; set; }
 
-        public long CategorieTemplateId { get; set; }
-        public CategorieTemplate CategorieTemplate { get; set; }
+        public long ToepassingsGebiedId { get; set; }
+        public ToepassingsGebied ToepassingsGebied { get; set; }
 
         public ICollection<ProductTemplateProjectTemplate> ProductTemplateProjectTemplates { get; set; } = new List<ProductTemplateProjectTemplate>();
     }

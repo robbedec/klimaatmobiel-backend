@@ -23,4 +23,7 @@
     <Folder Include="Domain\Models\DTOs\" />
   </ItemGroup>
 
+  <ItemGroup>
+    <Compile Remove="Domain\Models\Domain\ToepassingsGebiedTemplate.cs" />
+  </ItemGroup>
 </Project>

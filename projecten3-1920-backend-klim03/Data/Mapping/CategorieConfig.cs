@@ -15,8 +15,6 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("Categorie");
             builder.HasKey(g => g.CategorieId);
 
-            builder.HasMany(g => g.Producten).WithOne(g => g.Categorie).HasForeignKey(g => g.CategorieId);
-            builder.HasMany(g => g.Projecten).WithOne(g => g.Categorie).HasForeignKey(g => g.CategorieId);
         }
     }
 }
