@@ -20,7 +20,9 @@ using NSwag;
 using NSwag.Generation.Processors.Security;
 using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using projecten3_1920_backend_klim03.Data;
+using projecten3_1920_backend_klim03.Data.Repos;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
 namespace projecten3_1920_backend_klim03
 {
@@ -54,10 +56,10 @@ namespace projecten3_1920_backend_klim03
 
             //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
 
-            string connectionString = $"Server=127.0.0.1;Database=dbKlimaatMobiel;User=root;Password=rootroot";
+            string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
             {
-                mySqlOptions.ServerVersion(new Version(8, 0, 13), ServerType.MySql).DisableBackslashEscaping();
+                mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
             }
             ));
 
@@ -123,6 +125,15 @@ namespace projecten3_1920_backend_klim03
                 options.User.RequireUniqueEmail = true;
             });
 
+
+            services.AddScoped<IBestellingRepo, BestellingRepo>();
+            services.AddScoped<IGebruikerRepo, GebruikerRepo>();
+            services.AddScoped<IGroepRepo, GroepRepo>();
+            services.AddScoped<IKlasRepo, KlasRepo>();
+            services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IProjectRepo, ProjectRepo>();
+            services.AddScoped<ISchoolRepo, SchoolRepo>();
+            services.AddScoped<IToepassingsGebiedRepo, ToepassingsGebiedRepo>();
 
             services.AddScoped<DataInit>();
 

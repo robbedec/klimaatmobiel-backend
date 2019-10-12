@@ -47,6 +47,8 @@ namespace projecten3_1920_backend_klim03.Data
             builder.ApplyConfiguration(new AdresConfig());
             builder.ApplyConfiguration(new SchoolConfig());
             builder.ApplyConfiguration(new ToepassingsGebiedConfig());
+            builder.ApplyConfiguration(new ProductWeergaveConfig());
+            builder.ApplyConfiguration(new ProductWeergaveTemplateConfig());
 
             builder.ApplyConfiguration(new ProjectTemplateConfig());
             builder.ApplyConfiguration(new CategorieTemplateConfig());

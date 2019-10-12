@@ -21,7 +21,7 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public void Add(Product obj)
         {
-            throw new NotImplementedException();
+            _producten.Add(obj);
         }
 
         public ICollection<Product> GetAll()
@@ -36,12 +36,12 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public void Remove(Product obj)
         {
-            throw new NotImplementedException();
+            _producten.Remove(obj);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
