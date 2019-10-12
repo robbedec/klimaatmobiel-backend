@@ -13,7 +13,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectNaam { get; set; }
         public string ProjectOmschijving { get; set; }
         public string ProjectAfbeelding { get; set; }
-        public bool Standaard { get; set; }
+        public bool AddedByGO { get; set; }
 
         public long ToepassingsGebiedId { get; set; }
         public ToepassingsGebied ToepassingsGebied { get; set; }

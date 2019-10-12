@@ -10,6 +10,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long ProductId { get; set; }
 
         public string ProductAfbeelding { get; set; }
+        public bool HeeftMeerdereProductWeergaves { get; set; }
 
         public ICollection<ProductWeergave> ProductWeergaves { get; set; } = new List<ProductWeergave>();
 

@@ -33,4 +33,8 @@
     <Compile Remove="Data\Repos\CategorieRepo.cs" />
     <Compile Remove="Domain\Models\Interfaces\ICategorieRepo.cs" />
   </ItemGroup>
+
+  <ItemGroup>
+    <Folder Include="Domain_diagram\" />
+  </ItemGroup>
 </Project>

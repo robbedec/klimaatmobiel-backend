@@ -17,6 +17,5 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long BestellingId { get; set; }
         public Bestelling Bestelling { get; set; }
 
-        //public decimal BestellingsItemPrijs => 
     }
 }

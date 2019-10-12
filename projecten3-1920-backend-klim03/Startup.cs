@@ -54,14 +54,14 @@ namespace projecten3_1920_backend_klim03
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 }); 
 
-            //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
+            services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
 
-            string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
+           /* string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
             {
                 mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
             }
-            ));
+            ));*/
 
             // Swagger configuration
             // Swagger authentication is included and configured, add [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
