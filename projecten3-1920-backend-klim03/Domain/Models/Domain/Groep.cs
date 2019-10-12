@@ -16,5 +16,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long ProjectId { get; set; }
         public Project Project { get; set; }
 
+        public Groep()
+        {
+          
+        }
+
     }
 }

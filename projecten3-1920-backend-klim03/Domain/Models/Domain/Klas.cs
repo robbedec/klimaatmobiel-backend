@@ -15,5 +15,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public School School { get; set; }
 
         public ICollection<Project> Projecten { get; set; } = new List<Project>();
+
+        public Klas()
+        {
+
+        }
     }
 }

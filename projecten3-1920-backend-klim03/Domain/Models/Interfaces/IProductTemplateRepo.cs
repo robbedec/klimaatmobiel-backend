@@ -6,7 +6,7 @@ using System.Threading.Tasks;
 
 namespace projecten3_1920_backend_klim03.Domain.Models.Interfaces
 {
-    public interface ICategorieRepo : IGenericRepo<Categorie>
+    public interface IProductTemplateRepo : IGenericRepo<ProductTemplate>
     {
     }
 }

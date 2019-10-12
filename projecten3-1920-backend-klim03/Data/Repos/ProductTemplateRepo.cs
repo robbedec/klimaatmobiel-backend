@@ -8,35 +8,35 @@ using System.Threading.Tasks;
 
 namespace projecten3_1920_backend_klim03.Data.Repos
 {
-    public class ProductRepo : IProductRepo
+    public class ProductTemplateRepo : IProductTemplateRepo
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<Product> _producten;
+        private readonly DbSet<ProductTemplate> _productTemplates;
 
-        public ProductRepo(ApplicationDbContext dbContext)
+        public ProductTemplateRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _producten = dbContext.Producten;
+            _productTemplates = dbContext.ProductTemplates;
         }
 
-        public void Add(Product obj)
+        public void Add(ProductTemplate obj)
         {
-            _producten.Add(obj);
+            _context.Add(obj);
         }
 
-        public ICollection<Product> GetAll()
+        public ICollection<ProductTemplate> GetAll()
+        {
+            return _productTemplates.ToList();
+        }
+
+        public ProductTemplate GetById(long id)
         {
             throw new NotImplementedException();
         }
 
-        public Product GetById(long id)
+        public void Remove(ProductTemplate obj)
         {
-            throw new NotImplementedException();
-        }
-
-        public void Remove(Product obj)
-        {
-            _producten.Remove(obj);
+            _context.Remove(obj);
         }
 
         public void SaveChanges()
