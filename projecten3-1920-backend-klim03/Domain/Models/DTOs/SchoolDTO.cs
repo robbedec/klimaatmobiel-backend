@@ -19,6 +19,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public ICollection<KlasDTO> Klassen { get; set; } = new List<KlasDTO>();
 
+        public ICollection<ProjectTemplateDTO> ProjectTemplates { get; set; } = new List<ProjectTemplateDTO>();
+        public ICollection<ProductTemplateDTO> ProductTemplates { get; set; } = new List<ProductTemplateDTO>();
+
         public SchoolDTO()
         {
 
@@ -34,7 +37,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             AdresId = school.AdresId;
 
             Adres = school.Adres;
+
             Klassen = school.Klassen.Select(g => new KlasDTO(g)).ToList();
+            ProjectTemplates = school.ProjectTemplates.Select(g => new ProjectTemplateDTO(g)).ToList();
+            ProductTemplates = school.ProductTemplates.Select(g => new ProductTemplateDTO(g)).ToList();
+
 
         }
     }
