@@ -11,17 +11,17 @@ namespace projecten3_1920_backend_klim03.Data.Repos
     public class ProductRepo : IProductRepo
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<Product> _producten;
+        private readonly DbSet<Product> _products;
 
         public ProductRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _producten = dbContext.Producten;
+            _products = dbContext.Products;
         }
 
         public void Add(Product obj)
         {
-            _producten.Add(obj);
+            _products.Add(obj);
         }
 
         public ICollection<Product> GetAll()
@@ -36,7 +36,7 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public void Remove(Product obj)
         {
-            _producten.Remove(obj);
+            _products.Remove(obj);
         }
 
         public void SaveChanges()

@@ -8,15 +8,12 @@ using projecten3_1920_backend_klim03.Domain.Models.Domain;
 
 namespace projecten3_1920_backend_klim03.Data.Mapping
 {
-    public class ProductConfig : IEntityTypeConfiguration<Product>
+    public class AppUserConfig : IEntityTypeConfiguration<AppUser>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<AppUser> builder)
         {
-            builder.ToTable("Product");
-            builder.HasKey(g => g.ProductId);
-
-            builder.HasOne(g => g.Category).WithMany();
-            builder.HasMany(g => g.ProductVariations).WithOne();
+            builder.ToTable("AppUser");
+            builder.HasKey(g => g.Id);
 
         }
     }

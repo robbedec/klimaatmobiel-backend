@@ -8,35 +8,35 @@ using System.Threading.Tasks;
 
 namespace projecten3_1920_backend_klim03.Data.Repos
 {
-    public class SchoolRepo : ISchoolRepo
+    public class ClassRoomRepo : IClassRoomRepo
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<School> _schools;
+        private readonly DbSet<ClassRoom> _classRooms;
 
-        public SchoolRepo(ApplicationDbContext dbContext)
+        public ClassRoomRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _schools = dbContext.Schools;
+            _classRooms = dbContext.ClassRooms;
         }
 
-        public void Add(School obj)
+        public void Add(ClassRoom obj)
         {
-            _schools.Add(obj);
+            _classRooms.Add(obj);
         }
 
-        public ICollection<School> GetAll()
-        {
-            throw new NotImplementedException();
-        }
-
-        public School GetById(long id)
+        public ICollection<ClassRoom> GetAll()
         {
             throw new NotImplementedException();
         }
 
-        public void Remove(School obj)
+        public ClassRoom GetById(long id)
         {
-            _schools.Remove(obj);
+            throw new NotImplementedException();
+        }
+
+        public void Remove(ClassRoom obj)
+        {
+            _classRooms.Remove(obj);
         }
 
         public void SaveChanges()

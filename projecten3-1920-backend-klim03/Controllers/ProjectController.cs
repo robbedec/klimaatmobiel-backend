@@ -9,11 +9,11 @@ namespace projecten3_1920_backend_klim03.Controllers
     [ApiConventionType(typeof(DefaultApiConventions))]
     public class ProjectController : ControllerBase
     {
-        private readonly IProjectRepo _projecten;
+        private readonly IProjectRepo _projects;
 
-        public ProjectController(IProjectRepo projecten)
+        public ProjectController(IProjectRepo projects)
         {
-            _projecten = projecten;
+            _projects = projects;
         }
     }
 }

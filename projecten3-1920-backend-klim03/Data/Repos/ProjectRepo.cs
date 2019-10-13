@@ -11,17 +11,17 @@ namespace projecten3_1920_backend_klim03.Data.Repos
     public class ProjectRepo : IProjectRepo
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<Project> _projecten;
+        private readonly DbSet<Project> _projects;
 
         public ProjectRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _projecten = dbContext.Projecten;
+            _projects = dbContext.Projects;
         }
 
         public void Add(Project obj)
         {
-            _projecten.Add(obj);
+            _projects.Add(obj);
         }
 
         public ICollection<Project> GetAll()
@@ -36,7 +36,7 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public void Remove(Project obj)
         {
-            _projecten.Remove(obj);
+            _projects.Remove(obj);
         }
 
         public void SaveChanges()

@@ -10,21 +10,21 @@ using System.Threading.Tasks;
 
 namespace projecten3_1920_backend_klim03.Data
 {
-    public class ApplicationDbContext : IdentityDbContext<Gebruiker, ApplicationRole, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
+    public class ApplicationDbContext : IdentityDbContext<AppUser, ApplicationRole, int, IdentityUserClaim<int>, IdentityUserRole<int>, IdentityUserLogin<int>, IdentityRoleClaim<int>, IdentityUserToken<int>>
     {
-        public DbSet<Adres> Adres { get; set; }
-        public DbSet<Bestelling> Bestellingen { get; set; }
-        public DbSet<Categorie> Categorieen { get; set; }
-        public DbSet<Gebruiker> Gebruikers { get; set; }
-        public DbSet<Groep> Groepen { get; set; }
-        public DbSet<Klas> Klassen { get; set; }
-        public DbSet<Product> Producten { get; set; }
-        public DbSet<Project> Projecten { get; set; }
-        public DbSet<School> Scholen { get; set; }
-        public DbSet<ToepassingsGebied> ToepassingsGebieden { get; set; }
+        public DbSet<Adres> Adresses { get; set; }
+        public DbSet<Order> Orders { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<AppUser> AppUsers { get; set; }
+        public DbSet<Group> Groups { get; set; }
+        public DbSet<ClassRoom> ClassRooms { get; set; }
+        public DbSet<Product> Products { get; set; }
+        public DbSet<Project> Projects { get; set; }
+        public DbSet<School> Schools { get; set; }
+        public DbSet<ApplicationDomain> ApplicationDomains { get; set; }
 
         public DbSet<ProjectTemplate> ProjectTemplates { get; set; }
-        public DbSet<CategorieTemplate> CategorieTemplates { get; set; }
+        public DbSet<CategoryTemplate> CategoryTemplates { get; set; }
         public DbSet<ProductTemplate> ProductTemplates { get; set; }
 
         public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options) : base(options)
@@ -37,21 +37,21 @@ namespace projecten3_1920_backend_klim03.Data
             base.OnModelCreating(builder);
 
             builder.ApplyConfiguration(new AdresConfig());
-            builder.ApplyConfiguration(new BestellingConfig());
-            builder.ApplyConfiguration(new CategorieConfig());
-            builder.ApplyConfiguration(new GebruikerConfig());
-            builder.ApplyConfiguration(new GroepConfig());
-            builder.ApplyConfiguration(new KlasConfig());
+            builder.ApplyConfiguration(new OrderConfig());
+            builder.ApplyConfiguration(new CategoryConfig());
+            builder.ApplyConfiguration(new AppUserConfig());
+            builder.ApplyConfiguration(new GroupConfig());
+            builder.ApplyConfiguration(new ClassRoomConfig());
             builder.ApplyConfiguration(new ProductConfig());
             builder.ApplyConfiguration(new ProjectConfig());
             builder.ApplyConfiguration(new AdresConfig());
             builder.ApplyConfiguration(new SchoolConfig());
-            builder.ApplyConfiguration(new ToepassingsGebiedConfig());
-            builder.ApplyConfiguration(new ProductWeergaveConfig());
-            builder.ApplyConfiguration(new ProductWeergaveTemplateConfig());
+            builder.ApplyConfiguration(new ApplicationDomainConfig());
+            builder.ApplyConfiguration(new ProductVariationConfig());
+            builder.ApplyConfiguration(new ProductVariationTemplateConfig());
 
             builder.ApplyConfiguration(new ProjectTemplateConfig());
-            builder.ApplyConfiguration(new CategorieTemplateConfig());
+            builder.ApplyConfiguration(new CategoryTemplateConfig());
             builder.ApplyConfiguration(new ProductTemplateConfig());
             builder.ApplyConfiguration(new ProductTemplateProjectTemplateConfig());
         }

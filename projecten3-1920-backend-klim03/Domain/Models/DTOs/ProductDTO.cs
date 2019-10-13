@@ -9,15 +9,15 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
     {
         public long ProductId { get; set; }
 
-        public string ProductAfbeelding { get; set; }
-        public bool HeeftMeerdereProductWeergaves { get; set; }
+        public string ProductImage { get; set; }
+        public bool HasMultipleDisplayVariations { get; set; }
 
-        public ICollection<ProductWeergave> ProductWeergaves { get; set; } = new List<ProductWeergave>();
+        public ICollection<ProductVariation> ProductVariations { get; set; } = new List<ProductVariation>();
 
         public long ProjectId { get; set; }
 
-        public long CategorieId { get; set; }
-        public Categorie Categorie { get; set; }
+        public long CatergoryId { get; set; }
+        public Category Category { get; set; }
 
         public ProductDTO()
         {
@@ -25,14 +25,14 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public ProductDTO(Product product)
         {
             ProductId = product.ProductId;
-            ProductAfbeelding = product.ProductAfbeelding;
-            HeeftMeerdereProductWeergaves = product.HeeftMeerdereProductWeergaves;
+            ProductImage = product.ProductImage;
+            HasMultipleDisplayVariations = product.HasMultipleDisplayVariations;
 
             ProjectId = product.ProjectId;
-            CategorieId = product.CategorieId;
-            Categorie = product.Categorie;
+            CatergoryId = product.CatergoryId;
+            Category = product.Category;
 
-            ProductWeergaves = product.ProductWeergaves;
+            ProductVariations = product.ProductVariations;
         }
     }
 }

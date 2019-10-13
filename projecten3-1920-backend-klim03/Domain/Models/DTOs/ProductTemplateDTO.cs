@@ -10,13 +10,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
     {
         public long ProductTemplateId { get; set; }
 
-        public string ProductAfbeelding { get; set; }
+        public string ProductImage { get; set; }
         public bool AddedByGO { get; set; }
 
-        public long CategorieTemplateId { get; set; }
-        public CategorieTemplate CategorieTemplate { get; set; }
+        public long CategoryTemplateId { get; set; }
+        public CategoryTemplate CategoryTemplate { get; set; }
 
-        public ICollection<ProductWeergaveTemplateDTO> ProductWeergaveTemplates { get; set; } = new List<ProductWeergaveTemplateDTO>();
+        public ICollection<ProductVariationTemplateDTO> ProductVariationTemplates { get; set; } = new List<ProductVariationTemplateDTO>();
 
         public ProductTemplateDTO()
         {
@@ -27,13 +27,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         {
             ProductTemplateId = pt.ProductTemplateId;
 
-            ProductAfbeelding = pt.ProductAfbeelding;
+            ProductImage = pt.ProductImage;
             AddedByGO = pt.AddedByGO;
 
-            CategorieTemplateId = pt.CategorieTemplateId;
-            CategorieTemplate = pt.CategorieTemplate;
+            CategoryTemplateId = pt.CategoryTemplateId;
+            CategoryTemplate = pt.CategoryTemplate;
 
-            ProductWeergaveTemplates = pt.ProductWeergaveTemplates.Select(g => new ProductWeergaveTemplateDTO(g)).ToList();
+            ProductVariationTemplates = pt.ProductVariationTemplates.Select(g => new ProductVariationTemplateDTO(g)).ToList();
         }
     }
 }

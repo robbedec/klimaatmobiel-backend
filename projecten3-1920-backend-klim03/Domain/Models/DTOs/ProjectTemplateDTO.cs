@@ -10,13 +10,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
     {
         public long ProjectTemplateId { get; set; }
 
-        public string ProjectNaam { get; set; }
-        public string ProjectOmschijving { get; set; }
-        public string ProjectAfbeelding { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectDescr { get; set; }
+        public string ProjectImage { get; set; }
         public bool AddedByGO { get; set; }
 
-        public long ToepassingsGebiedId { get; set; }
-        public ToepassingsGebied ToepassingsGebied { get; set; }
+        public long ApplicationDomainId { get; set; }
+        public ApplicationDomain ApplicationDomain { get; set; }
 
         public ICollection<ProductTemplateDTO> ProductTemplates { get; set; } = new List<ProductTemplateDTO>();
 
@@ -29,13 +29,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         {
             ProjectTemplateId = pt.ProjectTemplateId;
 
-            ProjectNaam = pt.ProjectNaam;
-            ProjectOmschijving = pt.ProjectOmschijving;
-            ProjectAfbeelding = pt.ProjectAfbeelding;
+            ProjectName = pt.ProjectName;
+            ProjectDescr = pt.ProjectDescr;
+            ProjectImage = pt.ProjectImage;
             AddedByGO = pt.AddedByGO;
 
-            ToepassingsGebiedId = pt.ToepassingsGebiedId;
-            ToepassingsGebied = pt.ToepassingsGebied;
+            ApplicationDomainId = pt.ApplicationDomainId;
+            ApplicationDomain = pt.ApplicationDomain;
 
             ProductTemplates = pt.ProductTemplateProjectTemplates.Select(g => new ProductTemplateDTO(g.ProductTemplate)).ToList();
 

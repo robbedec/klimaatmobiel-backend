@@ -8,15 +8,14 @@ using projecten3_1920_backend_klim03.Domain.Models.Domain;
 
 namespace projecten3_1920_backend_klim03.Data.Mapping
 {
-    public class ProductConfig : IEntityTypeConfiguration<Product>
+    public class OrderItemConfig : IEntityTypeConfiguration<OrderItem>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<OrderItem> builder)
         {
-            builder.ToTable("Product");
-            builder.HasKey(g => g.ProductId);
+            builder.ToTable("OrderItem");
+            builder.HasKey(g => g.OrderItemId);
 
-            builder.HasOne(g => g.Category).WithMany();
-            builder.HasMany(g => g.ProductVariations).WithOne();
+            builder.HasOne(g => g.Product).WithOne().HasForeignKey<OrderItem>(g => g.ProductId);
 
         }
     }

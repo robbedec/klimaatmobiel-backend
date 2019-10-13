@@ -86,7 +86,7 @@ namespace projecten3_1920_backend_klim03
 
             });
 
-            services.AddIdentity<Gebruiker, ApplicationRole>(cfg => cfg.User.RequireUniqueEmail = true)
+            services.AddIdentity<AppUser, ApplicationRole>(cfg => cfg.User.RequireUniqueEmail = true)
                 .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication(x =>
@@ -126,14 +126,14 @@ namespace projecten3_1920_backend_klim03
             });
 
 
-            services.AddScoped<IBestellingRepo, BestellingRepo>();
-            services.AddScoped<IGebruikerRepo, GebruikerRepo>();
-            services.AddScoped<IGroepRepo, GroepRepo>();
-            services.AddScoped<IKlasRepo, KlasRepo>();
+            services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IAppUserRepo, AppUserRepo>();
+            services.AddScoped<IGroupRepo, GroupRepo>();
+            services.AddScoped<IClassRoomRepo, ClassRoomRepo>();
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProjectRepo, ProjectRepo>();
             services.AddScoped<ISchoolRepo, SchoolRepo>();
-            services.AddScoped<IToepassingsGebiedRepo, ToepassingsGebiedRepo>();
+            services.AddScoped<IApplicationDomainRepo, ApplicationDomainRepo>();
 
             services.AddScoped<DataInit>();
 

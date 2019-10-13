@@ -10,13 +10,16 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long ProjectTemplateId { get; set; }
 
-        public string ProjectNaam { get; set; }
-        public string ProjectOmschijving { get; set; }
-        public string ProjectAfbeelding { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectDescr { get; set; }
+        public string ProjectImage { get; set; }
         public bool AddedByGO { get; set; }
 
-        public long ToepassingsGebiedId { get; set; }
-        public ToepassingsGebied ToepassingsGebied { get; set; }
+        public long ApplicationDomainId { get; set; }
+        public ApplicationDomain ApplicationDomain { get; set; }
+
+        public long SchoolId { get; set; }
+        public School School { get; set; }
 
         public ICollection<ProductTemplateProjectTemplate> ProductTemplateProjectTemplates { get; set; } = new List<ProductTemplateProjectTemplate>();
     }

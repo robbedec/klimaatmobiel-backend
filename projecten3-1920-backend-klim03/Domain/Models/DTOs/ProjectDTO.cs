@@ -10,19 +10,18 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
     {
         public long ProjectId { get; set; }
 
-        public string ProjectNaam { get; set; }
-        public string ProjectOmschijving { get; set; }
+        public string ProjectName { get; set; }
+        public string ProjectDescr { get; set; }
         public string ProjectCode { get; set; }
-        public string ProjectAfbeelding { get; set; }
+        public string ProjectImage { get; set; }
 
-        public long KlasId { get; set; }
-        public Klas Klas { get; set; }
+        public long ClassRoomId { get; set; }
 
-        public long ToepassingsGebiedId { get; set; }
-        public ToepassingsGebied ToepassingsGebied { get; set; }
+        public long ApplicationDomainId { get; set; }
+        public ApplicationDomain ApplicationDomain { get; set; }
 
-        public ICollection<ProductDTO> Producten { get; set; } = new List<ProductDTO>();
-        public ICollection<GroepDTO> Groepen { get; set; } = new List<GroepDTO>();
+        public ICollection<ProductDTO> Products { get; set; } = new List<ProductDTO>();
+        public ICollection<GroupDTO> Groups { get; set; } = new List<GroupDTO>();
 
 
         public ProjectDTO()
@@ -34,16 +33,17 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         {
             ProjectId = project.ProjectId;
 
-            ProjectNaam = project.ProjectNaam;
-            ProjectOmschijving = project.ProjectOmschijving;
+            ProjectName = project.ProjectName;
+            ProjectDescr = project.ProjectDescr;
             ProjectCode = project.ProjectCode;
-            ProjectAfbeelding = project.ProjectAfbeelding;
+            ProjectImage = project.ProjectImage;
 
-            KlasId = project.KlasId;
-            ToepassingsGebiedId = project.ToepassingsGebiedId;
+            ClassRoomId = project.ClassRoomId;
+            ApplicationDomainId = project.ApplicationDomainId;
+            ApplicationDomain = project.ApplicationDomain;
 
-            Producten = project.Producten.Select(g => new ProductDTO(g)).ToList();
-            Groepen = project.Groepen.Select(g => new GroepDTO(g)).ToList();
+            Products = project.Products.Select(g => new ProductDTO(g)).ToList();
+            Groups = project.Groups.Select(g => new GroupDTO(g)).ToList();
         }
     }
 }
