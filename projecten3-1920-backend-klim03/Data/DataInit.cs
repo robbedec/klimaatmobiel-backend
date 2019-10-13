@@ -10,9 +10,9 @@ namespace projecten3_1920_backend_klim03.Data
     public class DataInit
     {
         private readonly ApplicationDbContext _dbContext;
-        private readonly UserManager<Gebruiker> _userManager;
+        private readonly UserManager<AppUser> _userManager;
 
-        public DataInit(ApplicationDbContext dbContext, UserManager<Gebruiker> userManager)
+        public DataInit(ApplicationDbContext dbContext, UserManager<AppUser> userManager)
         {
             _dbContext = dbContext;
             _userManager = userManager;
@@ -27,7 +27,7 @@ namespace projecten3_1920_backend_klim03.Data
             {
 
                 //seeding
-                Gebruiker leraar = new Gebruiker
+                AppUser leraar = new AppUser
                 {
                     UserName = "leraar",
                     Email = "leerkracht@school.be"
@@ -37,7 +37,7 @@ namespace projecten3_1920_backend_klim03.Data
             }
         }
 
-        private async Task CreateUser(Gebruiker user, string password)
+        private async Task CreateUser(AppUser user, string password)
         {
             await _userManager.CreateAsync(user, password);
         }

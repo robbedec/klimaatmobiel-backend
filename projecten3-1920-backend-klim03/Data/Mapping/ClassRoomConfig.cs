@@ -8,16 +8,14 @@ using projecten3_1920_backend_klim03.Domain.Models.Domain;
 
 namespace projecten3_1920_backend_klim03.Data.Mapping
 {
-    public class ProductConfig : IEntityTypeConfiguration<Product>
+    public class ClassRoomConfig : IEntityTypeConfiguration<ClassRoom>
     {
-        public void Configure(EntityTypeBuilder<Product> builder)
+        public void Configure(EntityTypeBuilder<ClassRoom> builder)
         {
-            builder.ToTable("Product");
-            builder.HasKey(g => g.ProductId);
+            builder.ToTable("ClassRoom");
+            builder.HasKey(g => g.ClassRoomId);
 
-            builder.HasOne(g => g.Category).WithMany();
-            builder.HasMany(g => g.ProductVariations).WithOne();
-
+            builder.HasMany(g => g.Projects).WithOne(g => g.ClassRoom).HasForeignKey(g => g.ClassRoomId);
         }
     }
 }

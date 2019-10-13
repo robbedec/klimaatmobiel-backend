@@ -16,10 +16,10 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.HasKey(g => g.SchoolId);
 
 
-            builder.HasMany(g => g.Klassen).WithOne(g => g.School).HasForeignKey(g => g.SchoolId);
+            builder.HasMany(g => g.ClassRooms).WithOne(g => g.School).HasForeignKey(g => g.SchoolId);
 
-            builder.HasMany(g => g.ProjectTemplates).WithOne();
-            builder.HasMany(g => g.ProductTemplates).WithOne();
+            builder.HasMany(g => g.ProjectTemplates).WithOne(g => g.School).HasForeignKey(g => g.SchoolId);
+            builder.HasMany(g => g.ProductTemplates).WithOne(g => g.School).HasForeignKey(g => g.SchoolId);
 
             builder.HasOne(g => g.Adres).WithOne().HasForeignKey<School>(g => g.AdresId);
 

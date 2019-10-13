@@ -22,11 +22,11 @@ namespace projecten3_1920_backend_klim03.Controllers
     [ApiConventionType(typeof(DefaultApiConventions))]
     public class AccountController : ControllerBase
     {
-        private readonly SignInManager<Gebruiker> _signInManager;
-        private readonly UserManager<Gebruiker> _userManager;
+        private readonly SignInManager<AppUser> _signInManager;
+        private readonly UserManager<AppUser> _userManager;
         private readonly IConfiguration _config;
 
-        public AccountController(SignInManager<Gebruiker> signInManager, UserManager<Gebruiker> userManager, IConfiguration config)
+        public AccountController(SignInManager<AppUser> signInManager, UserManager<AppUser> userManager, IConfiguration config)
         {
             _signInManager = signInManager;
             _userManager = userManager;
@@ -43,7 +43,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<String>> CreateToken(LoginDTO model)
         {
-            Gebruiker user;
+            AppUser user;
             if (model.UserName.IndexOf('@') > -1)
             {
                 //Validate email format
@@ -87,7 +87,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         [ProducesResponseType(StatusCodes.Status400BadRequest)]
         public async Task<ActionResult<String>> Register(RegisterDTO model)
         {
-            Gebruiker user = new Gebruiker { UserName = model.UserName, Email = model.Email, Voornaam = model.FirstName, Achternaam = model.LastName };
+            AppUser user = new AppUser { UserName = model.UserName, Email = model.Email, Voornaam = model.FirstName, Achternaam = model.LastName };
             var result = await _userManager.CreateAsync(user, model.Password);
 
             if (result.Succeeded)
@@ -111,7 +111,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             return user == null;
         }
 
-        private string GetToken(Gebruiker user)
+        private string GetToken(AppUser user)
         {
             // Create the token
             var claims = new[]

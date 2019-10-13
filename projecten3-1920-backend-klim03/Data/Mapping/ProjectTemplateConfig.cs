@@ -15,7 +15,7 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("ProjectTemplate");
             builder.HasKey(g => g.ProjectTemplateId);
 
-            builder.HasOne(g => g.ToepassingsGebied).WithMany();
+            builder.HasOne(g => g.ApplicationDomain).WithMany().HasForeignKey(g => g.ApplicationDomainId);
 
         }
     }

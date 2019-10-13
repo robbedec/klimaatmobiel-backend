@@ -1,0 +1,46 @@
+﻿using System;
+using System.Collections.Generic;
+using System.Linq;
+using Microsoft.EntityFrameworkCore;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
+
+namespace projecten3_1920_backend_klim03.Data.Repos
+{
+    public class GroupRepo : IGroupRepo
+    {
+        private readonly ApplicationDbContext _context;
+        private readonly DbSet<Group> _groups;
+
+        public GroupRepo(ApplicationDbContext dbContext)
+        {
+            _context = dbContext;
+            _groups = dbContext.Groups;
+        }
+
+        public void Add(Group obj)
+        {
+            _groups.Add(obj);
+        }
+
+        public ICollection<Group> GetAll()
+        {
+            return _groups.ToList();
+        }
+
+        public Group GetById(long id)
+        {
+            throw new NotImplementedException();
+        }
+
+        public void Remove(Group obj)
+        {
+            _groups.Remove(obj);
+        }
+
+        public void SaveChanges()
+        {
+            _context.SaveChanges();
+        }
+    }
+}

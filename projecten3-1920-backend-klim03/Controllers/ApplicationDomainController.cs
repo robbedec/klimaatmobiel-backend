@@ -7,14 +7,18 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
-    public class SchoolController : ControllerBase
+    public class ApplicationDomainController : ControllerBase
     {
-        private readonly ISchoolRepo _schools;
+        private readonly IApplicationDomainRepo _applicationDomains;
 
-        public SchoolController(ISchoolRepo schools)
+        public ApplicationDomainController(IApplicationDomainRepo applicationDomains)
         {
-            _schools = schools;
+            _applicationDomains = applicationDomains;
         }
+
+
+
+
 
 
 
