@@ -1,5 +1,6 @@
 ﻿using System;
 using projecten3_1920_backend_klim03.Domain.Models.Domain.enums;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 
 namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 {
@@ -12,6 +13,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public decimal Price { get; set; } 
         public ESchoolYear ESchoolYear { get; set; }
 
+
+        public ProductVariation()
+        {
+
+        }
+
+    
 
     }
 }

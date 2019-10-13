@@ -26,12 +26,19 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public ICollection<Project> GetAll()
         {
-            throw new NotImplementedException();
+            return _projects.ToList();
         }
+
+
 
         public Project GetById(long id)
         {
-            throw new NotImplementedException();
+            return _projects
+                .Include(g => g.ClassRoom)
+                .Include(g => g.Products)
+                .Include(g => g.Groups)
+                .Include(g => g.ApplicationDomain)
+                .SingleOrDefault(g => g.ProjectId == id);
         }
 
         public void Remove(Project obj)

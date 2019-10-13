@@ -29,9 +29,18 @@ namespace projecten3_1920_backend_klim03.Data.Repos
             throw new NotImplementedException();
         }
 
+
         public ClassRoom GetById(long id)
         {
-            throw new NotImplementedException();
+            return _classRooms    
+                .SingleOrDefault(g => g.ClassRoomId == id);
+        }
+
+        public ClassRoom GetByIdWithProjects(long id)
+        {
+            return _classRooms
+               .Include(g => g.Projects).ThenInclude(g => g.ApplicationDomain)
+               .SingleOrDefault(g => g.ClassRoomId == id);
         }
 
         public void Remove(ClassRoom obj)
