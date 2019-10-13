@@ -16,7 +16,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public bool AddedByGO { get; set; }
 
         public long ApplicationDomainId { get; set; }
-        public ApplicationDomain ApplicationDomain { get; set; }
+        public ApplicationDomainDTO ApplicationDomain { get; set; }
 
         public ICollection<ProductTemplateDTO> ProductTemplates { get; set; } = new List<ProductTemplateDTO>();
 
@@ -35,7 +35,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             AddedByGO = pt.AddedByGO;
 
             ApplicationDomainId = pt.ApplicationDomainId;
-            ApplicationDomain = pt.ApplicationDomain;
+            ApplicationDomain = new ApplicationDomainDTO(pt.ApplicationDomain);
 
             ProductTemplates = pt.ProductTemplateProjectTemplates.Select(g => new ProductTemplateDTO(g.ProductTemplate)).ToList();
 

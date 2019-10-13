@@ -1,5 +1,9 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
 namespace projecten3_1920_backend_klim03.Controllers
@@ -16,7 +20,80 @@ namespace projecten3_1920_backend_klim03.Controllers
             _applicationDomains = applicationDomains;
         }
 
+        /// <summary>
+        /// Get all application domains
+        /// </summary>
+        /// <returns>list of application domains</returns>
+        [HttpGet]
+        public ICollection<ApplicationDomainDTO> GetApplicationDomains()
+        {
 
+            return _applicationDomains.GetAll().Select(g => new ApplicationDomainDTO(g)).ToList();
+        }
+
+
+        /// <summary>
+        /// Get the application domain with given id
+        /// </summary>
+        /// <param name="adId">the id of the application domain</param>
+        /// <returns>The application domain</returns>
+        [HttpGet("{adId}")]
+        public ActionResult<ApplicationDomainDTO> GetProject(long adId)
+        {
+            return new ApplicationDomainDTO(_applicationDomains.GetById(adId));
+        }
+
+
+        /// <summary>
+        /// Adding a application domain
+        /// </summary>
+        /// <param name="dto">The application domain details</param>
+        /// <returns>The added application domain</returns>
+        [HttpPost]
+        public ActionResult<ApplicationDomainDTO> AddProject([FromBody]ApplicationDomainDTO dto)
+        {
+
+            ApplicationDomain ad = new ApplicationDomain { 
+                ApplicationDomainName = dto.ApplicationDomainName,
+                ApplicationDomainDescr = dto.ApplicationDomainDescr
+            };
+            _applicationDomains.Add(ad);
+            _applicationDomains.SaveChanges();
+
+            return new ApplicationDomainDTO(ad);
+        }
+
+        /// <summary>
+        /// updates an application domain
+        /// </summary>
+        /// <param name="adId">id of the application domain to be modified</param>
+        /// <param name="dto">the modified application domain</param>
+        [HttpPut("{adId}")]
+        public ActionResult<ApplicationDomainDTO> Put([FromBody]ApplicationDomainDTO dto, long adId)
+        {
+            var ad = _applicationDomains.GetById(adId);
+
+            ad.ApplicationDomainName = dto.ApplicationDomainName;
+            ad.ApplicationDomainDescr = dto.ApplicationDomainDescr;
+
+            _applicationDomains.SaveChanges();
+
+            return new ApplicationDomainDTO(ad);
+        }
+
+
+        /// <summary>
+        /// Deletes an application domain
+        /// </summary>
+        /// <param name="adId">the id of the application domain to be deleted</param>
+        [HttpDelete("{adId}")]
+        public ActionResult<ApplicationDomainDTO> DeleteProject(long adId)
+        {
+            var delAd = _applicationDomains.GetById(adId);
+            _applicationDomains.Remove(delAd);
+            _applicationDomains.SaveChanges();
+            return new ApplicationDomainDTO(delAd);
+        }
 
 
 
