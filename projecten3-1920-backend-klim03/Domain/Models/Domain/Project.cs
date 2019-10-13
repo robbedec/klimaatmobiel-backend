@@ -38,7 +38,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProjectCode = dto.ProjectCode;
             ProjectImage = dto.ProjectImage;
 
-            ClassRoomId = dto.ClassRoomId;
             ApplicationDomainId = dto.ApplicationDomainId;
 
             dto.Products.ToList().ForEach(g => AddProduct(new Product(g)));

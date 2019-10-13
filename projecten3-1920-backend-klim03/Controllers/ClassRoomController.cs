@@ -21,19 +21,29 @@ namespace projecten3_1920_backend_klim03.Controllers
             _classRooms = classRooms;
         }
 
-
-        [HttpGet("withProjects")]
-        public ActionResult<ClassRoomDTO> GetClassRoomWithProjects(long groupId)
+        /// <summary>
+        /// Get the classRoom with its projects for given id
+        /// </summary>
+        /// <param name="classRoomId">the id of the classroom</param>
+        /// <returns>The classroom with its projects</returns>
+        [HttpGet("withProjects/{classRoomId}")]
+        public ActionResult<ClassRoomDTO> GetClassRoomWithProjects(long classRoomId)
         {
-            return new ClassRoomDTO(_classRooms.GetByIdWithProjects(groupId));
+            return new ClassRoomDTO(_classRooms.GetByIdWithProjects(classRoomId));
         }
 
 
-        [HttpPost("addProject")]
+        /// <summary>
+        /// Adding a project to a given classroom
+        /// </summary>
+        /// <param name="dto">The project details</param>
+        /// <param name="classRoomId">the id of the classroom</param>
+        /// <returns>The added project</returns>
+        [HttpPost("addProject/{classRoomId}")]
         public ActionResult<ProjectDTO> AddProject([FromBody]ProjectDTO dto, long classRoomId)
         {
 
-            ClassRoom cr = _classRooms.GetById(dto.ClassRoomId);
+            ClassRoom cr = _classRooms.GetById(classRoomId);
             Project p = new Project(dto);
 
             cr.AddProject(p);
