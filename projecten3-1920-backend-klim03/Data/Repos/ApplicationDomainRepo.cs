@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Linq;
 using Microsoft.EntityFrameworkCore;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
@@ -24,12 +25,12 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public ICollection<ApplicationDomain> GetAll()
         {
-            throw new NotImplementedException();
+            return _applicationDomains.ToList();
         }
 
         public ApplicationDomain GetById(long id)
         {
-            throw new NotImplementedException();
+            return _applicationDomains.SingleOrDefault(g => g.ApplicationDomainId == id);
         }
 
         public void Remove(ApplicationDomain obj)

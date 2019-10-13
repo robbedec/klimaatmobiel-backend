@@ -33,7 +33,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="projectId">id of the project to be modified</param>
         /// <param name="dto">the modified project</param>
-        [HttpPut]
+        [HttpPut("{projectId}")]
         public ActionResult<ProjectDTO> Put([FromBody] ProjectDTO dto, long projectId)
         {
             var p = _projects.GetById(projectId);
@@ -56,12 +56,12 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <summary>
         /// Deletes a project
         /// </summary>
-        /// <param name="id">the id of the project to be deleted</param>
+        /// <param name="projectId">the id of the project to be deleted</param>
         [HttpDelete("{projectId}")]
-        public ActionResult<ProjectDTO> DeleteProject(long id)
+        public ActionResult<ProjectDTO> DeleteProject(long projectId)
         {
 
-            var delProject = _projects.GetById(id);
+            var delProject = _projects.GetById(projectId);
             _projects.Remove(delProject);
             _projects.SaveChanges();
             return new ProjectDTO(delProject);

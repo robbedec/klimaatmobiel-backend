@@ -24,7 +24,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         [Required]
         public long ApplicationDomainId { get; set; }
-        public ApplicationDomain ApplicationDomain { get; set; }
+        public ApplicationDomainDTO ApplicationDomain { get; set; }
 
         public ICollection<ProductDTO> Products { get; set; } = new List<ProductDTO>();
         public ICollection<GroupDTO> Groups { get; set; } = new List<GroupDTO>();
@@ -45,7 +45,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProjectImage = project.ProjectImage;
 
             ApplicationDomainId = project.ApplicationDomainId;
-            ApplicationDomain = project.ApplicationDomain;
+            ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
 
             Products = project.Products.Select(g => new ProductDTO(g)).ToList();
             Groups = project.Groups.Select(g => new GroupDTO(g)).ToList();
