@@ -8,5 +8,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Interfaces
 {
     public interface IClassRoomRepo : IGenericRepo<ClassRoom>
     {
+        ClassRoom GetByIdWithProjects(long id);
     }
 }

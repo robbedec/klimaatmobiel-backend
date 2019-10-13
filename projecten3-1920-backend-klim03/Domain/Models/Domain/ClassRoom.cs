@@ -16,9 +16,18 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public ICollection<Project> Projects { get; set; } = new List<Project>();
 
+
+
+        public void AddProject(Project p)
+        {
+            Projects.Add(p);
+        }
+
         public ClassRoom()
         {
 
         }
+
+
     }
 }

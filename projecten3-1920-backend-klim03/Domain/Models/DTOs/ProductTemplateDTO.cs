@@ -16,7 +16,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public long CategoryTemplateId { get; set; }
         public CategoryTemplate CategoryTemplate { get; set; }
 
-        public ICollection<ProductVariationTemplateDTO> ProductVariationTemplates { get; set; } = new List<ProductVariationTemplateDTO>();
+        public ICollection<ProductVariationTemplate> ProductVariationTemplates { get; set; } = new List<ProductVariationTemplate>();
 
         public ProductTemplateDTO()
         {
@@ -33,7 +33,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             CategoryTemplateId = pt.CategoryTemplateId;
             CategoryTemplate = pt.CategoryTemplate;
 
-            ProductVariationTemplates = pt.ProductVariationTemplates.Select(g => new ProductVariationTemplateDTO(g)).ToList();
+            ProductVariationTemplates = pt.ProductVariationTemplates;
         }
     }
 }

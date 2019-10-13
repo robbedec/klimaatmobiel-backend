@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projecten3_1920_backend_klim03.Domain.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -14,8 +15,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectCode { get; set; } // om project met leerling te linken
         public string ProjectImage { get; set; }
 
-        public bool DefaultProject { get; set; } // geeft aan of dit een project is die door het GO is aangemaakt
-
         public long ClassRoomId { get; set; }
         public ClassRoom ClassRoom { get; set; }
 
@@ -24,5 +23,40 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public ICollection<Product> Products { get; set; } = new List<Product>();
         public ICollection<Group> Groups { get; set; } = new List<Group>();
+
+        public Project()
+        {
+
+        }
+    
+
+
+        public Project(ProjectDTO dto)
+        {
+            ProjectName = dto.ProjectName;
+            ProjectDescr = dto.ProjectDescr;
+            ProjectCode = dto.ProjectCode;
+            ProjectImage = dto.ProjectImage;
+
+            ApplicationDomainId = dto.ApplicationDomainId;
+
+            dto.Products.ToList().ForEach(g => AddProduct(new Product(g)));
+            dto.Groups.ToList().ForEach(g => AddGroup(new Group(g)));
+        }
+
+
+        public void AddProduct(Product p)
+        {
+            Products.Add(p);
+        }
+
+        public void AddGroup(Group g)
+        {
+            Groups.Add(g);
+        }
+
+
+
+
     }
 }
