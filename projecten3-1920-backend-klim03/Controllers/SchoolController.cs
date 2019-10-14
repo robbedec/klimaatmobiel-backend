@@ -45,6 +45,11 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
 
             School s = _schools.GetById(schoolId);
+            if (s == null)
+            {
+                return NotFound();
+            }
+
             ProjectTemplate pt = new ProjectTemplate(dto, true); // boolean (addedByGO) dependant on logged in user
 
             s.AddProjectTemplate(pt);
@@ -65,14 +70,14 @@ namespace projecten3_1920_backend_klim03.Controllers
             School s = _schools.GetById(schoolId);
             ProductTemplate pt = new ProductTemplate(dto, true);
 
-            if(pt == null)
+            if(s == null)
             {
                 return NotFound();
             }
             s.AddProductTemplate(pt);
             _schools.SaveChanges();
 
-            return Ok();
+            return new ProductTemplateDTO(pt);
         }
 
     }
