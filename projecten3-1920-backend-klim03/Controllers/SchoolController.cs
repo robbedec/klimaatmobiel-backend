@@ -58,30 +58,20 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="dto">The product template details</param>
         /// <param name="schoolId">the id of the school</param>
-        /// <param name="projectTemplateId">the id of the project template</param>
         /// <returns>The added product template</returns>
-        [HttpPost("addProductTemplate/{schoolId}/{projectTemplateId}")]
-        public ActionResult<ProductTemplateDTO> AddProductTemplate([FromBody]ProductTemplateDTO dto, long schoolId, long projectTemplateId)
+        [HttpPost("addProductTemplate/{schoolId}}")]
+        public ActionResult<ProductTemplateDTO> AddProductTemplate([FromBody]ProductTemplateDTO dto, long schoolId)
         {
             School s = _schools.GetById(schoolId);
-            ProjectTemplate pt = s.ProjectTemplates.FirstOrDefault(x => x.ProjectTemplateId == projectTemplateId);
+            ProductTemplate pt = new ProductTemplate(dto, true);
+
             if(pt == null)
             {
                 return NotFound();
             }
+            s.AddProductTemplate(pt);
+            _schools.SaveChanges();
 
-            try
-            {
-                pt.ProductTemplateProjectTemplates.Add(new ProductTemplateProjectTemplate
-                {
-                    ProductTemplate = new ProductTemplate(dto, true)
-                });
-                _schools.SaveChanges();
-            }
-            catch
-            {
-                return BadRequest();
-            }
             return Ok();
         }
 
