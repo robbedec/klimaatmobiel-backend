@@ -1,4 +1,5 @@
 ﻿using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.Domain.enums;
 using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
@@ -18,7 +19,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         [Required]
         public string ProjectCode { get; set; }
         public string ProjectImage { get; set; }
-        public bool DefaultProject { get; set; }
+        [Required]
+        public ESchoolYear ESchoolYear { get; set; }
         [Required]
         public long ClassRoomId { get; set; }
 
@@ -43,6 +45,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProjectDescr = project.ProjectDescr;
             ProjectCode = project.ProjectCode;
             ProjectImage = project.ProjectImage;
+            ESchoolYear = project.ESchoolYear;
 
             ApplicationDomainId = project.ApplicationDomainId;
             ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
