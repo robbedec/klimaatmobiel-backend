@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projecten3_1920_backend_klim03.Domain.Models.DTOs;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -25,5 +26,21 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         {
 
         }
+
+        public School(SchoolDTO dto)
+        {
+            Name = dto.Name;
+            Email = dto.Email;
+            TelNum = dto.TelNum;
+
+            AdresId = dto.AdresId;
+
+        }
+
+        public void AddProjectTemplate(ProjectTemplate pt)
+        {
+            ProjectTemplates.Add(pt);
+        }
+
     }
 }

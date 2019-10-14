@@ -46,8 +46,9 @@ namespace projecten3_1920_backend_klim03.Controllers
             p.ClassRoomId = dto.ClassRoomId;
             p.ApplicationDomainId = dto.ApplicationDomainId;
 
-            _projects.SaveChanges();
             throw new NotImplementedException("update of groups and products not implemented yet");
+            _projects.SaveChanges();
+            
 
             return new ProjectDTO(p);
         }

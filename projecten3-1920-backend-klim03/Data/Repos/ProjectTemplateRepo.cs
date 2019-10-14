@@ -31,7 +31,11 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public ProjectTemplate GetById(long id)
         {
-            throw new NotImplementedException();
+            return _projectTemplates
+                .Include(g => g.ApplicationDomain)
+                .Include(g => g.ProductTemplateProjectTemplates).ThenInclude(g => g.ProductTemplate).ThenInclude(g => g.CategoryTemplate)
+                .Include(g => g.ProductTemplateProjectTemplates).ThenInclude(g => g.ProductTemplate).ThenInclude(g => g.ProductVariationTemplates)
+                .SingleOrDefault(g => g.ProjectTemplateId == id);
         }
 
         public void Remove(ProjectTemplate obj)
