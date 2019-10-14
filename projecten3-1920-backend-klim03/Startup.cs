@@ -135,6 +135,10 @@ namespace projecten3_1920_backend_klim03
             services.AddScoped<ISchoolRepo, SchoolRepo>();
             services.AddScoped<IApplicationDomainRepo, ApplicationDomainRepo>();
 
+            services.AddScoped<IProjectTemplateRepo, ProjectTemplateRepo>();
+            services.AddScoped<IProductTemplateRepo, ProductTemplateRepo>();
+
+
             services.AddScoped<DataInit>();
 
         }
@@ -152,7 +156,7 @@ namespace projecten3_1920_backend_klim03
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseCors("AllCors");
             app.UseMvc();

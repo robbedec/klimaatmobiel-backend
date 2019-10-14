@@ -42,6 +42,15 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         }
 
 
+        public void AddProductTemplate(ProductTemplate pt)
+        {
+            ProductTemplateProjectTemplates.Add(new ProductTemplateProjectTemplate { 
+                ProductTemplate = pt,
+                ProjectTemplate = this 
+            });
+        }
+
+
         
 
     }

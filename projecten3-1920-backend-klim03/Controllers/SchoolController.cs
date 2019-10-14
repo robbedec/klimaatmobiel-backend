@@ -59,7 +59,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <param name="dto">The product template details</param>
         /// <param name="schoolId">the id of the school</param>
         /// <returns>The added product template</returns>
-        [HttpPost("addProductTemplate/{schoolId}}")]
+        [HttpPost("addProductTemplate/{schoolId}")]
         public ActionResult<ProductTemplateDTO> AddProductTemplate([FromBody]ProductTemplateDTO dto, long schoolId)
         {
             School s = _schools.GetById(schoolId);

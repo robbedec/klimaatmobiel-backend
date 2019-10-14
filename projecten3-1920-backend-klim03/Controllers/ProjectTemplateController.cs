@@ -23,12 +23,12 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <summary>
         /// Get the project template with given id
         /// </summary>
-        /// <param name="projectId">the id of the project template</param>
+        /// <param name="projectTemplateId">the id of the project template</param>
         /// <returns>The project template</returns>
-        [HttpGet("{projectId}")]
-        public ActionResult<ProjectTemplateDTO> GetProjectTemplate(long projectId)
+        [HttpGet("{projectTemplateId}")]
+        public ActionResult<ProjectTemplateDTO> GetProjectTemplate(long projectTemplateId)
         {
-            return new ProjectTemplateDTO(_projectTemplates.GetById(projectId));
+            return new ProjectTemplateDTO(_projectTemplates.GetById(projectTemplateId));
         }
 
         /// <summary>
