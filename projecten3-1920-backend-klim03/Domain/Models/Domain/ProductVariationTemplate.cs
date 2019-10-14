@@ -9,6 +9,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public string ProductDescr { get; set; }
         public bool IsSimple { get; set; }
-        public ESchoolYear ESchoolYear { get; set; }
+        public ESchoolGrade ESchoolGrade { get; set; }
     }
 }

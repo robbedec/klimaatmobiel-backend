@@ -75,13 +75,13 @@ namespace projecten3_1920_backend_klim03.Data
                             {
                                 IsSimple = true,
                                 ProductDescr = "Simpele beschrijving",
-                                ESchoolYear = ESchoolYear.EERSTE
+                                ESchoolGrade = ESchoolGrade.EERSTE
                             },
                             new ProductVariationTemplate
                             {
                                 IsSimple = false,
                                 ProductDescr = "Moeilijke beschrijving",
-                                ESchoolYear = ESchoolYear.ZESDE
+                                ESchoolGrade = ESchoolGrade.DERDE
                             }
                         }
                     }

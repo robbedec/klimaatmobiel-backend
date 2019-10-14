@@ -15,7 +15,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectDescr { get; set; }
         public string ProjectCode { get; set; } // om project met leerling te linken
         public string ProjectImage { get; set; }
-        public ESchoolYear ESchoolYear { get; set; }
+        public ESchoolGrade ESchoolYear { get; set; }
 
         public long ClassRoomId { get; set; }
         public ClassRoom ClassRoom { get; set; }
