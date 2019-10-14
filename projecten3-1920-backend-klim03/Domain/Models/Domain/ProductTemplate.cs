@@ -10,6 +10,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long ProductTemplateId { get; set; }
 
+        public string ProductName { get; set; }
         public string ProductImage { get; set; }
         public bool HasMultipleDisplayVariations { get; set; }
 
