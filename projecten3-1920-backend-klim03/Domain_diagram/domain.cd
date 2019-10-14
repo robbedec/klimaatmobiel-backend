@@ -1,0 +1,147 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<ClassDiagram MajorVersion="1" MinorVersion="1" MembersFormat="NameAndType">
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany.ProductTemplateProjectTemplate" Collapsed="true">
+    <Position X="3.25" Y="0.5" Width="2.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAQAAAAAAAAAAAAAAAABCAAgAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\ManyToMany\ProductTemplateProjectTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.Adres" Collapsed="true">
+    <Position X="6.75" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAACAAAAAABAAAAAAAAgAAAAACAAAAAAAAAgAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\Adres.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ApplicationDomain" Collapsed="true">
+    <Position X="8.5" Y="0.5" Width="1.75" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAg=</HashCode>
+      <FileName>Domain\Models\Domain\ApplicationDomain.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ApplicationRole" Collapsed="true">
+    <Position X="10.25" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\ApplicationRole.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.AppUser" Collapsed="true">
+    <Position X="12" Y="0.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAgAAAIAAAAAAIAAAAAAAAAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\AppUser.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.Category" Collapsed="true">
+    <Position X="6.75" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAgAAAAAAAAAAACAAAAgAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\Category.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.CategoryTemplate" Collapsed="true">
+    <Position X="8.5" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAAAAAAAAAAAAAAAAAAAACAAAAgAAAAAAAABAAA=</HashCode>
+      <FileName>Domain\Models\Domain\CategoryTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ClassRoom" Collapsed="true">
+    <Position X="10.25" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAgAAAAAEAAAQAAAAAAAAAQAAAAAABAQA=</HashCode>
+      <FileName>Domain\Models\Domain\ClassRoom.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.Group" Collapsed="true">
+    <Position X="12" Y="1.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAEAAAAEAAAAAAAAAAAACAAABAAAAAAAAAAAAAAAAAE=</HashCode>
+      <FileName>Domain\Models\Domain\Group.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.Order" Collapsed="true">
+    <Position X="6.75" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAEAEAAEAAAAAAAAAAAAAAAAAAEAAAAAAAAAAAQA=</HashCode>
+      <FileName>Domain\Models\Domain\Order.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.OrderItem" Collapsed="true">
+    <Position X="8.5" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAECAAAAAAAAAAAAAAAAAACAAAQAAAAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\OrderItem.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.Product" Collapsed="true">
+    <Position X="10.25" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>EAAAAAEAAAAAAQAAAAAAGAAABQgAAAAAAAAAAAAACAA=</HashCode>
+      <FileName>Domain\Models\Domain\Product.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ProductTemplate" Collapsed="true">
+    <Position X="12" Y="2.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>BAAAAAEAAAAAgQAAAAAAAAIIBAAAAAAAQAAAAAABAAA=</HashCode>
+      <FileName>Domain\Models\Domain\ProductTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ProductVariation" Collapsed="true">
+    <Position X="6.75" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAQAEgAAAAAAAAAAAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Domain\Models\Domain\ProductVariation.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ProductVariationTemplate" Collapsed="true">
+    <Position X="8.5" Y="3.5" Width="2" />
+    <TypeIdentifier>
+      <HashCode>AAAAAQAAAAAAgAAAAAAAAAAAAAAAAAAAAAAAgAAIAAA=</HashCode>
+      <FileName>Domain\Models\Domain\ProductVariationTemplate.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.Project" Collapsed="true">
+    <Position X="10.25" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAMAAQCAAAAAACAEAQAgABAAiIAAAAAAAAAAAAAQ=</HashCode>
+      <FileName>Domain\Models\Domain\Project.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.ProjectTemplate">
+    <Position X="3.75" Y="1.75" Width="3" />
+    <TypeIdentifier>
+      <HashCode>BAAAAIAQQCAAgAAACAAAAAIAAAACAAAAQAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\ProjectTemplate.cs</FileName>
+    </TypeIdentifier>
+    <ShowAsCollectionAssociation>
+      <Property Name="ProductTemplateProjectTemplates" />
+    </ShowAsCollectionAssociation>
+  </Class>
+  <Class Name="projecten3_1920_backend_klim03.Domain.Models.Domain.School" Collapsed="true">
+    <Position X="12" Y="3.5" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAACAAgAAAAEAAAAQAAAgEABAAAAEAgAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\School.cs</FileName>
+    </TypeIdentifier>
+  </Class>
+  <Enum Name="projecten3_1920_backend_klim03.Domain.Models.Domain.enums.EAppUserType" Collapsed="true">
+    <Position X="6.75" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAAAAAAAAAAAAAAAAAAAAAAAAAAQAAAAAQAAAAAAE=</HashCode>
+      <FileName>Domain\Models\Domain\enums\EAppUserType.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Enum Name="projecten3_1920_backend_klim03.Domain.Models.Domain.enums.ESchoolYear" Collapsed="true">
+    <Position X="8.5" Y="4.75" Width="1.5" />
+    <TypeIdentifier>
+      <HashCode>AAAAQAgAgAAAEAAAAAAAAAAAAAAEAIAAAAAAAAAAAAA=</HashCode>
+      <FileName>Domain\Models\Domain\enums\ESchoolYear.cs</FileName>
+    </TypeIdentifier>
+  </Enum>
+  <Font Name="Segoe UI" Size="9" />
+</ClassDiagram>

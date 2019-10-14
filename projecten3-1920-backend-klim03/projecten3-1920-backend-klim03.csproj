@@ -35,6 +35,10 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Domain_diagram\" />
+    <None Remove="Domain_diagram\domain.cd" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Compile Include="Domain_diagram\domain.cd" />
   </ItemGroup>
 </Project>
