@@ -26,12 +26,20 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public ICollection<School> GetAll()
         {
-            throw new NotImplementedException();
+            return _schools.ToList();
         }
 
         public School GetById(long id)
         {
-            throw new NotImplementedException();
+            return _schools
+               .SingleOrDefault(g => g.SchoolId == id);
+        }
+
+        public School GetByIdWithProjectTemplates(long id)
+        {
+            return _schools
+               .Include(g => g.ProjectTemplates).ThenInclude(g => g.ApplicationDomain)
+               .SingleOrDefault(g => g.SchoolId == id);
         }
 
         public void Remove(School obj)

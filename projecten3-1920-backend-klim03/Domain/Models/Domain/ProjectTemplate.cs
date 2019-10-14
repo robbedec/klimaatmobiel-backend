@@ -1,4 +1,5 @@
 ﻿using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -22,5 +23,26 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public School School { get; set; }
 
         public ICollection<ProductTemplateProjectTemplate> ProductTemplateProjectTemplates { get; set; } = new List<ProductTemplateProjectTemplate>();
+
+
+
+        public ProjectTemplate()
+        {
+          
+        }
+
+        public ProjectTemplate(ProjectTemplateDTO dto, bool addedByGO)
+        {
+            ProjectName = dto.ProjectName;
+            ProjectDescr = dto.ProjectDescr;
+            ProjectImage = dto.ProjectImage;
+            AddedByGO = addedByGO;
+
+            ApplicationDomainId = dto.ApplicationDomainId;
+        }
+
+
+        
+
     }
 }
