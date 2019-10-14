@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
@@ -33,7 +35,7 @@ namespace projecten3_1920_backend_klim03.Controllers
 
 
         /// <summary>
-        /// Adding a project teplate to a given school
+        /// Adding a project template to a given school
         /// </summary>
         /// <param name="dto">The project template details</param>
         /// <param name="schoolId">the id of the school</param>
@@ -51,7 +53,37 @@ namespace projecten3_1920_backend_klim03.Controllers
             return new ProjectTemplateDTO(pt);
         }
 
+        /// <summary>
+        /// Adding a product template to a given school
+        /// </summary>
+        /// <param name="dto">The product template details</param>
+        /// <param name="schoolId">the id of the school</param>
+        /// <param name="projectTemplateId">the id of the project template</param>
+        /// <returns>The added product template</returns>
+        [HttpPost("addProductTemplate/{schoolId}/{projectTemplateId}")]
+        public ActionResult<ProductTemplateDTO> AddProductTemplate([FromBody]ProductTemplateDTO dto, long schoolId, long projectTemplateId)
+        {
+            School s = _schools.GetById(schoolId);
+            ProjectTemplate pt = s.ProjectTemplates.FirstOrDefault(x => x.ProjectTemplateId == projectTemplateId);
+            if(pt == null)
+            {
+                return NotFound();
+            }
 
+            try
+            {
+                pt.ProductTemplateProjectTemplates.Add(new ProductTemplateProjectTemplate
+                {
+                    ProductTemplate = new ProductTemplate(dto, true)
+                });
+                _schools.SaveChanges();
+            }
+            catch
+            {
+                return BadRequest();
+            }
+            return Ok();
+        }
 
     }
 }
