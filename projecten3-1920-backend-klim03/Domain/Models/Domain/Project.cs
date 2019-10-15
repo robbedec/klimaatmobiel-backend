@@ -15,6 +15,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectDescr { get; set; }
         public string ProjectCode { get; set; } // om project met leerling te linken
         public string ProjectImage { get; set; }
+        public decimal ProjectBudget { get; set; }
         public ESchoolGrade ESchoolYear { get; set; }
 
         public long ClassRoomId { get; set; }
@@ -26,11 +27,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public ICollection<Product> Products { get; set; } = new List<Product>();
         public ICollection<Group> Groups { get; set; } = new List<Group>();
 
-        public Project()
-        {
-
-        }
-    
 
 
         public Project(ProjectDTO dto)
@@ -39,12 +35,21 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProjectDescr = dto.ProjectDescr;
             ProjectCode = dto.ProjectCode;
             ProjectImage = dto.ProjectImage;
+            ProjectBudget = dto.ProjectBudget;
             ESchoolYear = dto.ESchoolYear;
 
             ApplicationDomainId = dto.ApplicationDomainId;
 
             dto.Products.ToList().ForEach(g => AddProduct(new Product(g)));
             dto.Groups.ToList().ForEach(g => AddGroup(new Group(g)));
+        }
+
+        public Project(ProjectTemplate pt)
+        {
+            ProjectDescr = pt.ProjectDescr;
+            ProjectImage = pt.ProjectImage;
+
+            pt.ProductTemplateProjectTemplates.ToList().ForEach(g => AddProduct(new Product(g.ProductTemplate)));
         }
 
 

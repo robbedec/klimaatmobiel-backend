@@ -1,4 +1,6 @@
-﻿using projecten3_1920_backend_klim03.Domain.Models.DTOs;
+﻿using projecten3_1920_backend_klim03.Domain.Models.Domain.enums;
+using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +12,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long ProductId { get; set; }
 
+        public string ProductName { get; set; }
         public string ProductImage { get; set; }
         public string Description { get; set; }
 
@@ -29,9 +32,18 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public Product(ProductDTO dto)
         {
+            ProductName = dto.ProductName;
             ProductImage = dto.ProductImage;
             Price = dto.Price;
             CatergoryId = dto.CatergoryId;
+        }
+
+        public Product(ProductTemplate pt)
+        {
+            ProductImage = pt.ProductImage;
+            ProductName = pt.ProductName;
+
+            Description = pt.ProductVariationTemplates.FirstOrDefault(g => g.ESchoolGrade == ESchoolGrade.ALGEMEEN).ProductDescr;
         }
     }
 }

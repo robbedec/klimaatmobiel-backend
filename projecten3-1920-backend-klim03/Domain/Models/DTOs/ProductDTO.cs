@@ -9,6 +9,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
     {
         public long ProductId { get; set; }
 
+        public string ProductName { get; set; }
         public string ProductImage { get; set; }
         public bool HasMultipleDisplayVariations { get; set; }
 
@@ -25,6 +26,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public ProductDTO(Product product)
         {
             ProductId = product.ProductId;
+            ProductName = product.ProductName;
             ProductImage = product.ProductImage;
 
             ProjectId = product.ProjectId;

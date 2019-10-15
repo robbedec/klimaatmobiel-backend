@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -18,5 +20,10 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             _productTemplates = productTemplates;
         }
+
+
+
+   
+
     }
 }

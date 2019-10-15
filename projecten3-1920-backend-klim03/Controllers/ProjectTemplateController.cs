@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 using System;
@@ -68,6 +69,17 @@ namespace projecten3_1920_backend_klim03.Controllers
             _projectTemplates.SaveChanges();
             return new ProjectTemplateDTO(delProjectTemplate);
 
+        }
+
+
+        /// <summary>
+        /// gets a project based on a project template
+        /// </summary>
+        /// <param name="projectTemplateId">the id of the project template</param>
+        [HttpGet("{projectTemplateId}")]
+        public ActionResult<ProjectDTO> GetProjectFromTemplate(long projectTemplateId)
+        {
+            return new ProjectDTO(new Project(_projectTemplates.GetById(projectTemplateId)));
         }
 
 

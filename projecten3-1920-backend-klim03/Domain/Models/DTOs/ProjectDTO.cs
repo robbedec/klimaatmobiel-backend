@@ -20,6 +20,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string ProjectCode { get; set; }
         public string ProjectImage { get; set; }
         [Required]
+        public decimal ProjectBudget { get; set; }
+        [Required]
         public ESchoolGrade ESchoolYear { get; set; }
         [Required]
         public long ClassRoomId { get; set; }
