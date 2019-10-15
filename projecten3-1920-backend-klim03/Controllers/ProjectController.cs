@@ -37,6 +37,10 @@ namespace projecten3_1920_backend_klim03.Controllers
         public ActionResult<ProjectDTO> Put([FromBody] ProjectDTO dto, long projectId)
         {
             var p = _projects.GetById(projectId);
+            if (p == null)
+            {
+                return NotFound();
+            }
 
             p.ProjectName = dto.ProjectName;
             p.ProjectDescr = dto.ProjectDescr;
@@ -63,6 +67,10 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
 
             var delProject = _projects.GetById(projectId);
+            if (delProject == null)
+            {
+                return NotFound();
+            }
             _projects.Remove(delProject);
             _projects.SaveChanges();
             return new ProjectDTO(delProject);

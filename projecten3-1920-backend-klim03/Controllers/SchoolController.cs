@@ -1,6 +1,8 @@
 ﻿using System;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
@@ -33,7 +35,7 @@ namespace projecten3_1920_backend_klim03.Controllers
 
 
         /// <summary>
-        /// Adding a project teplate to a given school
+        /// Adding a project template to a given school
         /// </summary>
         /// <param name="dto">The project template details</param>
         /// <param name="schoolId">the id of the school</param>
@@ -43,6 +45,11 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
 
             School s = _schools.GetById(schoolId);
+            if (s == null)
+            {
+                return NotFound();
+            }
+
             ProjectTemplate pt = new ProjectTemplate(dto, true); // boolean (addedByGO) dependant on logged in user
 
             s.AddProjectTemplate(pt);
@@ -51,7 +58,27 @@ namespace projecten3_1920_backend_klim03.Controllers
             return new ProjectTemplateDTO(pt);
         }
 
+        /// <summary>
+        /// Adding a product template to a given school
+        /// </summary>
+        /// <param name="dto">The product template details</param>
+        /// <param name="schoolId">the id of the school</param>
+        /// <returns>The added product template</returns>
+        [HttpPost("addProductTemplate/{schoolId}")]
+        public ActionResult<ProductTemplateDTO> AddProductTemplate([FromBody]ProductTemplateDTO dto, long schoolId)
+        {
+            School s = _schools.GetById(schoolId);
+            ProductTemplate pt = new ProductTemplate(dto, true);
 
+            if(s == null)
+            {
+                return NotFound();
+            }
+            s.AddProductTemplate(pt);
+            _schools.SaveChanges();
+
+            return new ProductTemplateDTO(pt);
+        }
 
     }
 }

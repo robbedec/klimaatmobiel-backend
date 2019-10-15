@@ -12,7 +12,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")] // misschien niet nodig als je vanuit een groep gaat
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
-    public class ClassRoomController
+    public class ClassRoomController : ControllerBase
     {
         private readonly IClassRoomRepo _classRooms;
 
@@ -44,6 +44,10 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
 
             ClassRoom cr = _classRooms.GetById(classRoomId);
+            if (cr == null)
+            {
+                return NotFound();
+            }
             Project p = new Project(dto);
 
             cr.AddProject(p);

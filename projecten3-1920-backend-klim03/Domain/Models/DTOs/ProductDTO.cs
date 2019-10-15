@@ -12,9 +12,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string ProductImage { get; set; }
         public bool HasMultipleDisplayVariations { get; set; }
 
-        public ICollection<ProductVariation> ProductVariations { get; set; } = new List<ProductVariation>();
-
         public long ProjectId { get; set; }
+
+        public double Price { get; set; }
 
         public long CatergoryId { get; set; }
         public Category Category { get; set; }
@@ -26,13 +26,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         {
             ProductId = product.ProductId;
             ProductImage = product.ProductImage;
-            HasMultipleDisplayVariations = product.HasMultipleDisplayVariations;
 
             ProjectId = product.ProjectId;
             CatergoryId = product.CatergoryId;
             Category = product.Category;
 
-            ProductVariations = product.ProductVariations;
         }
     }
 }

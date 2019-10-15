@@ -1,4 +1,5 @@
 ﻿using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -10,6 +11,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long ProductTemplateId { get; set; }
 
+        public string ProductName { get; set; }
         public string ProductImage { get; set; }
         public bool HasMultipleDisplayVariations { get; set; }
 
@@ -24,5 +26,19 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public ICollection<ProductVariationTemplate> ProductVariationTemplates { get; set; } = new List<ProductVariationTemplate>();
 
         public ICollection<ProductTemplateProjectTemplate> ProductTemplateProjectTemplates { get; set; } = new List<ProductTemplateProjectTemplate>();
+
+        public ProductTemplate()
+        {
+
+        }
+
+        public ProductTemplate(ProductTemplateDTO dto, bool addedByGO)
+        {
+            // TODO
+            ProductName = dto.ProductName;
+            ProductImage = dto.ProductImage;
+            
+            AddedByGO = addedByGO;
+        }
     }
 }

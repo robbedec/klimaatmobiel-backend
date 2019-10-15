@@ -11,9 +11,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long ProductId { get; set; }
 
         public string ProductImage { get; set; }
-        public bool HasMultipleDisplayVariations { get; set; }
+        public string Description { get; set; }
 
-        public ICollection<ProductVariation> ProductVariations { get; set; } = new List<ProductVariation>();
+        public double Price { get; set; }
+
 
         public long ProjectId { get; set; }
         public Project Project { get; set; }
@@ -29,17 +30,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public Product(ProductDTO dto)
         {
             ProductImage = dto.ProductImage;
-            HasMultipleDisplayVariations = dto.HasMultipleDisplayVariations;
-
-            dto.ProductVariations.ToList().ForEach(g => AddProductVariation(g));
-
+            Price = dto.Price;
             CatergoryId = dto.CatergoryId;
-        }
-
-
-        public void AddProductVariation(ProductVariation pv)
-        {
-            ProductVariations.Add(pv);
         }
     }
 }
