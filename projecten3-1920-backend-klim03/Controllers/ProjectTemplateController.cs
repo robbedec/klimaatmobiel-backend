@@ -76,7 +76,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// gets a project based on a project template
         /// </summary>
         /// <param name="projectTemplateId">the id of the project template</param>
-        [HttpGet("{projectTemplateId}")]
+        [HttpGet("projectFromTemplate/{projectTemplateId}")]
         public ActionResult<ProjectDTO> GetProjectFromTemplate(long projectTemplateId)
         {
             return new ProjectDTO(new Project(_projectTemplates.GetById(projectTemplateId)));

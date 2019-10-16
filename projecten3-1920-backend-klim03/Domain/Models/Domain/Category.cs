@@ -13,5 +13,16 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string CategoryDescr { get; set; }
 
 
+        public Category()
+        {
+
+        }
+
+        public Category(CategoryTemplate ct)
+        {
+            CategoryName = ct.CategoryName;
+            CategoryDescr = ct.CategoryDescr;
+        }
+
     }
 }

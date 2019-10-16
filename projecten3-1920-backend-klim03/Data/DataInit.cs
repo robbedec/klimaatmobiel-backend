@@ -41,7 +41,9 @@ namespace projecten3_1920_backend_klim03.Data
                 // category template
                 CategoryTemplate ct1 = new CategoryTemplate
                 {
-                    CategoryName = "default categorytemplate"
+                    CategoryName = "default categorytemplate",
+                    AddedByGO = true,
+                    CategoryDescr = "default categorytemplate descr"
                 };
 
                 //application domain
@@ -95,13 +97,18 @@ namespace projecten3_1920_backend_klim03.Data
                     {
                         new ProductVariationTemplate
                         {
+                            ProductDescr = "Algemene beschrijving karton",
+                            ESchoolGrade = ESchoolGrade.ALGEMEEN
+                        },
+                        new ProductVariationTemplate
+                        {
                             ProductDescr = "Eerste graad beschrijving karton",
                             ESchoolGrade = ESchoolGrade.EERSTE
                         },
                         new ProductVariationTemplate
                         {
                             ProductDescr = "Tweede graad beschrijving karton",
-                            ESchoolGrade = ESchoolGrade.EERSTE
+                            ESchoolGrade = ESchoolGrade.TWEEDE
                         },
                         new ProductVariationTemplate
                         {
@@ -123,13 +130,18 @@ namespace projecten3_1920_backend_klim03.Data
                     {
                         new ProductVariationTemplate
                         {
+                            ProductDescr = "Algemene beschrijving Lijm",
+                            ESchoolGrade = ESchoolGrade.ALGEMEEN
+                        },
+                        new ProductVariationTemplate
+                        {
                             ProductDescr = "Eerste graad beschrijving Lijm",
                             ESchoolGrade = ESchoolGrade.EERSTE
                         },
                         new ProductVariationTemplate
                         {
                             ProductDescr = "Tweede graad beschrijving Lijm",
-                            ESchoolGrade = ESchoolGrade.EERSTE
+                            ESchoolGrade = ESchoolGrade.TWEEDE
                         },
                         new ProductVariationTemplate
                         {
@@ -148,6 +160,11 @@ namespace projecten3_1920_backend_klim03.Data
                     SchoolId = schoolGO.SchoolId,
                     ProductVariationTemplates = new List<ProductVariationTemplate>
                     {
+                         new ProductVariationTemplate
+                        {
+                            ProductDescr = "Algemene beschrijving Plakband",
+                            ESchoolGrade = ESchoolGrade.ALGEMEEN
+                        },
                         new ProductVariationTemplate
                         {
                             ProductDescr = "Eerste graad beschrijving Plakband",
@@ -156,7 +173,7 @@ namespace projecten3_1920_backend_klim03.Data
                         new ProductVariationTemplate
                         {
                             ProductDescr = "Tweede graad beschrijving Plakband",
-                            ESchoolGrade = ESchoolGrade.EERSTE
+                            ESchoolGrade = ESchoolGrade.TWEEDE
                         },
                         new ProductVariationTemplate
                         {
@@ -178,13 +195,18 @@ namespace projecten3_1920_backend_klim03.Data
                     {
                         new ProductVariationTemplate
                         {
+                            ProductDescr = "Algemene beschrijving hout",
+                            ESchoolGrade = ESchoolGrade.ALGEMEEN
+                        },
+                        new ProductVariationTemplate
+                        {
                             ProductDescr = "Eerste graad beschrijving Hout",
                             ESchoolGrade = ESchoolGrade.EERSTE
                         },
                         new ProductVariationTemplate
                         {
                             ProductDescr = "Tweede graad beschrijving Hout",
-                            ESchoolGrade = ESchoolGrade.EERSTE
+                            ESchoolGrade = ESchoolGrade.TWEEDE
                         },
                         new ProductVariationTemplate
                         {

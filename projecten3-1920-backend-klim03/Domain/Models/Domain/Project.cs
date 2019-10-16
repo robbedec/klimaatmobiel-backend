@@ -16,7 +16,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectCode { get; set; } // om project met leerling te linken
         public string ProjectImage { get; set; }
         public decimal ProjectBudget { get; set; }
-        public ESchoolGrade ESchoolYear { get; set; }
+        public ESchoolGrade ESchoolGrade { get; set; }
 
         public long ClassRoomId { get; set; }
         public ClassRoom ClassRoom { get; set; }
@@ -41,7 +41,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProjectCode = dto.ProjectCode;
             ProjectImage = dto.ProjectImage;
             ProjectBudget = dto.ProjectBudget;
-            ESchoolYear = dto.ESchoolYear;
+            ESchoolGrade = dto.ESchoolYear;
 
             ApplicationDomainId = dto.ApplicationDomainId;
 
@@ -53,6 +53,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         {
             ProjectDescr = pt.ProjectDescr;
             ProjectImage = pt.ProjectImage;
+            ESchoolGrade = ESchoolGrade.ALGEMEEN;
+
+            ApplicationDomain = pt.ApplicationDomain;
 
             pt.ProductTemplateProjectTemplates.ToList().ForEach(g => AddProduct(new Product(g.ProductTemplate)));
         }

@@ -43,6 +43,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProductImage = pt.ProductImage;
             ProductName = pt.ProductName;
 
+            Category = new Category(pt.CategoryTemplate);
+
             Description = pt.ProductVariationTemplates.FirstOrDefault(g => g.ESchoolGrade == ESchoolGrade.ALGEMEEN).ProductDescr;
         }
     }
