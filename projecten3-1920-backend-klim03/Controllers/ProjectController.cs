@@ -28,6 +28,18 @@ namespace projecten3_1920_backend_klim03.Controllers
             return new ProjectDTO(_projects.GetById(projectId));
         }
 
+
+        /// <summary>
+        /// Get the project for a given project code
+        /// </summary>
+        /// <param name="projectCode">the code of a project</param>
+        /// <returns>The project</returns>
+        [HttpGet("byProjectCode/{projectCode}")]
+        public ActionResult<ProjectDTO> GetProjectByProjectCode(string projectCode)
+        {
+            return new ProjectDTO(_projects.GetByProjectCode(projectCode));
+        }
+
         /// <summary>
         /// updates a project
         /// </summary>
