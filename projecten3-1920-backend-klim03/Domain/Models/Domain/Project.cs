@@ -28,6 +28,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public ICollection<Group> Groups { get; set; } = new List<Group>();
 
 
+        public Project()
+        {
+
+        }
+
 
         public Project(ProjectDTO dto)
         {
