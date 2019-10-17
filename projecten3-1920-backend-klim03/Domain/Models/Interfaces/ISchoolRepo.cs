@@ -8,6 +8,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Interfaces
 {
     public interface ISchoolRepo : IGenericRepo<School>
     {
-        School GetByIdWithProjectTemplates(long id); 
+        School GetByIdWithTemplates(long id); 
     }
 }
