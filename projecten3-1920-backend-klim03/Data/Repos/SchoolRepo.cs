@@ -35,10 +35,12 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                .SingleOrDefault(g => g.SchoolId == id);
         }
 
-        public School GetByIdWithProjectTemplates(long id)
+        public School GetByIdWithTemplates(long id)
         {
             return _schools
                .Include(g => g.ProjectTemplates).ThenInclude(g => g.ApplicationDomain)
+               .Include(g => g.ProductTemplates).ThenInclude(g => g.ProductVariationTemplates)
+               .Include(g => g.ProductTemplates).ThenInclude(g => g.CategoryTemplate)
                .SingleOrDefault(g => g.SchoolId == id);
         }
 

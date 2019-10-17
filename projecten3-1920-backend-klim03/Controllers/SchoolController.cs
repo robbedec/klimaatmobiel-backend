@@ -23,15 +23,17 @@ namespace projecten3_1920_backend_klim03.Controllers
 
 
         /// <summary>
-        /// Get the school with its project templates for given id
+        /// Get the school with its templates for given id
         /// </summary>
         /// <param name="schoolId">the id of the school</param>
-        /// <returns>The school with its project templates</returns>
-        [HttpGet("withProjectTemplates/{schoolId}")]
+        /// <returns>The school with its templates</returns>
+        [HttpGet("withTemplates/{schoolId}")]
         public ActionResult<SchoolDTO> GetClassRoomWithProjects(long schoolId)
         {
-            return new SchoolDTO(_schools.GetByIdWithProjectTemplates(schoolId));
+            return new SchoolDTO(_schools.GetByIdWithTemplates(schoolId));
         }
+
+
 
 
         /// <summary>
