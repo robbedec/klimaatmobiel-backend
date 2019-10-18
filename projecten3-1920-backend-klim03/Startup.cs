@@ -127,6 +127,7 @@ namespace projecten3_1920_backend_klim03
 
 
             services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IOrderItemRepo, OrderItemRepo>();
             services.AddScoped<IAppUserRepo, AppUserRepo>();
             services.AddScoped<IGroupRepo, GroupRepo>();
             services.AddScoped<IClassRoomRepo, ClassRoomRepo>();

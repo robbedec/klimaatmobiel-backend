@@ -30,7 +30,8 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public Group GetById(long id)
         {
-            throw new NotImplementedException();
+            return _groups.Include( g=> g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product)
+                .SingleOrDefault(g => g.GroupId == id);
         }
 
         public void Remove(Group obj)

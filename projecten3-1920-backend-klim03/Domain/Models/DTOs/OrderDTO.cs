@@ -11,6 +11,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public DateTime Time { get; set; }
         public bool Finalised { get; set; }
+        public double TotalOrderPrice { get; set; }
 
         public long GroupId { get; set; }
 
@@ -27,6 +28,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             Time = order.Time;
             Finalised = order.Finalised;
+            TotalOrderPrice = order.GetOrderPrice();
 
             GroupId = order.GroupId;
 

@@ -24,7 +24,15 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public Group(GroupDTO dto)
         {
-            GroupName = dto.GroupName;   
+            GroupName = dto.GroupName;
+            InitOrder();
+        }
+
+        public void InitOrder()
+        {
+            Order = new Order
+            {   
+            };
         }
 
     }

@@ -22,7 +22,25 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         }
 
+        public void AddOrderItem(OrderItem oi)
+        {
+            OrderItems.Add(oi);
+        }
 
+        public void RemoveOrderItem(OrderItem oi)
+        {
+            OrderItems.Remove(oi);
+        }
+
+        public double GetOrderPrice()
+        {
+            return OrderItems.Select(g => g.Product.Price * g.Amount).Sum();
+        }
+
+        public OrderItem GetOrderItemById(long id)
+        {
+            return OrderItems.SingleOrDefault(g => g.OrderItemId == id);
+        }
 
     }
 }
