@@ -14,6 +14,7 @@ namespace projecten3_1920_backend_klim03.Data
     {
         public DbSet<Adres> Adresses { get; set; }
         public DbSet<Order> Orders { get; set; }
+        public DbSet<OrderItem> OrderItems { get; set; }
         public DbSet<Category> Categories { get; set; }
         public DbSet<AppUser> AppUsers { get; set; }
         public DbSet<Group> Groups { get; set; }

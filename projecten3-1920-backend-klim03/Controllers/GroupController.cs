@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
@@ -19,13 +20,20 @@ namespace projecten3_1920_backend_klim03.Controllers
 
 
 
-
-
+        /// <summary>
+        /// Get the group for a given id
+        /// </summary>
+        /// <param name="groupId">the id of the group</param>
+        /// <returns>The project</returns>
         [HttpGet("{groupId}")]
         public ActionResult<GroupDTO> GetGroep(long groupId)
         {
             return new GroupDTO(_groups.GetById(groupId));
         }
+
+
+
+    
 
 
     }
