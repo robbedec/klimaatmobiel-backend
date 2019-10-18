@@ -58,7 +58,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="orderId">the id of the order</param>
         /// <returns>The order</returns>
-        [HttpPut("submitOrder/{rderId}")]
+        [HttpPut("submitOrder/{orderId}")]
         public ActionResult<OrderDTO> SubmitOrder(long orderId)
         {
             Order o = _orders.GetById(orderId);
