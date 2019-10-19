@@ -1,5 +1,6 @@
 ﻿using System;
 using Microsoft.AspNetCore.Mvc;
+using projecten3_1920_backend_klim03.Domain.Models.CustomExceptions;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
@@ -28,22 +29,24 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("addOrderItem/{orderId}")]
         public ActionResult<OrderDTO> AddOrderItemToOrder([FromBody] OrderItemDTO dto, long orderId)
         {
-            Order o = _orders.GetById(orderId);
-            if(o == null)
-            {
-                return NotFound();
-            }
-            OrderItem oi = new OrderItem(dto);
             try
             {
+                Order o = _orders.GetById(orderId);
+
+                OrderItem oi = new OrderItem(dto);
                 o.AddOrderItem(oi);
+
+                _orders.SaveChanges();
+                return new OrderDTO(o);
             }
             catch(NotSupportedException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new CustomErrorDTO(ex.Message));
             }
-            _orders.SaveChanges();
-            return new OrderDTO(o);
+            catch(ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+            } 
         }
 
 
@@ -56,22 +59,29 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("removeOrderItem/{orderItemId}/{orderId}")]
         public ActionResult<OrderDTO> RemoveOrderItemFromOrder(long orderItemId, long orderId)
         {
-            Order o = _orders.GetById(orderId);
-            if(o == null)
-            {
-                return NotFound();
-            }
-            OrderItem oi = o.GetOrderItemById(orderItemId);
             try
             {
+                Order o = _orders.GetById(orderId);
+
+                OrderItem oi = o.GetOrderItemById(orderItemId);
                 o.RemoveOrderItem(oi);
+
+                _orders.SaveChanges();
+                return new OrderDTO(o); 
             }
             catch(NotSupportedException ex)
             {
-                return BadRequest(ex.Message);
+                return BadRequest(new CustomErrorDTO(ex.Message));
             }
-            _orders.SaveChanges();
-            return new OrderDTO(o);
+            catch(DomainArgumentNullException ex)
+            {
+                return NotFound(new CustomErrorDTO(ex.Message));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+            }
+
         }
 
 
@@ -83,15 +93,20 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("submitOrder/{orderId}")]
         public ActionResult<OrderDTO> SubmitOrder(long orderId)
         {
-            Order o = _orders.GetById(orderId);
-            if(o == null)
+            try
             {
-                return NotFound();
+                Order o = _orders.GetById(orderId);
+
+                o.Finalized = true;
+                o.Time = DateTime.Now;
+
+                _orders.SaveChanges();
+                return new OrderDTO(o);
             }
-            o.Finalized = true;
-            o.Time = DateTime.Now;
-            _orders.SaveChanges();
-            return new OrderDTO(o);
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+            }    
         }
 
         /// <summary>
@@ -102,31 +117,29 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPost("approveOrder/{orderId}")]
         public ActionResult<OrderDTO> ApproveOrder(long orderId)
         {
-            Order o = _orders.GetByIdWithGroup(orderId);
-
-            if(o == null)
-            {
-                return NotFound();
-            }
-
             try
             {
+                Order o = _orders.GetByIdWithGroup(orderId);
+
                 o.Approve();
+                _orders.SaveChanges();
+
+                return new OrderDTO(o);
             }
-            catch (ArgumentException ex)
+            catch (ArgumentOutOfRangeException ex)
             {
                 // Orderamount <= 0
-                return BadRequest(new { error = ex.Message });
+                return BadRequest(new CustomErrorDTO(ex.Message));
             }
             catch (ArithmeticException ex)
             {
                 // Remaining budget < orderamount
-                return BadRequest(new { error = ex.Message });
+                return BadRequest(new CustomErrorDTO(ex.Message));
             }
-
-            _orders.SaveChanges();
-
-            return new OrderDTO(o);
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+            }
         }
     }
 }

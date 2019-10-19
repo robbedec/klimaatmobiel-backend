@@ -41,7 +41,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         {
             if(amount <= 0)
             {
-                throw new ArgumentException("Amount needs to be greater than 0");
+                throw new ArgumentOutOfRangeException("Amount needs to be greater than 0");
             }
 
             decimal result = Project.ProjectBudget - amount;
