@@ -246,7 +246,51 @@ namespace projecten3_1920_backend_klim03.Data
 
 
 
+                Category cat1 = new Category
+                {
+                    CategoryName = "Bouwmaterialen",
+                    CategoryDescr = "Zaken waarmee je kan bouwen"
+                };
 
+                Product pr1 = new Product
+                {
+                    Category = cat1,
+                    ProductName = "hout",
+                    Description = "Algemene beschrijving van hout",
+                    Price = 5,
+                };
+
+                Group groep1 = new Group
+                {
+                    GroupName = "Groep 1"
+                };
+
+                Project project1 = new Project
+                {
+                    ProjectCode = "AAA",
+                    ProjectDescr = "Dit is een project voor natuurkunde",
+                    ProjectImage = "image",
+                    ProjectName = "natuur kennismaking",
+                    ApplicationDomainId = ad.ApplicationDomainId,
+                    ESchoolGrade = ESchoolGrade.ALGEMEEN,
+                };
+
+                project1.AddProduct(pr1);
+                project1.AddGroup(groep1);
+                cr.AddProject(project1);
+                _dbContext.SaveChanges();
+
+                groep1.Order = new Order
+                {
+                    OrderItems = new List<OrderItem>
+                    {
+                        new OrderItem
+                        {
+                            ProductId = pr1.ProductId,
+                            Amount = 2
+                        }
+                    }
+                };
 
 
 

@@ -14,6 +14,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public Order Order { get; set; }
 
+        public decimal AmountSpend => Project.ProjectBudget - Order.GetOrderPrice;
+
         public long ProjectId { get; set; }
         public Project Project { get; set; }
 
@@ -33,6 +35,23 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             Order = new Order
             {   
             };
+        }
+
+        public void PayOrder(decimal amount)
+        {
+            if(amount <= 0)
+            {
+                throw new ArgumentException("Amount needs to be greater than 0");
+            }
+
+            decimal result = Project.ProjectBudget - amount;
+
+            if(result < 0)
+            {
+                throw new ArithmeticException("Result can't be less than 0");
+            }
+
+            // only check for erros when "paying" an order, amount is calculated at runtime
         }
 
     }
