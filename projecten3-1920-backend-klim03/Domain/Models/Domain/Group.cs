@@ -14,7 +14,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public Order Order { get; set; }
 
-        public decimal AmountSpend => Project.ProjectBudget - (decimal)Order.GetOrderPrice();
+        public decimal AmountSpend => Project.ProjectBudget - Order.GetOrderPrice;
 
         public long ProjectId { get; set; }
         public Project Project { get; set; }

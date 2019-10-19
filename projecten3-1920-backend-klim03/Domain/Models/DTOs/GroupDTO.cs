@@ -24,10 +24,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProjectId = group.ProjectId;
             
 
-            if(Order != null)
-            {
+            //if(Order != null)
+            //{
                 Order = new OrderDTO(group.Order);
-            }       
+            //}       
         }
     }
 }

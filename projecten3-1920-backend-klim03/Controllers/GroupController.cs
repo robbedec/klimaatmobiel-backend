@@ -30,11 +30,5 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             return new GroupDTO(_groups.GetById(groupId));
         }
-
-
-
-    
-
-
     }
 }

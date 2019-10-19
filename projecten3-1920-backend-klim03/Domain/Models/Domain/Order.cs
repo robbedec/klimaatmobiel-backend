@@ -17,6 +17,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public ICollection<OrderItem> OrderItems { get; set; } = new List<OrderItem>();
 
+        public decimal GetOrderPrice => (decimal)OrderItems.Select(g => g.Product.Price * g.Amount).Sum();
+
         public Order()
         {
 
@@ -32,11 +34,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             OrderItems.Remove(oi);
         }
 
-        public double GetOrderPrice()
-        {
-            return OrderItems.Select(g => g.Product.Price * g.Amount).Sum();
-        }
-
         public OrderItem GetOrderItemById(long id)
         {
             return OrderItems.SingleOrDefault(g => g.OrderItemId == id);
@@ -44,7 +41,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public void Approve()
         {
-            Group.PayOrder((decimal)GetOrderPrice());
+            Group.PayOrder(GetOrderPrice);
         }
 
     }
