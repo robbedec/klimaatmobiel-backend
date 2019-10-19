@@ -27,7 +27,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             OrderId = order.OrderId;
 
             Time = order.Time;
-            Finalised = order.Finalised;
+            Finalised = order.Finalized;
             TotalOrderPrice = order.GetOrderPrice;
 
             GroupId = order.GroupId;

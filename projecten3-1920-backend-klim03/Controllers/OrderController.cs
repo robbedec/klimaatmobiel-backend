@@ -29,8 +29,19 @@ namespace projecten3_1920_backend_klim03.Controllers
         public ActionResult<OrderDTO> AddOrderItemToOrder([FromBody] OrderItemDTO dto, long orderId)
         {
             Order o = _orders.GetById(orderId);
+            if(o == null)
+            {
+                return NotFound();
+            }
             OrderItem oi = new OrderItem(dto);
-            o.AddOrderItem(oi);
+            try
+            {
+                o.AddOrderItem(oi);
+            }
+            catch(NotSupportedException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             _orders.SaveChanges();
             return new OrderDTO(o);
         }
@@ -46,8 +57,19 @@ namespace projecten3_1920_backend_klim03.Controllers
         public ActionResult<OrderDTO> RemoveOrderItemFromOrder(long orderItemId, long orderId)
         {
             Order o = _orders.GetById(orderId);
+            if(o == null)
+            {
+                return NotFound();
+            }
             OrderItem oi = o.GetOrderItemById(orderItemId);
-            o.RemoveOrderItem(oi);
+            try
+            {
+                o.RemoveOrderItem(oi);
+            }
+            catch(NotSupportedException ex)
+            {
+                return BadRequest(ex.Message);
+            }
             _orders.SaveChanges();
             return new OrderDTO(o);
         }
@@ -62,7 +84,11 @@ namespace projecten3_1920_backend_klim03.Controllers
         public ActionResult<OrderDTO> SubmitOrder(long orderId)
         {
             Order o = _orders.GetById(orderId);
-            o.Finalised = true;
+            if(o == null)
+            {
+                return NotFound();
+            }
+            o.Finalized = true;
             o.Time = DateTime.Now;
             _orders.SaveChanges();
             return new OrderDTO(o);

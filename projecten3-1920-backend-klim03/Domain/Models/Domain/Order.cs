@@ -10,7 +10,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long OrderId { get; set; }
 
         public DateTime Time { get; set; }
-        public bool Finalised { get; set; } 
+        public bool Finalized { get; set; } 
 
         public long GroupId { get; set; }
         public Group Group { get; set; }
@@ -26,11 +26,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public void AddOrderItem(OrderItem oi)
         {
+            if (Finalized) throw new NotSupportedException("It is not allowed to change a finalized order");
             OrderItems.Add(oi);
         }
 
         public void RemoveOrderItem(OrderItem oi)
         {
+            if (Finalized) throw new NotSupportedException("It is not allowed to change a finalized order");
             OrderItems.Remove(oi);
         }
 
