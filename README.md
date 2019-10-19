@@ -25,6 +25,7 @@ dotnet run
 ```
 
 The project will run on port 44331 in visual studio and port 5001 when started from the terminal. 
+You will automatically be redirected to the API hub, otherwise route to **/swagger**.
 
 ## Running tests
 
