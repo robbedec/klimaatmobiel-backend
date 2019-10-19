@@ -11,9 +11,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long GroupId { get; set; }
 
         public string GroupName { get; set; }
-        public double RemainingBudget { get; set; }
 
         public Order Order { get; set; }
+
+        public decimal AmountSpend => Project.ProjectBudget - (decimal)Order.GetOrderPrice();
 
         public long ProjectId { get; set; }
         public Project Project { get; set; }
@@ -26,7 +27,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public Group(GroupDTO dto)
         {
             GroupName = dto.GroupName;
-            RemainingBudget = (double) Project.ProjectBudget;
             InitOrder();
         }
 
@@ -37,21 +37,21 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             };
         }
 
-        public void PayOrder(double amount)
+        public void PayOrder(decimal amount)
         {
             if(amount <= 0)
             {
                 throw new ArgumentException("Amount needs to be greater than 0");
             }
 
-            double result = RemainingBudget - amount;
+            decimal result = Project.ProjectBudget - amount;
 
             if(result < 0)
             {
                 throw new ArithmeticException("Result can't be less than 0");
             }
 
-            RemainingBudget = result;
+            // only check for erros when "paying" an order, amount is calculated at runtime
         }
 
     }

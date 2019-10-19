@@ -97,7 +97,9 @@ namespace projecten3_1920_backend_klim03.Controllers
                 // Remaining budget < orderamount
                 return BadRequest(new { error = ex.Message });
             }
-            
+
+            _orders.SaveChanges();
+
             return new OrderDTO(o);
         }
     }
