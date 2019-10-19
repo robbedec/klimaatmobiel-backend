@@ -1,4 +1,5 @@
-﻿using System;
+﻿using projecten3_1920_backend_klim03.Domain.Models.CustomExceptions;
+using System;
 using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
@@ -38,7 +39,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public OrderItem GetOrderItemById(long id)
         {
-            return OrderItems.SingleOrDefault(g => g.OrderItemId == id);
+            var ois = OrderItems.FirstOrDefault(g => g.OrderItemId == id);
+            if (ois == null) throw new DomainArgumentNullException("Het gevraagde orderItem is niet gevonden");
+            return ois;
         }
 
         public void Approve()
