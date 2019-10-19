@@ -68,8 +68,37 @@ namespace projecten3_1920_backend_klim03.Controllers
             return new OrderDTO(o);
         }
 
+        /// <summary>
+        /// Teacher approves the finalized order
+        /// </summary>
+        /// <param name="orderId">the id of the order</param>
+        /// <returns>The order</returns>
+        [HttpPost("approveOrder/{orderId}")]
+        public ActionResult<OrderDTO> ApproveOrder(long orderId)
+        {
+            Order o = _orders.GetByIdWithGroup(orderId);
 
+            if(o == null)
+            {
+                return NotFound();
+            }
 
-
+            try
+            {
+                o.Approve();
+            }
+            catch (ArgumentException ex)
+            {
+                // Orderamount <= 0
+                return BadRequest(new { error = ex.Message });
+            }
+            catch (ArithmeticException ex)
+            {
+                // Remaining budget < orderamount
+                return BadRequest(new { error = ex.Message });
+            }
+            
+            return new OrderDTO(o);
+        }
     }
 }

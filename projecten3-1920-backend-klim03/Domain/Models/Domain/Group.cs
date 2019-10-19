@@ -11,6 +11,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long GroupId { get; set; }
 
         public string GroupName { get; set; }
+        public double RemainingBudget { get; set; }
 
         public Order Order { get; set; }
 
@@ -25,6 +26,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public Group(GroupDTO dto)
         {
             GroupName = dto.GroupName;
+            RemainingBudget = (double) Project.ProjectBudget;
             InitOrder();
         }
 
@@ -33,6 +35,23 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             Order = new Order
             {   
             };
+        }
+
+        public void PayOrder(double amount)
+        {
+            if(amount <= 0)
+            {
+                throw new ArgumentException("Amount needs to be greater than 0");
+            }
+
+            double result = RemainingBudget - amount;
+
+            if(result < 0)
+            {
+                throw new ArithmeticException("Result can't be less than 0");
+            }
+
+            RemainingBudget = result;
         }
 
     }

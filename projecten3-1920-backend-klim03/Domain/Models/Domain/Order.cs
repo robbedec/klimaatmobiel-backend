@@ -42,5 +42,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             return OrderItems.SingleOrDefault(g => g.OrderItemId == id);
         }
 
+        public void Approve()
+        {
+            Group.PayOrder(GetOrderPrice());
+        }
+
     }
 }

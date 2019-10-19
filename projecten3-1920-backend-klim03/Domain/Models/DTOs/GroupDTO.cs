@@ -9,6 +9,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public string GroupName { get; set; }
         public long ProjectId { get; set; }
+        public double RemainingBudget { get; set; }
 
         public OrderDTO Order { get; set; }
 
@@ -22,6 +23,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             GroupName = group.GroupName;
             ProjectId = group.ProjectId;
+            
 
             if(Order != null)
             {

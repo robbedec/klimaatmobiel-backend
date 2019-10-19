@@ -35,6 +35,11 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                .SingleOrDefault(g => g.OrderId == id);
         }
 
+        public Order GetByIdWithGroup(long id)
+        {
+            return _orders.Include(g => g.Group).Include(g => g.OrderItems).ThenInclude(g => g.Product).SingleOrDefault(g => g.OrderId == id);
+        }
+
         public void Remove(Order obj)
         {
             _orders.Remove(obj);
