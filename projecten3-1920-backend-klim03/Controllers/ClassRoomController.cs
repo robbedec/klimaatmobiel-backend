@@ -29,7 +29,15 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("withProjects/{classRoomId}")]
         public ActionResult<ClassRoomDTO> GetClassRoomWithProjects(long classRoomId)
         {
-            return new ClassRoomDTO(_classRooms.GetByIdWithProjects(classRoomId));
+            try
+            {
+                return new ClassRoomDTO(_classRooms.GetByIdWithProjects(classRoomId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Klas niet gevonden"));
+            }
+            
         }
 
 
@@ -42,21 +50,21 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPost("addProject/{classRoomId}")]
         public ActionResult<ProjectDTO> AddProject([FromBody]ProjectDTO dto, long classRoomId)
         {
-
-            ClassRoom cr = _classRooms.GetById(classRoomId);
-            if (cr == null)
+            try
             {
-                return NotFound();
+                ClassRoom cr = _classRooms.GetById(classRoomId);
+                Project p = new Project(dto);
+
+                cr.AddProject(p);
+                _classRooms.SaveChanges();
+
+                return new ProjectDTO(p);
             }
-            Project p = new Project(dto);
-
-            cr.AddProject(p);
-            _classRooms.SaveChanges();
-
-            return new ProjectDTO(p);
-        }
-
-
-       
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Klas niet gevonden"));
+            }
+           
+        }     
     }
 }

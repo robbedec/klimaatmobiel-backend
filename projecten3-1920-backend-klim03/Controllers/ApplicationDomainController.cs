@@ -25,7 +25,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <returns>list of application domains</returns>
         [HttpGet]
-        public ICollection<ApplicationDomainDTO> GetApplicationDomains()
+        public ActionResult<ICollection<ApplicationDomainDTO>> GetApplicationDomains()
         {
 
             return _applicationDomains.GetAll().Select(g => new ApplicationDomainDTO(g)).ToList();
@@ -40,7 +40,15 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("{adId}")]
         public ActionResult<ApplicationDomainDTO> GetProject(long adId)
         {
-            return new ApplicationDomainDTO(_applicationDomains.GetById(adId));
+            try
+            {
+                return new ApplicationDomainDTO(_applicationDomains.GetById(adId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Toepassingsgebied niet gevonden"));
+            }
+            
         }
 
 
@@ -71,14 +79,21 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("{adId}")]
         public ActionResult<ApplicationDomainDTO> Put([FromBody]ApplicationDomainDTO dto, long adId)
         {
-            var ad = _applicationDomains.GetById(adId);
+            try
+            {
+                var ad = _applicationDomains.GetById(adId);
 
-            ad.ApplicationDomainName = dto.ApplicationDomainName;
-            ad.ApplicationDomainDescr = dto.ApplicationDomainDescr;
+                ad.ApplicationDomainName = dto.ApplicationDomainName;
+                ad.ApplicationDomainDescr = dto.ApplicationDomainDescr;
 
-            _applicationDomains.SaveChanges();
-
-            return new ApplicationDomainDTO(ad);
+                _applicationDomains.SaveChanges();
+                return new ApplicationDomainDTO(ad);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Toepassingsgebied niet gevonden"));
+            }
+            
         }
 
 
@@ -89,10 +104,18 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpDelete("{adId}")]
         public ActionResult<ApplicationDomainDTO> DeleteProject(long adId)
         {
-            var delAd = _applicationDomains.GetById(adId);
-            _applicationDomains.Remove(delAd);
-            _applicationDomains.SaveChanges();
-            return new ApplicationDomainDTO(delAd);
+            try
+            {
+                var delAd = _applicationDomains.GetById(adId);
+                _applicationDomains.Remove(delAd);
+                _applicationDomains.SaveChanges();
+                return new ApplicationDomainDTO(delAd);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Toepassingsgebied niet gevonden"));
+            }
+          
         }
 
 

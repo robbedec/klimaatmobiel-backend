@@ -40,7 +40,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public OrderItem GetOrderItemById(long id)
         {
             var ois = OrderItems.FirstOrDefault(g => g.OrderItemId == id);
-            if (ois == null) throw new DomainArgumentNullException("Het gevraagde orderItem is niet gevonden");
+            if (ois == null) throw new DomainArgumentNullException("Het gevraagde order item is niet gevonden");
             return ois;
         }
 

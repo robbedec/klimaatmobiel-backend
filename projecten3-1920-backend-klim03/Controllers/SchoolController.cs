@@ -30,7 +30,14 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("withTemplates/{schoolId}")]
         public ActionResult<SchoolDTO> GetClassRoomWithProjects(long schoolId)
         {
-            return new SchoolDTO(_schools.GetByIdWithTemplates(schoolId));
+            try
+            {
+                return new SchoolDTO(_schools.GetByIdWithTemplates(schoolId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("School niet gevonden"));
+            }        
         }
 
 
@@ -45,19 +52,21 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPost("addProjectTemplate/{schoolId}")]
         public ActionResult<ProjectTemplateDTO> AddProject([FromBody]ProjectTemplateDTO dto, long schoolId)
         {
-
-            School s = _schools.GetById(schoolId);
-            if (s == null)
+            try
             {
-                return NotFound();
+                School s = _schools.GetById(schoolId);
+                ProjectTemplate pt = new ProjectTemplate(dto, true); // boolean (addedByGO) dependant on logged in user
+
+                s.AddProjectTemplate(pt);
+                _schools.SaveChanges();
+
+                return new ProjectTemplateDTO(pt);
             }
-
-            ProjectTemplate pt = new ProjectTemplate(dto, true); // boolean (addedByGO) dependant on logged in user
-
-            s.AddProjectTemplate(pt);
-            _schools.SaveChanges();
-
-            return new ProjectTemplateDTO(pt);
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("School niet gevonden"));
+            }
+           
         }
 
         /// <summary>
@@ -69,17 +78,21 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPost("addProductTemplate/{schoolId}")]
         public ActionResult<ProductTemplateDTO> AddProductTemplate([FromBody]ProductTemplateDTO dto, long schoolId)
         {
-            School s = _schools.GetById(schoolId);
-            ProductTemplate pt = new ProductTemplate(dto, true);
-
-            if(s == null)
+            try
             {
-                return NotFound();
-            }
-            s.AddProductTemplate(pt);
-            _schools.SaveChanges();
+                School s = _schools.GetById(schoolId);
+                ProductTemplate pt = new ProductTemplate(dto, true); // boolean (addedByGO) dependant on logged in user
 
-            return new ProductTemplateDTO(pt);
+                s.AddProductTemplate(pt);
+                _schools.SaveChanges();
+
+                return new ProductTemplateDTO(pt);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("School niet gevonden"));
+            }
+          
         }
 
     }

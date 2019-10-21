@@ -37,7 +37,15 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("byProjectCode/{projectCode}")]
         public ActionResult<ProjectDTO> GetProjectByProjectCode(string projectCode)
         {
-            return new ProjectDTO(_projects.GetByProjectCode(projectCode));
+            try
+            {
+                return new ProjectDTO(_projects.GetByProjectCode(projectCode));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project niet gevonden"));
+            }
+            
         }
 
         /// <summary>
@@ -48,25 +56,27 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("{projectId}")]
         public ActionResult<ProjectDTO> Put([FromBody] ProjectDTO dto, long projectId)
         {
-            var p = _projects.GetById(projectId);
-            if (p == null)
+            try
             {
-                return NotFound();
+                var p = _projects.GetById(projectId);
+
+                p.ProjectName = dto.ProjectName;
+                p.ProjectDescr = dto.ProjectDescr;
+                p.ProjectCode = dto.ProjectCode;
+                p.ClassRoomId = dto.ClassRoomId;
+                p.ApplicationDomainId = dto.ApplicationDomainId;
+
+                throw new NotImplementedException("update of groups and products not implemented yet");
+                _projects.SaveChanges();
+
+
+                return new ProjectDTO(p);
             }
-
-            p.ProjectName = dto.ProjectName;
-            p.ProjectDescr = dto.ProjectDescr;
-           
-            p.ProjectCode = dto.ProjectCode;
-
-            p.ClassRoomId = dto.ClassRoomId;
-            p.ApplicationDomainId = dto.ApplicationDomainId;
-
-            throw new NotImplementedException("update of groups and products not implemented yet");
-            _projects.SaveChanges();
-            
-
-            return new ProjectDTO(p);
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project niet gevonden"));
+            }
+          
         }
 
 
@@ -77,19 +87,17 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpDelete("{projectId}")]
         public ActionResult<ProjectDTO> DeleteProject(long projectId)
         {
-
-            var delProject = _projects.GetById(projectId);
-            if (delProject == null)
+            try
             {
-                return NotFound();
+                var delProject = _projects.GetById(projectId);
+                _projects.Remove(delProject);
+                _projects.SaveChanges();
+                return new ProjectDTO(delProject);
             }
-            _projects.Remove(delProject);
-            _projects.SaveChanges();
-            return new ProjectDTO(delProject);
-
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project niet gevonden"));
+            }
         }
-
-
-
     }
 }

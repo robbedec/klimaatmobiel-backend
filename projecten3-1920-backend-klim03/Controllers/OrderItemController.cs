@@ -32,10 +32,18 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("{orderItemId}")]
         public ActionResult<OrderItemDTO> AddOrderItemToOrder([FromBody]OrderItemDTO dto, long orderItemId)
         {
-            OrderItem oi = _orderItems.GetById(orderItemId);
-            oi.Amount = dto.Amount;
-            _orderItems.SaveChanges();
-            return new OrderItemDTO(oi);
+            try
+            {
+                OrderItem oi = _orderItems.GetById(orderItemId);
+                oi.Amount = dto.Amount;
+                _orderItems.SaveChanges();
+                return new OrderItemDTO(oi);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Order item niet gevonden"));
+            }
+          
         }
 
 

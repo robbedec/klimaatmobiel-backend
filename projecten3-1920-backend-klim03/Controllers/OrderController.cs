@@ -45,7 +45,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             catch(ArgumentNullException)
             {
-                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+                return NotFound(new CustomErrorDTO("Order niet gevonden"));
             } 
         }
 
@@ -79,7 +79,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             catch (ArgumentNullException)
             {
-                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+                return NotFound(new CustomErrorDTO("Order niet gevonden"));
             }
 
         }
@@ -105,7 +105,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             catch (ArgumentNullException)
             {
-                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+                return NotFound(new CustomErrorDTO("Order niet gevonden"));
             }    
         }
 
@@ -138,7 +138,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             catch (ArgumentNullException)
             {
-                return NotFound(new CustomErrorDTO("Order niet gevonden."));
+                return NotFound(new CustomErrorDTO("Order niet gevonden"));
             }
         }
     }
