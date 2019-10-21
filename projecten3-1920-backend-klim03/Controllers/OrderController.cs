@@ -3,6 +3,7 @@ using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.CustomExceptions;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
 namespace projecten3_1920_backend_klim03.Controllers
@@ -27,7 +28,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <param name="dto">the orderitem to be added</param>
         /// <returns>The order</returns>
         [HttpPut("addOrderItem/{orderId}")]
-        public ActionResult<OrderDTO> AddOrderItemToOrder([FromBody] OrderItemDTO dto, long orderId)
+        public ActionResult<RemoveOrAddedOrderItemDTO> AddOrderItemToOrder([FromBody] OrderItemDTO dto, long orderId)
         {
             try
             {
@@ -37,7 +38,7 @@ namespace projecten3_1920_backend_klim03.Controllers
                 o.AddOrderItem(oi);
 
                 _orders.SaveChanges();
-                return new OrderDTO(o);
+                return new RemoveOrAddedOrderItemDTO(o, oi);
             }
             catch(NotSupportedException ex)
             {
@@ -57,7 +58,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <param name="orderItemId">the orderItem with the orderItemId to be removed</param>
         /// <returns>The order</returns>
         [HttpPut("removeOrderItem/{orderItemId}/{orderId}")]
-        public ActionResult<OrderDTO> RemoveOrderItemFromOrder(long orderItemId, long orderId)
+        public ActionResult<RemoveOrAddedOrderItemDTO> RemoveOrderItemFromOrder(long orderItemId, long orderId)
         {
             try
             {
@@ -67,7 +68,7 @@ namespace projecten3_1920_backend_klim03.Controllers
                 o.RemoveOrderItem(oi);
 
                 _orders.SaveChanges();
-                return new OrderDTO(o); 
+                return new RemoveOrAddedOrderItemDTO(o, oi); 
             }
             catch(NotSupportedException ex)
             {
