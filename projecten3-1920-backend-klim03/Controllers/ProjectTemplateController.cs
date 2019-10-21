@@ -29,7 +29,15 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("{projectTemplateId}")]
         public ActionResult<ProjectTemplateDTO> GetProjectTemplate(long projectTemplateId)
         {
-            return new ProjectTemplateDTO(_projectTemplates.GetById(projectTemplateId));
+            try
+            {
+                return new ProjectTemplateDTO(_projectTemplates.GetById(projectTemplateId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project concept niet gevonden"));
+            }
+            
         }
 
         /// <summary>
@@ -40,19 +48,27 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpPut("{projectTemplateId}")]
         public ActionResult<ProjectTemplateDTO> Put([FromBody] ProjectTemplateDTO dto, long projectTemplateId)
         {
-            var pt = _projectTemplates.GetById(projectTemplateId);
+            try
+            {
+                var pt = _projectTemplates.GetById(projectTemplateId);
 
-            pt.ProjectName = dto.ProjectName;
-            pt.ProjectDescr = dto.ProjectDescr;
-            pt.ProjectImage = dto.ProjectImage;
+                pt.ProjectName = dto.ProjectName;
+                pt.ProjectDescr = dto.ProjectDescr;
+                pt.ProjectImage = dto.ProjectImage;
 
-            pt.ApplicationDomainId = dto.ApplicationDomainId;
+                pt.ApplicationDomainId = dto.ApplicationDomainId;
 
 
-            throw new NotImplementedException("update of productTemplatess not implemented yet");
-            _projectTemplates.SaveChanges();
+                throw new NotImplementedException("update of productTemplatess not implemented yet");
+                _projectTemplates.SaveChanges();
 
-            return new ProjectTemplateDTO(pt);
+                return new ProjectTemplateDTO(pt);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project concept niet gevonden"));
+            }
+          
         }
 
 
@@ -63,12 +79,17 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpDelete("{projectTemplateId}")]
         public ActionResult<ProjectTemplateDTO> DeleteProject(long projectTemplateId)
         {
-
-            var delProjectTemplate = _projectTemplates.GetById(projectTemplateId);
-            _projectTemplates.Remove(delProjectTemplate);
-            _projectTemplates.SaveChanges();
-            return new ProjectTemplateDTO(delProjectTemplate);
-
+            try
+            {
+                var delProjectTemplate = _projectTemplates.GetById(projectTemplateId);
+                _projectTemplates.Remove(delProjectTemplate);
+                _projectTemplates.SaveChanges();
+                return new ProjectTemplateDTO(delProjectTemplate);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project concept niet gevonden"));
+            }
         }
 
 
@@ -79,15 +100,15 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("projectFromTemplate/{projectTemplateId}")]
         public ActionResult<ProjectDTO> GetProjectFromTemplate(long projectTemplateId)
         {
-            return new ProjectDTO(new Project(_projectTemplates.GetById(projectTemplateId)));
+            try
+            {
+                return new ProjectDTO(new Project(_projectTemplates.GetById(projectTemplateId)));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project concept niet gevonden"));
+            }       
         }
-
-
-
-
-
-
-
 
     }
 }

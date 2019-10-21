@@ -9,7 +9,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")] 
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
-    public class GroupController
+    public class GroupController : ControllerBase
     {
         private readonly IGroupRepo _groups;
 
@@ -28,7 +28,15 @@ namespace projecten3_1920_backend_klim03.Controllers
         [HttpGet("{groupId}")]
         public ActionResult<GroupDTO> GetGroep(long groupId)
         {
-            return new GroupDTO(_groups.GetById(groupId));
+            try
+            {
+                return new GroupDTO(_groups.GetById(groupId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Klas niet gevonden"));
+            }
+            
         }
     }
 }
