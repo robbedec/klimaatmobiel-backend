@@ -97,7 +97,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             try
             {
                 Order o = _orders.GetById(orderId);
-                o.FinalizeOrder();
+                o.SubmitOrder();
 
                 _orders.SaveChanges();
                 return new OrderDTO(o);
