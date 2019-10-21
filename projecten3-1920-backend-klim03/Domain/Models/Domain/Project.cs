@@ -72,6 +72,16 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         }
 
 
+        public void UpdateProducts(ICollection<ProductDTO> prs)
+        {
+
+        }
+
+        public void UpdateGroups(ICollection<GroupDTO> grs)
+        {
+
+        }
+
 
 
     }
