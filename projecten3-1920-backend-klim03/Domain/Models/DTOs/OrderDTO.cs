@@ -10,7 +10,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public long OrderId { get; set; }
 
         public DateTime Time { get; set; }
-        public bool Finalised { get; set; }
+        public bool Submitted { get; set; }
+        public bool Approved { get; set; }
         public decimal TotalOrderPrice { get; set; }
 
         public long GroupId { get; set; }
@@ -27,7 +28,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             OrderId = order.OrderId;
 
             Time = order.Time;
-            Finalised = order.Finalized;
+            Submitted = order.Submitted;
+            Approved = order.Approved;
             TotalOrderPrice = order.GetOrderPrice;
 
             GroupId = order.GroupId;

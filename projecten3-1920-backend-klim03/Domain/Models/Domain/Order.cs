@@ -11,7 +11,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long OrderId { get; set; }
 
         public DateTime Time { get; set; }
-        public bool Finalized { get; set; } 
+        public bool Submitted { get; set; } // when student indicates he finished his order
+        public bool Approved { get; set; } // teacher approves the order 
 
         public long GroupId { get; set; }
         public Group Group { get; set; }
@@ -27,13 +28,13 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public void AddOrderItem(OrderItem oi)
         {
-            if (Finalized) throw new NotSupportedException("It is not allowed to change a finalized order");
+            if (Submitted) throw new NotSupportedException("It is not allowed to change a finalized order");
             OrderItems.Add(oi);
         }
 
         public void RemoveOrderItem(OrderItem oi)
         {
-            if (Finalized) throw new NotSupportedException("It is not allowed to change a finalized order");
+            if (Submitted) throw new NotSupportedException("It is not allowed to change a finalized order");
             OrderItems.Remove(oi);
         }
 
@@ -44,9 +45,12 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             return ois;
         }
 
-        public void Approve()
+
+        public void SubmitOrder()
         {
             Group.PayOrder(GetOrderPrice);
+            Submitted = true;
+            Time = DateTime.Now;
         }
 
     }
