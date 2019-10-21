@@ -11,7 +11,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long OrderId { get; set; }
 
         public DateTime Time { get; set; }
-        public bool Finalized { get; set; } 
+        public bool Finalized { get; set; } // when student indicates he finished his order
+        public bool Approved { get; set; } // teacher approves the order 
 
         public long GroupId { get; set; }
         public Group Group { get; set; }
@@ -44,9 +45,12 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             return ois;
         }
 
-        public void Approve()
+
+        public void FinalizeOrder()
         {
             Group.PayOrder(GetOrderPrice);
+            Finalized = true;
+            Time = DateTime.Now;
         }
 
     }

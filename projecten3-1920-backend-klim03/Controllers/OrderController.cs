@@ -97,12 +97,20 @@ namespace projecten3_1920_backend_klim03.Controllers
             try
             {
                 Order o = _orders.GetById(orderId);
-
-                o.Finalized = true;
-                o.Time = DateTime.Now;
+                o.FinalizeOrder();
 
                 _orders.SaveChanges();
                 return new OrderDTO(o);
+            }
+            catch (ArgumentOutOfRangeException ex)
+            {
+                // Orderamount <= 0
+                return BadRequest(new CustomErrorDTO(ex.Message));
+            }
+            catch (ArithmeticException ex)
+            {
+                // Remaining budget < orderamount
+                return BadRequest(new CustomErrorDTO(ex.Message));
             }
             catch (ArgumentNullException)
             {
@@ -121,22 +129,12 @@ namespace projecten3_1920_backend_klim03.Controllers
             try
             {
                 Order o = _orders.GetByIdWithGroup(orderId);
+                o.Approved = true;
 
-                o.Approve();
                 _orders.SaveChanges();
-
                 return new OrderDTO(o);
             }
-            catch (ArgumentOutOfRangeException ex)
-            {
-                // Orderamount <= 0
-                return BadRequest(new CustomErrorDTO(ex.Message));
-            }
-            catch (ArithmeticException ex)
-            {
-                // Remaining budget < orderamount
-                return BadRequest(new CustomErrorDTO(ex.Message));
-            }
+         
             catch (ArgumentNullException)
             {
                 return NotFound(new CustomErrorDTO("Order niet gevonden"));
