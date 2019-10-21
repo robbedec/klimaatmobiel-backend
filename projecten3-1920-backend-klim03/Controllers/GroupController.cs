@@ -34,9 +34,28 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             catch (ArgumentNullException)
             {
-                return NotFound(new CustomErrorDTO("Klas niet gevonden"));
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
             }
             
+        }
+
+        /// <summary>
+        /// Get the project for a given group
+        /// </summary>
+        /// <param name="groupCode">the code of the group</param>
+        /// <returns>The project</returns>
+        [HttpGet("getProjectFromGroup/{groupCode}")]
+        public ActionResult<ProjectDTO> GetGroep(string groupCode)
+        {
+            try
+            {
+                return new ProjectDTO(_groups.GetByGroupCode(groupCode).Project);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
+            }
+
         }
     }
 }
