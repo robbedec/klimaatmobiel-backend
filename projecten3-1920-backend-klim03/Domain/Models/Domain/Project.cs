@@ -85,42 +85,52 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public void UpdateProducts(ICollection<ProductDTO> prs)
         {
+            foreach (var item in Products)
+            {
+                var productMatch = prs.FirstOrDefault(g => g.ProductId == item.ProductId);
+                if (productMatch == null) // the product has been removed by the user
+                {
+                    RemoveProduct(item);
+                } else // the product is still present in both arrays so update the product
+                {
+                    item.ProductName = productMatch.ProductName;
+                    item.Description = productMatch.Description;
+                    item.Price = productMatch.Price;
+                    item.ProductImage = productMatch.ProductImage;
 
-            foreach (var item in prs)
+                    item.CatergoryId = productMatch.CatergoryId;
+                }
+            }
+
+            foreach (var item in prs) // adds products that have not been assigned an ID yet (long is default 0)
             {
                 if(item.ProductId == 0)
                 {
                     AddProduct(new Product(item));
                 }
             }
-
-            foreach (var item in Products)
-            {
-                var productMatch = prs.FirstOrDefault(g => g.ProductId == item.ProductId);
-                if (productMatch == null)
-                {
-                    RemoveProduct(item);
-                }
-            }
-
         }
 
         public void UpdateGroups(ICollection<GroupDTO> grs)
         {
-            foreach (var item in grs)
-            {
-                if (item.GroupId == 0)
-                {
-                    AddGroup(new Group(item));
-                }
-            }
 
             foreach (var item in Groups)
             {
                 var groupMatch = grs.FirstOrDefault(g => g.GroupId == item.GroupId);
-                if (groupMatch == null)
+                if (groupMatch == null) // the group has been removed by the user
                 {
                     RemoveGroup(item);
+                } else // the product is still present in both arrays so update the product
+                {
+                    item.GroupName = groupMatch.GroupName;
+                }
+            }
+
+            foreach (var item in grs) //adds groups that have not been assigned an ID yet(long is default 0)
+            {
+                if (item.GroupId == 0)
+                {
+                    AddGroup(new Group(item));
                 }
             }
         }
