@@ -30,8 +30,9 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public Group GetByGroupCode(string groupCode)
         {
-            return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product)
-               .Include(g => g.Project)
+            return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product).ThenInclude(g => g.Category)
+               .Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
+               .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
                .SingleOrDefault(g => g.GroupCode == groupCode);
         }
 

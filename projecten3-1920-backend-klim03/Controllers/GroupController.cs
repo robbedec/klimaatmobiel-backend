@@ -38,14 +38,32 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             
         }
+        /// <summary>
+        /// Get the group for a given groupCodde
+        /// </summary>
+        /// <param name="groupCode">the code of the group</param>
+        /// <returns>The group</returns>
+        [HttpGet("groupCode/{groupCode}")]
+        public ActionResult<GroupDTO> GetGroepFromCode(string groupCode)
+        {
+            try
+            {
+                return new GroupDTO(_groups.GetByGroupCode(groupCode));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
+            }
+
+        }
 
         /// <summary>
         /// Get the project for a given group
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
         /// <returns>The project</returns>
-        [HttpGet("getProjectFromGroup/{groupCode}")]
-        public ActionResult<ProjectDTO> GetGroep(string groupCode)
+        [HttpGet("project/{groupCode}")]
+        public ActionResult<ProjectDTO> GetProject(string groupCode)
         {
             try
             {
