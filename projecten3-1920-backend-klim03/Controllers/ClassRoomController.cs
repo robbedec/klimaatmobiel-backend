@@ -40,6 +40,25 @@ namespace projecten3_1920_backend_klim03.Controllers
             
         }
 
+        /// <summary>
+        /// Get the project from a classroom
+        /// </summary>
+        /// <param name="classRoomId">the id of the classroom</param>
+        /// <returns>the project of a classroom</returns>
+        [HttpGet("projects/{classRoomId}")]
+        public ActionResult<ICollection<ProjectDTO>> ProjectFromClassroom(long classRoomId)
+        {
+            try
+            {
+                return _classRooms.GetByIdWithProjects(classRoomId).Projects.Select(g => new ProjectDTO(g)).ToList();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Klas niet gevonden"));
+            }
+
+        }
+
 
         /// <summary>
         /// Adding a project to a given classroom

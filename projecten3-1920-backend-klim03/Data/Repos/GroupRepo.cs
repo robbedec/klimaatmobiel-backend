@@ -28,6 +28,13 @@ namespace projecten3_1920_backend_klim03.Data.Repos
             return _groups.ToList();
         }
 
+        public Group GetByGroupCode(string groupCode)
+        {
+            return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product)
+               .Include(g => g.Project)
+               .SingleOrDefault(g => g.GroupCode == groupCode);
+        }
+
         public Group GetById(long id)
         {
             return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product)
