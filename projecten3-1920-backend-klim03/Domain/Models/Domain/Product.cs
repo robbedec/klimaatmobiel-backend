@@ -41,6 +41,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public Product(ProductTemplate pt)
         {
             ProductImage = pt.ProductImage;
+            Description = pt.Description;
             ProductName = pt.ProductName;
 
             Category = new Category(pt.CategoryTemplate);

@@ -11,6 +11,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public long ProductTemplateId { get; set; }
 
         public string ProductName { get; set; }
+        public string Description { get; set; }
         public string ProductImage { get; set; }
         public bool AddedByGO { get; set; }
 
@@ -18,6 +19,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public CategoryTemplate CategoryTemplate { get; set; }
 
         public ICollection<ProductVariationTemplate> ProductVariationTemplates { get; set; } = new List<ProductVariationTemplate>();
+
+        public bool HasMultipleDisplayVariations { get; set; }
+
 
         public ProductTemplateDTO()
         {
@@ -28,6 +32,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         {
             ProductTemplateId = pt.ProductTemplateId;
 
+            ProductName = pt.ProductName;
+            Description = pt.Description;
+
             ProductImage = pt.ProductImage;
             AddedByGO = pt.AddedByGO;
 
@@ -35,6 +42,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             CategoryTemplate = pt.CategoryTemplate;
 
             ProductVariationTemplates = pt.ProductVariationTemplates;
+            HasMultipleDisplayVariations = pt.HasMultipleDisplayVariations;
         }
     }
 }

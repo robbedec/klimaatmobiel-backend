@@ -57,7 +57,7 @@ namespace projecten3_1920_backend_klim03.Controllers
                 pt.ProjectImage = dto.ProjectImage;
                 pt.ApplicationDomainId = dto.ApplicationDomainId;
 
-                pt.UpdateProductTemplates(dto.ProductTemplates);
+                pt.UpdateProductTemplates(dto.ProductTemplates, true); // boolean(addedByGO) dependant on logged in user
 
                 _projectTemplates.SaveChanges();
                 return new ProjectTemplateDTO(pt);

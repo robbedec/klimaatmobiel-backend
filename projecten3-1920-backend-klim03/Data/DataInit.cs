@@ -88,6 +88,7 @@ namespace projecten3_1920_backend_klim03.Data
                 ProductTemplate pt1 = new ProductTemplate
                 {
                     ProductName = "Karton",
+                    Description = "Dit is karton",
                     AddedByGO = true,
                     ProductImage = "https://karton.com",
                     HasMultipleDisplayVariations = true,
@@ -121,6 +122,7 @@ namespace projecten3_1920_backend_klim03.Data
                 ProductTemplate pt2 = new ProductTemplate
                 {
                     ProductName = "Lijm",
+                    Description = "Dit is lijm",
                     AddedByGO = true,
                     ProductImage = "https://lijm.com",
                     HasMultipleDisplayVariations = true,
@@ -153,6 +155,7 @@ namespace projecten3_1920_backend_klim03.Data
                 ProductTemplate pt3 = new ProductTemplate
                 {
                     ProductName = "Plakband",
+                    Description = "Dit is Plakband",
                     AddedByGO = true,
                     ProductImage = "https://plakband.com",
                     HasMultipleDisplayVariations = true,
@@ -186,6 +189,7 @@ namespace projecten3_1920_backend_klim03.Data
                 ProductTemplate pt4 = new ProductTemplate
                 {
                     ProductName = "Hout",
+                    Description = "Dit is hout",
                     AddedByGO = true,
                     ProductImage = "https://hout.com",
                     HasMultipleDisplayVariations = true,
