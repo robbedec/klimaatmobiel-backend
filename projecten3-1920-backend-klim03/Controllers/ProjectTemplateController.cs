@@ -55,13 +55,11 @@ namespace projecten3_1920_backend_klim03.Controllers
                 pt.ProjectName = dto.ProjectName;
                 pt.ProjectDescr = dto.ProjectDescr;
                 pt.ProjectImage = dto.ProjectImage;
-
                 pt.ApplicationDomainId = dto.ApplicationDomainId;
 
+                pt.UpdateProductTemplates(dto.ProductTemplates);
 
-                throw new NotImplementedException("update of productTemplatess not implemented yet");
                 _projectTemplates.SaveChanges();
-
                 return new ProjectTemplateDTO(pt);
             }
             catch (ArgumentNullException)

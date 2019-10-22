@@ -66,11 +66,64 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             Products.Add(p);
         }
 
+        public void RemoveProduct(Product p)
+        {
+            Products.Remove(p);
+        }
+
         public void AddGroup(Group g)
         {
             Groups.Add(g);
         }
 
+
+        public void RemoveGroup(Group g)
+        {
+            Groups.Remove(g);
+        }
+
+
+        public void UpdateProducts(ICollection<ProductDTO> prs)
+        {
+
+            foreach (var item in prs)
+            {
+                if(item.ProductId == 0)
+                {
+                    AddProduct(new Product(item));
+                }
+            }
+
+            foreach (var item in Products)
+            {
+                var productMatch = prs.FirstOrDefault(g => g.ProductId == item.ProductId);
+                if (productMatch == null)
+                {
+                    RemoveProduct(item);
+                }
+            }
+
+        }
+
+        public void UpdateGroups(ICollection<GroupDTO> grs)
+        {
+            foreach (var item in grs)
+            {
+                if (item.GroupId == 0)
+                {
+                    AddGroup(new Group(item));
+                }
+            }
+
+            foreach (var item in Groups)
+            {
+                var groupMatch = grs.FirstOrDefault(g => g.GroupId == item.GroupId);
+                if (groupMatch == null)
+                {
+                    RemoveGroup(item);
+                }
+            }
+        }
 
 
 
