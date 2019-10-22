@@ -38,10 +38,10 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
         /// <summary>
-        /// Get the project with given id
+        /// Get the project with the its orders
         /// </summary>
         /// <param name="projectId">the id of the project</param>
-        /// <returns>The project</returns>
+        /// <returns>The groups of a project with their orders</returns>
         [HttpGet("groups/{projectId}")]
         public ActionResult<ICollection<GroupDTO>> GetGroups(long projectId)
         {
