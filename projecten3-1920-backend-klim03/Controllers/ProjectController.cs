@@ -1,4 +1,6 @@
 ﻿using System;
+using System.Collections.Generic;
+using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
@@ -24,9 +26,37 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <returns>The project</returns>
         [HttpGet("{projectId}")]
         public ActionResult<ProjectDTO> GetProject(long projectId)
-        {
-            return new ProjectDTO(_projects.GetById(projectId));
+        {          
+            try
+            {
+                return new ProjectDTO(_projects.GetById(projectId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project niet gevonden"));
+            }
         }
+
+        /// <summary>
+        /// Get the project with given id
+        /// </summary>
+        /// <param name="projectId">the id of the project</param>
+        /// <returns>The project</returns>
+        [HttpGet("groups/{projectId}")]
+        public ActionResult<ICollection<GroupDTO>> GetGroups(long projectId)
+        {
+            try
+            {
+                return _projects.GetWithGroupsById(projectId).Groups.Select(g => new GroupDTO(g)).ToList();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project niet gevonden"));
+            }
+            
+        }
+
+
 
 
         /// <summary>
