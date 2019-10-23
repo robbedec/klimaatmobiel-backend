@@ -39,7 +39,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             
         }
         /// <summary>
-        /// Get the group for a given groupCodde
+        /// Get the group for a given groupCode
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
         /// <returns>The group</returns>
