@@ -13,6 +13,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public long ProductId { get; set; }
         public long OrderId { get; set; }
 
+        public ProductDTO Product { get; set; }
+
         public OrderItemDTO()
         {
         }
@@ -25,6 +27,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             ProductId = oi.ProductId;
             OrderId = oi.OrderId;
+
+            Product = new ProductDTO(oi.Product);
         }
     }
 }
