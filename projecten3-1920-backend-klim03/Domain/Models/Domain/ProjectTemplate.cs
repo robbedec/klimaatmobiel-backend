@@ -58,7 +58,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public void UpdateProductTemplates(ICollection<ProductTemplateDTO> prts, bool addedByGo)
         {
-            foreach (var item in ProductTemplateProjectTemplates)
+            foreach (var item in ProductTemplateProjectTemplates.ToList())
             {
                 var productTemplateMatch = prts.FirstOrDefault(g => g.ProductTemplateId == item.ProductTemplateId);
                 if (productTemplateMatch == null) // the product has been removed by the user

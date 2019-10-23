@@ -56,7 +56,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         internal void UpdateVariations(ICollection<ProductVariationTemplate> pvts)
         {
             
-            foreach (var item in ProductVariationTemplates)
+            foreach (var item in ProductVariationTemplates.ToList())
             {
                 var templateMatch = pvts.FirstOrDefault(g => g.ProductVariationTemplateId == item.ProductVariationTemplateId);
                 if (templateMatch == null)

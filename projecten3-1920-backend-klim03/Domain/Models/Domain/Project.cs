@@ -85,7 +85,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public void UpdateProducts(ICollection<ProductDTO> prs)
         {
-            foreach (var item in Products)
+            foreach (var item in Products.ToList())
             {
                 var productMatch = prs.FirstOrDefault(g => g.ProductId == item.ProductId);
                 if (productMatch == null) // the product has been removed by the user
@@ -114,7 +114,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public void UpdateGroups(ICollection<GroupDTO> grs)
         {
 
-            foreach (var item in Groups)
+            foreach (var item in Groups.ToList())
             {
                 var groupMatch = grs.FirstOrDefault(g => g.GroupId == item.GroupId);
                 if (groupMatch == null) // the group has been removed by the user
