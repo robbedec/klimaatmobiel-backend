@@ -3,7 +3,9 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29009.5
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projecten3-1920-backend-klim03", "projecten3-1920-backend-klim03\projecten3-1920-backend-klim03.csproj", "{F98251F2-B986-416B-B64E-E6309DC7B5AB}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "projecten3-1920-backend-klim03", "projecten3-1920-backend-klim03\projecten3-1920-backend-klim03.csproj", "{F98251F2-B986-416B-B64E-E6309DC7B5AB}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "projecten3-1920-backend-klim03.Tests", "projecten3-1920-backend-klim03.Tests\projecten3-1920-backend-klim03.Tests.csproj", "{59B6F941-B787-4053-92E7-88A95DF81DAB}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -15,6 +17,10 @@ Global
 		{F98251F2-B986-416B-B64E-E6309DC7B5AB}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{F98251F2-B986-416B-B64E-E6309DC7B5AB}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{F98251F2-B986-416B-B64E-E6309DC7B5AB}.Release|Any CPU.Build.0 = Release|Any CPU
+		{59B6F941-B787-4053-92E7-88A95DF81DAB}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{59B6F941-B787-4053-92E7-88A95DF81DAB}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{59B6F941-B787-4053-92E7-88A95DF81DAB}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{59B6F941-B787-4053-92E7-88A95DF81DAB}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
