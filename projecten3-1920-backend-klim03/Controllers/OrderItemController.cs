@@ -30,7 +30,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <param name="orderItemId">The id of the order item</param>
         /// <returns>The order item</returns>
         [HttpPut("{orderItemId}")]
-        public ActionResult<OrderItemDTO> AddOrderItemToOrder([FromBody]OrderItemDTO dto, long orderItemId)
+        public ActionResult<OrderItemDTO> PutOrderItem([FromBody]OrderItemDTO dto, long orderItemId)
         {
             try
             {
