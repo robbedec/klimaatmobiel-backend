@@ -18,7 +18,11 @@ using Microsoft.IdentityModel.Tokens;
 using Newtonsoft.Json.Serialization;
 using NSwag;
 using NSwag.Generation.Processors.Security;
+using Pomelo.EntityFrameworkCore.MySql.Infrastructure;
 using projecten3_1920_backend_klim03.Data;
+using projecten3_1920_backend_klim03.Data.Repos;
+using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
 namespace projecten3_1920_backend_klim03
 {
@@ -50,8 +54,14 @@ namespace projecten3_1920_backend_klim03
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
                 }); 
 
-            services.AddDbContext<ApplicationDbContext>(options =>
-             options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
+            //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
+
+            string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
+            services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
+            {
+                mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
+            }
+            ));
 
             // Swagger configuration
             // Swagger authentication is included and configured, add [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -61,7 +71,7 @@ namespace projecten3_1920_backend_klim03
                 // TODO: Authentication key in project secrets
                 c.DocumentName = "apidocs";
                 c.Title = "Klimaatmobiel api";
-                c.Version = "v1";
+                c.Version = "v2";
                 c.Description = "api documentation";
                 c.AddSecurity("JWT", Enumerable.Empty<string>(), new OpenApiSecurityScheme
                 {
@@ -76,7 +86,8 @@ namespace projecten3_1920_backend_klim03
 
             });
 
-            services.AddIdentity<IdentityUser, IdentityRole>(cfg => cfg.User.RequireUniqueEmail = true).AddEntityFrameworkStores<ApplicationDbContext>();
+            services.AddIdentity<AppUser, ApplicationRole>(cfg => cfg.User.RequireUniqueEmail = true)
+                .AddEntityFrameworkStores<ApplicationDbContext>();
 
             services.AddAuthentication(x =>
             {
@@ -115,6 +126,20 @@ namespace projecten3_1920_backend_klim03
             });
 
 
+            services.AddScoped<IOrderRepo, OrderRepo>();
+            services.AddScoped<IOrderItemRepo, OrderItemRepo>();
+            services.AddScoped<IAppUserRepo, AppUserRepo>();
+            services.AddScoped<IGroupRepo, GroupRepo>();
+            services.AddScoped<IClassRoomRepo, ClassRoomRepo>();
+            services.AddScoped<IProductRepo, ProductRepo>();
+            services.AddScoped<IProjectRepo, ProjectRepo>();
+            services.AddScoped<ISchoolRepo, SchoolRepo>();
+            services.AddScoped<IApplicationDomainRepo, ApplicationDomainRepo>();
+
+            services.AddScoped<IProjectTemplateRepo, ProjectTemplateRepo>();
+            services.AddScoped<IProductTemplateRepo, ProductTemplateRepo>();
+
+
             services.AddScoped<DataInit>();
 
         }
@@ -132,7 +157,7 @@ namespace projecten3_1920_backend_klim03
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
+            //app.UseHttpsRedirection();
             app.UseAuthentication();
             app.UseCors("AllCors");
             app.UseMvc();
@@ -140,7 +165,7 @@ namespace projecten3_1920_backend_klim03
             app.UseSwaggerUi3();
             app.UseOpenApi();
 
-            dataInit.InitializeData();
+            dataInit.InitializeData().Wait();
         }
     }
 }

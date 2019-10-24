@@ -8,5 +8,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Interfaces
 {
     public interface IProjectRepo : IGenericRepo<Project>
     {
+
+        Project GetByProjectCode(string projectCode);
+
+        Project GetWithGroupsById(long id);
     }
 }

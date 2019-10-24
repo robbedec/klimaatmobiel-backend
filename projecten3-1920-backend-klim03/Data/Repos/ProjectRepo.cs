@@ -11,37 +11,63 @@ namespace projecten3_1920_backend_klim03.Data.Repos
     public class ProjectRepo : IProjectRepo
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<Project> _projecten;
+        private readonly DbSet<Project> _projects;
 
         public ProjectRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _projecten = dbContext.Projecten;
+            _projects = dbContext.Projects;
         }
 
         public void Add(Project obj)
         {
-            throw new NotImplementedException();
+            _projects.Add(obj);
         }
 
         public ICollection<Project> GetAll()
         {
-            throw new NotImplementedException();
+            return _projects.ToList();
         }
+
+
 
         public Project GetById(long id)
         {
-            throw new NotImplementedException();
+            return _projects
+                .Include(g => g.ClassRoom)
+                .Include(g => g.Products).ThenInclude(g => g.Category)
+                .Include(g => g.Groups).ThenInclude(g => g.Order)
+                .Include(g => g.ApplicationDomain)
+                .SingleOrDefault(g => g.ProjectId == id);
+        }
+
+        public Project GetByProjectCode(string projectCode)
+        {
+            return _projects
+                .Include(g => g.ClassRoom)
+                .Include(g => g.Products).ThenInclude(g => g.Category)
+                .Include(g => g.Groups)
+                .Include(g => g.ApplicationDomain)
+                .SingleOrDefault(g => g.ProjectCode == projectCode);
+        }
+
+        public Project GetWithGroupsById(long id)
+        {
+            return _projects
+               .Include(g => g.ClassRoom)
+               .Include(g => g.Groups).ThenInclude(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product).ThenInclude(g => g.Category)
+               .Include(g => g.ApplicationDomain)
+               .SingleOrDefault(g => g.ProjectId == id);
         }
 
         public void Remove(Project obj)
         {
-            throw new NotImplementedException();
+            _projects.Remove(obj);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

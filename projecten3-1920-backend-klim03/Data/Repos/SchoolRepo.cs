@@ -11,37 +11,47 @@ namespace projecten3_1920_backend_klim03.Data.Repos
     public class SchoolRepo : ISchoolRepo
     {
         private readonly ApplicationDbContext _context;
-        private readonly DbSet<School> _scholen;
+        private readonly DbSet<School> _schools;
 
         public SchoolRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _scholen = dbContext.Scholen;
+            _schools = dbContext.Schools;
         }
 
         public void Add(School obj)
         {
-            throw new NotImplementedException();
+            _schools.Add(obj);
         }
 
         public ICollection<School> GetAll()
         {
-            throw new NotImplementedException();
+            return _schools.ToList();
         }
 
         public School GetById(long id)
         {
-            throw new NotImplementedException();
+            return _schools
+               .SingleOrDefault(g => g.SchoolId == id);
+        }
+
+        public School GetByIdWithTemplates(long id)
+        {
+            return _schools
+               .Include(g => g.ProjectTemplates).ThenInclude(g => g.ApplicationDomain)
+               .Include(g => g.ProductTemplates).ThenInclude(g => g.ProductVariationTemplates)
+               .Include(g => g.ProductTemplates).ThenInclude(g => g.CategoryTemplate)
+               .SingleOrDefault(g => g.SchoolId == id);
         }
 
         public void Remove(School obj)
         {
-            throw new NotImplementedException();
+            _schools.Remove(obj);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }
