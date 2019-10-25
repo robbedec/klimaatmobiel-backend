@@ -17,6 +17,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectImage { get; set; }
         public decimal ProjectBudget { get; set; }
         public ESchoolGrade ESchoolGrade { get; set; }
+        public bool Closed { get; set; }
 
         public long ClassRoomId { get; set; }
         public ClassRoom ClassRoom { get; set; }
@@ -42,6 +43,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProjectImage = dto.ProjectImage;
             ProjectBudget = dto.ProjectBudget;
             ESchoolGrade = dto.ESchoolYear;
+
+            Closed = dto.Closed;
 
             ApplicationDomainId = dto.ApplicationDomainId;
 

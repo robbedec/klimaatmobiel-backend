@@ -272,6 +272,7 @@ namespace projecten3_1920_backend_klim03.Data
                 Project project1 = new Project
                 {
                     ProjectCode = "AAA",
+                    ProjectBudget = 200,
                     ProjectDescr = "Dit is een project voor natuurkunde",
                     ProjectImage = "image",
                     ProjectName = "natuur kennismaking",

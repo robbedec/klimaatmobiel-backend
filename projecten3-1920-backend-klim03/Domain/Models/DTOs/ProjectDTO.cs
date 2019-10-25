@@ -26,6 +26,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         [Required]
         public long ClassRoomId { get; set; }
 
+        public bool Closed { get; set; }
+
         [Required]
         public long ApplicationDomainId { get; set; }
         public ApplicationDomainDTO ApplicationDomain { get; set; }
@@ -48,6 +50,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProjectCode = project.ProjectCode;
             ProjectImage = project.ProjectImage;
             ESchoolYear = project.ESchoolGrade;
+
+            Closed = project.Closed;
 
             ApplicationDomainId = project.ApplicationDomainId;
             ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
