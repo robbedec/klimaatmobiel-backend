@@ -44,7 +44,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// Get the project from a classroom
         /// </summary>
         /// <param name="classRoomId">the id of the classroom</param>
-        /// <returns>the project of a classroom</returns>
+        /// <returns>the projects of a classroom</returns>
         [HttpGet("projects/{classRoomId}")]
         public ActionResult<ICollection<ProjectDTO>> ProjectFromClassroom(long classRoomId)
         {
