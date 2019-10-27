@@ -34,9 +34,5 @@
     <Compile Remove="Domain\Models\Interfaces\ICategorieRepo.cs" />
   </ItemGroup>
 
-  <ItemGroup>
-    <Folder Include="Domain\Models\DTOs\AppDTOs\" />
-  </ItemGroup>
-
 
 </Project>

@@ -12,7 +12,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string ProductName { get; set; }
         public string Description { get; set; }
         public string ProductImage { get; set; }
-        public bool HasMultipleDisplayVariations { get; set; }
 
         public long ProjectId { get; set; }
 
@@ -30,6 +29,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProductName = product.ProductName;
             Description = product.Description;
             ProductImage = product.ProductImage;
+
+            Price = product.Price;
 
             ProjectId = product.ProjectId;
             CatergoryId = product.CatergoryId;

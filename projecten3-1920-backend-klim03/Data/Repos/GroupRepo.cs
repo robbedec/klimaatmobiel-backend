@@ -28,13 +28,6 @@ namespace projecten3_1920_backend_klim03.Data.Repos
             return _groups.ToList();
         }
 
-        public Group GetByUniqueGroupCode(string uniqueGroupCode)
-        {
-            return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product).ThenInclude(g => g.Category)
-               .Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
-               .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
-               .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
-        }
 
         public Group GetById(long id)
         {
@@ -50,6 +43,19 @@ namespace projecten3_1920_backend_klim03.Data.Repos
         public void SaveChanges()
         {
             _context.SaveChanges();
+        }
+
+        public Group GetByUniqueGroupCodeWithOrder(string uniqueGroupCode)
+        {
+            return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product).ThenInclude(g => g.Category)
+                .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
+        }
+
+        public Group GetByUniqueGroupCodeWithProject(string uniqueGroupCode)
+        {
+            return _groups.Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
+                .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
+                .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
         }
     }
 }

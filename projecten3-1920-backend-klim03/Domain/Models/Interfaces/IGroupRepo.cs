@@ -5,6 +5,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Interfaces
 {
     public interface IGroupRepo : IGenericRepo<Group>
     {
-        Group GetByUniqueGroupCode(string uniqueGroupCode);
+        Group GetByUniqueGroupCodeWithOrder(string uniqueGroupCode);
+        Group GetByUniqueGroupCodeWithProject(string uniqueGroupCode);
     }
 }
