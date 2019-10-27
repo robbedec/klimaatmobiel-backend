@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs.AppDTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
 namespace projecten3_1920_backend_klim03.Controllers
@@ -39,16 +40,16 @@ namespace projecten3_1920_backend_klim03.Controllers
             
         }
         /// <summary>
-        /// Get the group for a given groupCode
+        /// Get the group for a given groupCode with its order
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
-        /// <returns>The group</returns>
+        /// <returns>The group with it's order</returns>
         [HttpGet("groupCode/{groupCode}")]
-        public ActionResult<GroupDTO> GetGroepFromCode(string groupCode)
+        public ActionResult<AppGroupDTO> GetGroepFromCode(string groupCode)
         {
             try
             {
-                return new GroupDTO(_groups.GetByGroupCode(groupCode));
+                return new AppGroupDTO(_groups.GetByUniqueGroupCodeWithOrder(groupCode));
             }
             catch (ArgumentNullException)
             {
@@ -58,16 +59,16 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
         /// <summary>
-        /// Get the project for a given group
+        /// Get the group with its project for a given group
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
-        /// <returns>The project</returns>
+        /// <returns>The group wit the project</returns>
         [HttpGet("project/{groupCode}")]
-        public ActionResult<ProjectDTO> GetProject(string groupCode)
+        public ActionResult<AppGroupDTO> GetGroupWithProject(string groupCode)
         {
             try
             {
-                return new ProjectDTO(_groups.GetByGroupCode(groupCode).Project);
+                return new AppGroupDTO(_groups.GetByUniqueGroupCodeWithProject(groupCode));
             }
             catch (ArgumentNullException)
             {

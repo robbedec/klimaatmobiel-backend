@@ -41,15 +41,6 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                 .SingleOrDefault(g => g.ProjectId == id);
         }
 
-        public Project GetByProjectCode(string projectCode)
-        {
-            return _projects
-                .Include(g => g.ClassRoom)
-                .Include(g => g.Products).ThenInclude(g => g.Category)
-                .Include(g => g.Groups)
-                .Include(g => g.ApplicationDomain)
-                .SingleOrDefault(g => g.ProjectCode == projectCode);
-        }
 
         public Project GetWithGroupsById(long id)
         {

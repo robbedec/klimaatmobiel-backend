@@ -13,7 +13,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public string ProjectName { get; set; }
         public string ProjectDescr { get; set; }
-        public string ProjectCode { get; set; } // om project met leerling te linken
         public string ProjectImage { get; set; }
         public decimal ProjectBudget { get; set; }
         public ESchoolGrade ESchoolGrade { get; set; }
@@ -39,7 +38,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         {
             ProjectName = dto.ProjectName;
             ProjectDescr = dto.ProjectDescr;
-            ProjectCode = dto.ProjectCode;
             ProjectImage = dto.ProjectImage;
             ProjectBudget = dto.ProjectBudget;
             ESchoolGrade = dto.ESchoolYear;
