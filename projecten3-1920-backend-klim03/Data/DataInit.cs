@@ -50,8 +50,32 @@ namespace projecten3_1920_backend_klim03.Data
 
                 ApplicationDomain ad = new ApplicationDomain
                 {
-                    ApplicationDomainName = "Natuurkunde",
-                    ApplicationDomainDescr = "Alles over natuurkunde"
+                    ApplicationDomainName = "Energie",
+                    ApplicationDomainDescr = "Alles over energie"
+                };
+                
+                ApplicationDomain ad2 = new ApplicationDomain
+                {
+                    ApplicationDomainName = "Informatie & communicactie",
+                    ApplicationDomainDescr = "Alles over informatie & communicactie"
+                };
+                
+                ApplicationDomain ad3 = new ApplicationDomain
+                {
+                    ApplicationDomainName = "Constructie",
+                    ApplicationDomainDescr = "Alles over constructie"
+                };
+                
+                ApplicationDomain ad4 = new ApplicationDomain
+                {
+                    ApplicationDomainName = "Transport",
+                    ApplicationDomainDescr = "Alles over transport"
+                };
+                
+                ApplicationDomain ad5 = new ApplicationDomain
+                {
+                    ApplicationDomainName = "Biochemie",
+                    ApplicationDomainDescr = "Alles over biochemie"
                 };
 
 
@@ -73,6 +97,10 @@ namespace projecten3_1920_backend_klim03.Data
                 _dbContext.Add(ct1);
                 _dbContext.Add(schoolGO);
                 _dbContext.Add(ad);
+                _dbContext.Add(ad2);
+                _dbContext.Add(ad3);
+                _dbContext.Add(ad4);
+                _dbContext.Add(ad5);
                 _dbContext.SaveChanges();
 
                 //classroom
