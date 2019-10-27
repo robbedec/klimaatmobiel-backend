@@ -16,8 +16,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string ProjectName { get; set; }
         [Required]
         public string ProjectDescr { get; set; }
-        [Required]
-        public string ProjectCode { get; set; }
         public string ProjectImage { get; set; }
         [Required]
         public decimal ProjectBudget { get; set; }
@@ -47,7 +45,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             ProjectName = project.ProjectName;
             ProjectDescr = project.ProjectDescr;
-            ProjectCode = project.ProjectCode;
             ProjectImage = project.ProjectImage;
             ESchoolYear = project.ESchoolGrade;
 

@@ -12,6 +12,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public OrderDTO Order { get; set; }
 
+        public string UniqueGroupCode { get; set; }
+
         public GroupDTO()
         {
 
@@ -22,7 +24,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             GroupName = group.GroupName;
             ProjectId = group.ProjectId;
-            
+            UniqueGroupCode = group.UniqueGroupCode;
+
             Order = new OrderDTO(group.Order);  
         }
     }

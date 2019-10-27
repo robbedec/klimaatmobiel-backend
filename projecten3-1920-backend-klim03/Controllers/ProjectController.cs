@@ -58,26 +58,6 @@ namespace projecten3_1920_backend_klim03.Controllers
 
 
 
-
-        /// <summary>
-        /// Get the project for a given project code
-        /// </summary>
-        /// <param name="projectCode">the code of a project</param>
-        /// <returns>The project</returns>
-        [HttpGet("byProjectCode/{projectCode}")]
-        public ActionResult<ProjectDTO> GetProjectByProjectCode(string projectCode)
-        {
-            try
-            {
-                return new ProjectDTO(_projects.GetByProjectCode(projectCode));
-            }
-            catch (ArgumentNullException)
-            {
-                return NotFound(new CustomErrorDTO("Project niet gevonden"));
-            }
-            
-        }
-
         /// <summary>
         /// updates a project
         /// </summary>
@@ -92,7 +72,6 @@ namespace projecten3_1920_backend_klim03.Controllers
 
                 p.ProjectName = dto.ProjectName;
                 p.ProjectDescr = dto.ProjectDescr;
-                p.ProjectCode = dto.ProjectCode;
                 p.ClassRoomId = dto.ClassRoomId;
                 p.ApplicationDomainId = dto.ApplicationDomainId;
 

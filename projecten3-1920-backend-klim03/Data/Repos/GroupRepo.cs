@@ -28,12 +28,12 @@ namespace projecten3_1920_backend_klim03.Data.Repos
             return _groups.ToList();
         }
 
-        public Group GetByGroupCode(string groupCode)
+        public Group GetByUniqueGroupCode(string uniqueGroupCode)
         {
             return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product).ThenInclude(g => g.Category)
                .Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
                .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
-               .SingleOrDefault(g => g.GroupCode == groupCode);
+               .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
         }
 
         public Group GetById(long id)

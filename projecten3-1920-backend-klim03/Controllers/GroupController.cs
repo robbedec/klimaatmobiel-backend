@@ -48,7 +48,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             try
             {
-                return new GroupDTO(_groups.GetByGroupCode(groupCode));
+                return new GroupDTO(_groups.GetByUniqueGroupCode(groupCode));
             }
             catch (ArgumentNullException)
             {
@@ -67,7 +67,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             try
             {
-                return new ProjectDTO(_groups.GetByGroupCode(groupCode).Project);
+                return new ProjectDTO(_groups.GetByUniqueGroupCode(groupCode).Project);
             }
             catch (ArgumentNullException)
             {
