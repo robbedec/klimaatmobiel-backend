@@ -47,9 +47,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProjectDescr = project.ProjectDescr;
             ProjectImage = project.ProjectImage;
             ESchoolYear = project.ESchoolGrade;
+            ProjectBudget = project.ProjectBudget;
 
             Closed = project.Closed;
 
+            ClassRoomId = project.ClassRoomId;
             ApplicationDomainId = project.ApplicationDomainId;
             ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
 

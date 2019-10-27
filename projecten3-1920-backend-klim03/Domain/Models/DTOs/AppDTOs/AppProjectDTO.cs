@@ -16,7 +16,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs.AppDTOs
         public string ProjectDescr { get; set; }
         public string ProjectImage { get; set; }
         public decimal ProjectBudget { get; set; }
-        public ESchoolGrade ESchoolYear { get; set; }
         public long ClassRoomId { get; set; }
 
         public bool Closed { get; set; }
@@ -39,9 +38,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs.AppDTOs
             ProjectName = project.ProjectName;
             ProjectDescr = project.ProjectDescr;
             ProjectImage = project.ProjectImage;
+            ProjectBudget = project.ProjectBudget;
 
             Closed = project.Closed;
 
+            ClassRoomId = project.ClassRoomId;
             ApplicationDomainId = project.ApplicationDomainId;
             ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
 
