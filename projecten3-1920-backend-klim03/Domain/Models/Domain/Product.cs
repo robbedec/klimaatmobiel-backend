@@ -33,6 +33,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public Product(ProductDTO dto)
         {
             ProductName = dto.ProductName;
+            Description = dto.Description;
+            ProductImage = dto.ProductImage;
             ProductImage = dto.ProductImage;
             Price = dto.Price;
             CatergoryId = dto.CatergoryId;
@@ -44,7 +46,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             Description = pt.Description;
             ProductName = pt.ProductName;
 
-            Category = new Category(pt.CategoryTemplate);
+            Category = new Category(pt.CategoryTemplate); // will have to match categories on name since id will be different every time (fix later)
 
             Description = pt.ProductVariationTemplates.FirstOrDefault(g => g.ESchoolGrade == ESchoolGrade.ALGEMEEN).ProductDescr;
         }
