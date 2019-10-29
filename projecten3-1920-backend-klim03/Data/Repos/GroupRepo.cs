@@ -51,9 +51,11 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                 .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
         }
 
-        public Group GetByUniqueGroupCodeWithProject(string uniqueGroupCode)
+        public Group GetByUniqueGroupCodeWithProjectAndOrder(string uniqueGroupCode)
         {
-            return _groups.Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
+            return _groups
+                .Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product).ThenInclude(g => g.Category)
+                .Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
                 .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
                 .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
         }
