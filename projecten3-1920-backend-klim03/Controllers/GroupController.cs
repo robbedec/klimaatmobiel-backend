@@ -59,16 +59,16 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
         /// <summary>
-        /// Get the group with its project for a given group
+        /// Get the group with its project and order for a given groupCode
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
         /// <returns>The group wit the project</returns>
         [HttpGet("project/{groupCode}")]
-        public ActionResult<AppGroupDTO> GetGroupWithProject(string groupCode)
+        public ActionResult<AppGroupDTO> GetGroupWithProjectAndOrder(string groupCode)
         {
             try
             {
-                return new AppGroupDTO(_groups.GetByUniqueGroupCodeWithProject(groupCode));
+                return new AppGroupDTO(_groups.GetByUniqueGroupCodeWithProjectAndOrder(groupCode));
             }
             catch (ArgumentNullException)
             {
