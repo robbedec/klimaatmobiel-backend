@@ -99,7 +99,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
                     item.Price = productMatch.Price;
                     item.ProductImage = productMatch.ProductImage;
 
-                    item.CatergoryId = productMatch.CatergoryId;
+                    item.CategoryId = productMatch.CategoryId;
                 }
             }
 

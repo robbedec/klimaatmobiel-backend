@@ -22,7 +22,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long ProjectId { get; set; }
         public Project Project { get; set; }
 
-        public long CatergoryId { get; set; }
+        public long CategoryId { get; set; }
         public Category Category { get; set; }
 
         public Product()
@@ -37,7 +37,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProductImage = dto.ProductImage;
             ProductImage = dto.ProductImage;
             Price = dto.Price;
-            CatergoryId = dto.CatergoryId;
+            CategoryId = dto.CategoryId;
         }
 
         public Product(ProductTemplate pt)
