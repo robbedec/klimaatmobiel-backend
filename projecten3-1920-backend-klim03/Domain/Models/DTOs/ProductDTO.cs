@@ -17,7 +17,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public double Price { get; set; }
 
-        public long CatergoryId { get; set; }
+        public long CategoryId { get; set; }
         public Category Category { get; set; }
 
         public ProductDTO()
@@ -33,7 +33,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             Price = product.Price;
 
             ProjectId = product.ProjectId;
-            CatergoryId = product.CatergoryId;
+            CategoryId = product.CategoryId;
             Category = product.Category;
 
         }
