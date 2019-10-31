@@ -48,31 +48,31 @@ namespace projecten3_1920_backend_klim03.Data
 
                 //application domain
 
-                ApplicationDomain ad = new ApplicationDomain
+                ApplicationDomain energie = new ApplicationDomain
                 {
                     ApplicationDomainName = "Energie",
                     ApplicationDomainDescr = "Alles over energie"
                 };
                 
-                ApplicationDomain ad2 = new ApplicationDomain
+                ApplicationDomain informatie = new ApplicationDomain
                 {
                     ApplicationDomainName = "Informatie & communicactie",
                     ApplicationDomainDescr = "Alles over informatie & communicactie"
                 };
                 
-                ApplicationDomain ad3 = new ApplicationDomain
+                ApplicationDomain constructie = new ApplicationDomain
                 {
                     ApplicationDomainName = "Constructie",
                     ApplicationDomainDescr = "Alles over constructie"
                 };
                 
-                ApplicationDomain ad4 = new ApplicationDomain
+                ApplicationDomain transport = new ApplicationDomain
                 {
                     ApplicationDomainName = "Transport",
                     ApplicationDomainDescr = "Alles over transport"
                 };
                 
-                ApplicationDomain ad5 = new ApplicationDomain
+                ApplicationDomain biochemie = new ApplicationDomain
                 {
                     ApplicationDomainName = "Biochemie",
                     ApplicationDomainDescr = "Alles over biochemie"
@@ -96,11 +96,11 @@ namespace projecten3_1920_backend_klim03.Data
 
                 _dbContext.Add(ct1);
                 _dbContext.Add(schoolGO);
-                _dbContext.Add(ad);
-                _dbContext.Add(ad2);
-                _dbContext.Add(ad3);
-                _dbContext.Add(ad4);
-                _dbContext.Add(ad5);
+                _dbContext.Add(energie);
+                _dbContext.Add(informatie);
+                _dbContext.Add(constructie);
+                _dbContext.Add(transport);
+                _dbContext.Add(biochemie);
                 _dbContext.SaveChanges();
 
                 //classroom
@@ -260,11 +260,11 @@ namespace projecten3_1920_backend_klim03.Data
                 ProjectTemplate projectTemplate = new ProjectTemplate
                 {
                     AddedByGO = true,
-                    ProjectDescr = "Dit is een project voor natuurkunde",
+                    ProjectDescr = "Dit is een project voor energie",
                     ProjectImage = "image",
-                    ProjectName = "natuur kennismaking",
+                    ProjectName = "Energie kennismaking",
                     SchoolId = schoolGO.SchoolId,
-                    ApplicationDomainId = ad.ApplicationDomainId
+                    ApplicationDomainId = energie.ApplicationDomainId
                 };
 
                 projectTemplate.AddProductTemplate(pt2);
@@ -292,20 +292,44 @@ namespace projecten3_1920_backend_klim03.Data
                     Price = 5,
                 };
 
+                Product pr2 = new Product
+                {
+                    Category = cat1,
+                    ProductName = "papier",
+                    Description = "Algemene beschrijving van papier",
+                    Price = 3,
+                };
+
+                Product pr3 = new Product
+                {
+                    Category = cat1,
+                    ProductName = "plastiek",
+                    Description = "Algemene beschrijving van plastiek",
+                    Price = 10,
+                };
+
                 Group groep1 = new Group
                 {
                     GroupName = "Groep 1",
                     GroupCode ="abcde"
                 };
-       
 
+                Group groep2 = new Group
+                {
+                    GroupName = "Groep 2",
+                    GroupCode = "12345"
+                };
+
+                //Projecten toevoegen
+
+                //Project dat gestart is met 1 groep en 1 product
                 Project project1 = new Project
                 {
                     ProjectBudget = 200,
-                    ProjectDescr = "Dit is een project voor natuurkunde",
+                    ProjectDescr = "Dit is een project over energie waar je iets leert over hechtingen, licht en schaduw via Reus en Dwerg.",
                     ProjectImage = "image",
-                    ProjectName = "natuur kennismaking",
-                    ApplicationDomainId = ad.ApplicationDomainId,
+                    ProjectName = "Ontdekdozen (hechtingen + licht/schaduw)",
+                    ApplicationDomainId = energie.ApplicationDomainId,
                     ESchoolGrade = ESchoolGrade.ALGEMEEN,
                 };
 
@@ -314,6 +338,52 @@ namespace projecten3_1920_backend_klim03.Data
                 cr.AddProject(project1);
                 _dbContext.SaveChanges();
 
+                //Project dat gestart is met 1 groep en 3 producten
+                Project project2 = new Project
+                {
+                    ProjectBudget = 100,
+                    ProjectDescr = "Dit is een project over informatie en communicatie waarbij je leert seinen en blazen.",
+                    ProjectImage = "image",
+                    ProjectName = "Ontdekdozen (leren blazen + seinen)",
+                    ApplicationDomainId = informatie.ApplicationDomainId,
+                    ESchoolGrade = ESchoolGrade.ALGEMEEN,
+                };
+
+                project2.AddProduct(pr1);
+                project2.AddProduct(pr2);
+                project2.AddProduct(pr3);
+                project2.AddGroup(groep2);
+                cr.AddProject(project2);
+                _dbContext.SaveChanges();
+
+                //Project dat gestart is met geen groepen en geen producten
+                Project project3 = new Project
+                {
+                    ProjectBudget = 300,
+                    ProjectDescr = "Dit is een project over constructie waarbij je een muurtje maakt via het verhaal van de 3 biggetjes",
+                    ProjectImage = "image",
+                    ProjectName = "Ontdekdozen (bouwen)",
+                    ApplicationDomainId = constructie.ApplicationDomainId,
+                    ESchoolGrade = ESchoolGrade.ALGEMEEN,
+                };
+
+                cr.AddProject(project3);
+                _dbContext.SaveChanges();
+
+                //Project dat gesloten is met geen groepen en geen producten
+                Project project4 = new Project
+                {
+                    ProjectBudget = 300,
+                    ProjectDescr = "Dit is een project over transport waarbij je een beetje maakt.",
+                    ProjectImage = "image",
+                    ProjectName = "Ontdekdozen (drijven/zinken)",
+                    ApplicationDomainId = transport.ApplicationDomainId,
+                    ESchoolGrade = ESchoolGrade.EERSTE,
+                    Closed = true,
+                };
+
+                cr.AddProject(project4);
+                _dbContext.SaveChanges();
                 groep1.Order = new Order
                 {
                     OrderItems = new List<OrderItem>
