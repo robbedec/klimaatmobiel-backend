@@ -370,7 +370,7 @@ namespace projecten3_1920_backend_klim03.Data
                 cr.AddProject(project3);
                 _dbContext.SaveChanges();
 
-                //Project dat gestart is met geen groepen en geen producten
+                //Project dat gesloten is met geen groepen en geen producten
                 Project project4 = new Project
                 {
                     ProjectBudget = 300,
