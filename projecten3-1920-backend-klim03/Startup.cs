@@ -30,12 +30,14 @@ namespace projecten3_1920_backend_klim03
 {
     public class Startup
     {
+        public IConfiguration Configuration { get; }
+
         public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
         }
 
-        public IConfiguration Configuration { get; }
+       
 
 
         // test
