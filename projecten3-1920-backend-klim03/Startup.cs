@@ -63,10 +63,11 @@ namespace projecten3_1920_backend_klim03
                     // Add option to ignore looping in JSON response (usefull for N:N relations)
                     options.SerializerSettings.ContractResolver = new CamelCasePropertyNamesContractResolver();
                     options.SerializerSettings.ReferenceLoopHandling = Newtonsoft.Json.ReferenceLoopHandling.Ignore;
-                }); 
+                });
 
             //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
-
+            //
+            //db_dev_daan voor daan
             string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
             services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
             {
