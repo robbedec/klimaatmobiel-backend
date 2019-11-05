@@ -320,6 +320,8 @@ namespace projecten3_1920_backend_klim03.Data
                     GroupCode = "12345"
                 };
 
+                groep2.InitOrder();
+
                 //Projecten toevoegen
 
                 //Project dat gestart is met 1 groep en 1 product
