@@ -34,8 +34,8 @@ namespace projecten3_1920_backend_klim03.Data.Repos
         public OrderItem GetById(long id)
         {
             return _orderItems
-                .Include(g => g.Product)
-                .SingleOrDefault(g => g.OrderId == id);
+                .Include(g => g.Product).ThenInclude(g => g.Category)
+                .SingleOrDefault(g => g.OrderItemId == id);
         }
 
         public void Remove(OrderItem obj)

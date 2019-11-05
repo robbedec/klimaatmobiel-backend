@@ -26,16 +26,18 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         }
 
-        public void AddOrderItem(OrderItem oi)
+        public OrderItem AddOrderItem(OrderItem oi)
         {
             if (Submitted) throw new NotSupportedException("It is not allowed to change a finalized order");
 
             if(OrderItems.FirstOrDefault(g => g.ProductId == oi.ProductId) != null)
             {
                 OrderItems.FirstOrDefault(g => g.ProductId == oi.ProductId).Amount++;
+                return OrderItems.FirstOrDefault(g => g.ProductId == oi.ProductId);
             } else
             {
                 OrderItems.Add(oi);
+                return oi;
             }    
         }
 
