@@ -53,8 +53,12 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             ClassRoomId = project.ClassRoomId;
             ApplicationDomainId = project.ApplicationDomainId;
-            ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
 
+            if(project.ApplicationDomain != null)
+            {
+                ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
+            }
+            
             Products = project.Products.Select(g => new ProductDTO(g)).ToList();
             Groups = project.Groups.Select(g => new GroupDTO(g)).ToList();
         }

@@ -45,9 +45,14 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             Closed = dto.Closed;
 
             ApplicationDomainId = dto.ApplicationDomainId;
-
-            dto.Products.ToList().ForEach(g => AddProduct(new Product(g)));
-            dto.Groups.ToList().ForEach(g => AddGroup(new Group(g)));
+            if(dto.Products != null)
+            {
+                dto.Products.ToList().ForEach(g => AddProduct(new Product(g)));
+            }
+            if(dto.Groups != null)
+            {
+                dto.Groups.ToList().ForEach(g => AddGroup(new Group(g)));
+            }      
         }
 
         public Project(ProjectTemplate pt)

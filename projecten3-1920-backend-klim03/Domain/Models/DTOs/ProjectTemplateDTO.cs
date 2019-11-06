@@ -35,7 +35,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             AddedByGO = pt.AddedByGO;
 
             ApplicationDomainId = pt.ApplicationDomainId;
-            ApplicationDomain = new ApplicationDomainDTO(pt.ApplicationDomain);
+            if(pt.ApplicationDomain != null)
+            {
+                ApplicationDomain = new ApplicationDomainDTO(pt.ApplicationDomain);
+            }
+            
 
             ProductTemplates = pt.ProductTemplateProjectTemplates.Select(g => new ProductTemplateDTO(g.ProductTemplate)).ToList();
 
