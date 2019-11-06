@@ -31,10 +31,12 @@ namespace projecten3_1920_backend_klim03
     public class Startup
     {
         public IConfiguration Configuration { get; }
+        public IHostingEnvironment Env { get; set; }
 
-        public Startup(IConfiguration configuration)
+        public Startup(IConfiguration configuration, IHostingEnvironment env)
         {
             Configuration = configuration;
+            Env = env;
         }
 
        
@@ -67,13 +69,28 @@ namespace projecten3_1920_backend_klim03
 
             //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
             //
-            //db_dev_daan voor daan
-            string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
-            services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
+
+            if (Env.IsDevelopment())
             {
-                mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
+                string connectionString = $"Server=127.0.0.1;Database=db_klim_local;User=root;Password=rootroot";
+                services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
+                {
+                    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
+                }
+                ));
             }
-            ));
+            else
+            {
+                string connectionString = $"Server=178.62.218.48;Database=db_dev_klim_v2;User=dbklimuser;Password=pwklimuser";
+                services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
+                {
+                    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
+                }
+                ));
+            }
+
+
+         
 
             // Swagger configuration
             // Swagger authentication is included and configured, add [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
