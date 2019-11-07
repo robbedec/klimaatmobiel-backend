@@ -284,28 +284,46 @@ namespace projecten3_1920_backend_klim03.Data
                     CategoryDescr = "Zaken waarmee je kan bouwen"
                 };
 
+                Category cat2 = new Category
+                {
+                    CategoryName = "Diverse",
+                    CategoryDescr = "Andere gevallen"
+                };
+
                 Product pr1 = new Product
                 {
                     Category = cat1,
-                    ProductName = "hout",
+                    ProductName = "Hout",
                     Description = "Algemene beschrijving van hout",
                     Price = 5,
+                    ProductImage = "https://d16m3dafbknje9.cloudfront.net/imagescaler/9048544313374-500-500.jpg"
                 };
 
                 Product pr2 = new Product
                 {
                     Category = cat1,
-                    ProductName = "papier",
+                    ProductName = "Papier",
                     Description = "Algemene beschrijving van papier",
                     Price = 3,
+                    ProductImage = "http://tmib.com/wp-content/uploads/2014/08/stack-of-paper.jpg"
                 };
 
                 Product pr3 = new Product
                 {
                     Category = cat1,
-                    ProductName = "plastiek",
+                    ProductName = "Plastiek",
                     Description = "Algemene beschrijving van plastiek",
                     Price = 10,
+                    ProductImage = "https://img.etimg.com/thumb/msid-70477420,width-640,resizemode-4,imgsize-251889/the-most-recycled-plastic.jpg"
+                };
+
+                Product pr4 = new Product
+                {
+                    Category = cat2,
+                    ProductName = "Plakband",
+                    Description = "Algemene beschrijving van plakband",
+                    Price = 10,
+                    ProductImage = "https://discountoffice.nl/productImages/8/large/Q800250-3.jpg"
                 };
 
                 Group groep1 = new Group
@@ -351,8 +369,10 @@ namespace projecten3_1920_backend_klim03.Data
                     ESchoolGrade = ESchoolGrade.ALGEMEEN,
                 };
 
+                project2.AddProduct(pr1);
                 project2.AddProduct(pr2);
                 project2.AddProduct(pr3);
+                project2.AddProduct(pr4);
                 project2.AddGroup(groep2);
                 cr.AddProject(project2);
                 _dbContext.SaveChanges();
