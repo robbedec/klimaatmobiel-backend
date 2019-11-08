@@ -97,11 +97,11 @@ namespace projecten3_1920_backend_klim03.Tests.Data
             {
                 GroupId = 1,
                 GroupName = "groepsnaam",
-                Order = testOrder;
+                Order = testOrder
 
-    }
+        };
 
-    testProject = new Project
+            testProject = new Project
             {
                 ProjectName = "testproject",
                 ProjectDescr = "ceci est une beschrijving",
