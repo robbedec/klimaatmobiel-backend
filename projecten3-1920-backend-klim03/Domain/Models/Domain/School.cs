@@ -38,6 +38,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         }
 
+        public void AddPupil(Pupil p)
+        {
+            Pupils.Add(p);
+        }
+
         public void AddProjectTemplate(ProjectTemplate pt)
         {
             ProjectTemplates.Add(pt);

@@ -14,6 +14,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string Surname { get; set; }
 
 
+
         public PupilDTO()
         {
 
