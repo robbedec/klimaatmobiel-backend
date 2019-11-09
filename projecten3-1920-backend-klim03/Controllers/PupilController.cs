@@ -71,6 +71,29 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
 
+        /// <summary>
+        /// Get the project with given id
+        /// </summary>
+        /// <param name="pupilId">the id of the project</param>
+        /// <returns>The project</returns>
+        [HttpGet("{pupilId}")]
+        public ActionResult<PupilDTO> GetPupil(long pupilId)
+        {
+            try
+            {
+                return new PupilDTO(_pupils.GetById(pupilId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Leerling niet gevonden"));
+            }
+        }
+
+
+
+
+
+
 
 
 
