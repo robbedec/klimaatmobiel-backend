@@ -1,4 +1,5 @@
-﻿using projecten3_1920_backend_klim03.Domain.Models.DTOs;
+﻿using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -18,6 +19,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public long ProjectId { get; set; }
         public Project Project { get; set; }
+
+        public List<PupilGroup> PupilGroups { get; set; } = new List<PupilGroup>();
 
         public string GroupCode { get; set; } // this code is not unique so always use UniqueGroupCode
         public string UniqueGroupCode => GroupId.ToString() + GroupCode;

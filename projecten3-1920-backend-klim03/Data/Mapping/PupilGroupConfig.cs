@@ -12,7 +12,11 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<PupilGroup> builder)
         {
-           
+            builder.ToTable("PupilGroup");
+
+            builder.HasKey(ep => new { ep.PupilId, ep.GroupId });
+            builder.HasOne(ep => ep.Pupil).WithMany(p => p.PupilGroups).HasForeignKey(ep => ep.PupilId);
+            builder.HasOne(ep => ep.Group).WithMany(e => e.PupilGroups).HasForeignKey(ep => ep.GroupId);
 
         }
     }

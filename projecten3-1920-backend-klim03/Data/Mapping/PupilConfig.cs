@@ -12,7 +12,8 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
     {
         public void Configure(EntityTypeBuilder<Pupil> builder)
         {
-           
+            builder.ToTable("Pupil");
+            builder.HasKey(g => g.PupilId);
 
 
         }
