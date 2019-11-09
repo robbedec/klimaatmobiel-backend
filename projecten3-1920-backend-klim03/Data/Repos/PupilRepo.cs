@@ -1,4 +1,5 @@
-﻿using projecten3_1920_backend_klim03.Domain.Models;
+﻿using Microsoft.EntityFrameworkCore;
+using projecten3_1920_backend_klim03.Domain.Models;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 using System;
 using System.Collections.Generic;
@@ -10,24 +11,24 @@ namespace projecten3_1920_backend_klim03.Data.Repos
     public class PupilRepo : IPupilRepo
     {
 
-        /*private readonly ApplicationDbContext _context;
-        private readonly DbSet<OrderItem> _orderItems;
+        private readonly ApplicationDbContext _context;
+        private readonly DbSet<Pupil> _pupils;
 
-        public OrderItemRepo(ApplicationDbContext dbContext)
+        public PupilRepo(ApplicationDbContext dbContext)
         {
             _context = dbContext;
-            _orderItems = dbContext.OrderItems;
-        }*/
+            _pupils = dbContext.Pupils;
+        }
 
 
         public void Add(Pupil obj)
         {
-            throw new NotImplementedException();
+            _pupils.Add(obj);
         }
 
         public ICollection<Pupil> GetAll()
         {
-            throw new NotImplementedException();
+            return _pupils.ToList();
         }
 
         public Pupil GetById(long id)
@@ -35,19 +36,24 @@ namespace projecten3_1920_backend_klim03.Data.Repos
             throw new NotImplementedException();
         }
 
-        public bool PupilExists(string voornaam, string achternaam)
+        public Pupil GetByNameInSchool(string firstname, string surname, long schoolId)
         {
-            throw new NotImplementedException();
+            return _pupils.FirstOrDefault(g => g.FirstName == firstname && g.Surname == surname && g.SchoolId == schoolId);
+        }
+
+        public bool PupilExistsInSchool(string firstname, string surname, long schoolId)
+        {
+            return _pupils.Any(g => g.FirstName == firstname && g.Surname == surname && g.SchoolId == schoolId);
         }
 
         public void Remove(Pupil obj)
         {
-            throw new NotImplementedException();
+            _pupils.Remove(obj);
         }
 
         public void SaveChanges()
         {
-            throw new NotImplementedException();
+            _context.SaveChanges();
         }
     }
 }

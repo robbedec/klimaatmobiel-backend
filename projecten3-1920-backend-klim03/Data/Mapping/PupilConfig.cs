@@ -15,7 +15,6 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.ToTable("Pupil");
             builder.HasKey(g => g.PupilId);
 
-
         }
     }
 }
