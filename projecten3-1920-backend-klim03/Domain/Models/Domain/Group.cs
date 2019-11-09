@@ -20,7 +20,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long ProjectId { get; set; }
         public Project Project { get; set; }
 
-        public List<PupilGroup> PupilGroups { get; set; } = new List<PupilGroup>();
+        public ICollection<PupilGroup> PupilGroups { get; set; } = new List<PupilGroup>();
 
         public string GroupCode { get; set; } // this code is not unique so always use UniqueGroupCode
         public string UniqueGroupCode => GroupId.ToString() + GroupCode;
@@ -30,12 +30,27 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
           
         }
 
-        public Group(GroupDTO dto)
+        public Group(GroupDTO dto, long schoolId)
         {
             GroupName = dto.GroupName;
             GroupCode = Guid.NewGuid().ToString().Substring(0,4);
+
+            dto.Pupils.ToList().ForEach(g => AddPupil(new Pupil(g, schoolId)));
+
             InitOrder();
         }
+
+        public void AddPupil(Pupil p)
+        {
+            PupilGroups.Add(new PupilGroup
+            {
+                Pupil = p,
+                Group = this
+            });
+        }
+
+
+
 
         public void InitOrder()
         {

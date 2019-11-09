@@ -1,5 +1,6 @@
 ﻿using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -28,6 +29,15 @@ namespace projecten3_1920_backend_klim03.Domain.Models
         public Pupil()
         {
 
+        }
+
+        public Pupil(PupilDTO dto,long schoolId)
+        {
+            PupilId = dto.PupilId;
+            FirstName = dto.FirstName;
+            Surname = dto.Surname;
+
+            SchoolId = schoolId;
         }
 
 

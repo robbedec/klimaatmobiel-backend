@@ -34,7 +34,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         }
 
 
-        public Project(ProjectDTO dto)
+        public Project(ProjectDTO dto, long schoolId)
         {
             ProjectName = dto.ProjectName;
             ProjectDescr = dto.ProjectDescr;
@@ -51,7 +51,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             }
             if(dto.Groups != null)
             {
-                dto.Groups.ToList().ForEach(g => AddGroup(new Group(g)));
+                dto.Groups.ToList().ForEach(g => AddGroup(new Group(g, schoolId)));
             }      
         }
 
@@ -117,7 +117,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             }
         }
 
-        public void UpdateGroups(ICollection<GroupDTO> grs)
+        public void UpdateGroups(ICollection<GroupDTO> grs, long schoolId)
         {
 
             foreach (var item in Groups.ToList())
@@ -136,7 +136,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             {
                 if (item.GroupId == 0)
                 {
-                    AddGroup(new Group(item));
+                    AddGroup(new Group(item, schoolId));
                 }
             }
         }
