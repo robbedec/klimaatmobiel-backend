@@ -22,6 +22,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public ICollection<PupilGroup> PupilGroups { get; set; } = new List<PupilGroup>();
 
+        public ICollection<Evaluation> Evaluations { get; set; } = new List<Evaluation>();
+
         public string GroupCode { get; set; } // this code is not unique so always use UniqueGroupCode
         public string UniqueGroupCode => GroupId.ToString() + GroupCode;
 
