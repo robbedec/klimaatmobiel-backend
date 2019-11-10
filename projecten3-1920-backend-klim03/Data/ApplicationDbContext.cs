@@ -52,6 +52,8 @@ namespace projecten3_1920_backend_klim03.Data
             builder.ApplyConfiguration(new PupilConfig());
             builder.ApplyConfiguration(new ApplicationDomainConfig());
             builder.ApplyConfiguration(new ProductVariationTemplateConfig());
+            builder.ApplyConfiguration(new EvaluationConfig());
+            
 
             builder.ApplyConfiguration(new ProjectTemplateConfig());
             builder.ApplyConfiguration(new CategoryTemplateConfig());
