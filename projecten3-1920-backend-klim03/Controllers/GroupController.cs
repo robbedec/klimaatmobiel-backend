@@ -39,6 +39,8 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             
         }
+
+
         /// <summary>
         /// Get the group for a given groupCode with its order
         /// </summary>
