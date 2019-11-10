@@ -76,7 +76,7 @@ namespace projecten3_1920_backend_klim03.Controllers
                 p.ApplicationDomainId = dto.ApplicationDomainId;
 
                 p.UpdateProducts(dto.Products);
-                p.UpdateGroups(dto.Groups);
+                p.UpdateGroups(dto.Groups, p.ClassRoom.SchoolId);
 
                 _projects.SaveChanges();
 

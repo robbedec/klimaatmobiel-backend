@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
+using projecten3_1920_backend_klim03.Domain.Models;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.Domain.ManyToMany;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
@@ -94,6 +95,35 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
           
         }
+
+
+
+        /// <summary>
+        /// Adding a pupil to a given school
+        /// </summary>
+        /// <param name="dto">The pupil datails dto</param>
+        /// <param name="schoolId">the id of the school</param>
+        /// <returns>The added pupil</returns>
+        [HttpPost("addPupil/{schoolId}")]
+        public ActionResult<PupilDTO> AddPupil([FromBody]PupilDTO dto, long schoolId)
+        {
+            try
+            {
+                School s = _schools.GetById(schoolId);
+                Pupil p = new Pupil(dto, schoolId);
+
+                s.AddPupil(p);
+                _schools.SaveChanges();
+
+                return new PupilDTO(p);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("School niet gevonden"));
+            }
+
+        }
+
 
     }
 }

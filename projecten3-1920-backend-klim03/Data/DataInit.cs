@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using projecten3_1920_backend_klim03.Domain.Models;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.Domain.enums;
 using System;
@@ -421,6 +422,40 @@ namespace projecten3_1920_backend_klim03.Data
 
 
                 _dbContext.SaveChanges();
+
+
+                schoolGO.AddPupil(new Pupil
+                {
+                    FirstName = "Daan",
+                    Surname = "Dedecker"
+                    
+                });
+
+                schoolGO.AddPupil(new Pupil
+                {
+                    FirstName = "Rambo",
+                    Surname = "Jansens"
+
+                });
+
+                schoolGO.AddPupil(new Pupil
+                {
+                    FirstName = "Piet",
+                    Surname = "Petter"
+                });
+
+
+
+
+
+
+
+
+
+
+
+                _dbContext.SaveChanges();
+
             }
         }
 
