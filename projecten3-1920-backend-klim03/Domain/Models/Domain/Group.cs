@@ -35,7 +35,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             GroupName = dto.GroupName;
             GroupCode = Guid.NewGuid().ToString().Substring(0,4);
 
-            dto.Pupils.ToList().ForEach(g => AddPupil(new Pupil(g, schoolId)));
+            dto.Pupils.Where(g => g.FirstName != "").ToList().ForEach(g => AddPupil(new Pupil(g, schoolId)));
 
             InitOrder();
         }
