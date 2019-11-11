@@ -26,6 +26,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public ICollection<Product> Products { get; set; } = new List<Product>();
         public ICollection<Group> Groups { get; set; } = new List<Group>();
+        public ICollection<EvaluationCriterea> EvaluationCritereas { get; set; } = new List<EvaluationCriterea>();
 
 
         public Project()

@@ -9,7 +9,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long EvaluationId { get; set; }
 
-        public string Title { get; set; }
         public string DescriptionPrivate { get; set; }
         public string DescriptionPupil { get; set; }
 

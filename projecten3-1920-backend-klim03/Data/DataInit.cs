@@ -339,7 +339,15 @@ namespace projecten3_1920_backend_klim03.Data
                     GroupCode = "12345"
                 };
 
+                Group groep3 = new Group
+                {
+                    GroupName = "Groep 3",
+                    GroupCode = "azert"
+                };
+                
+
                 groep2.InitOrder();
+                groep3.InitOrder();
 
                 //Projecten toevoegen
 
@@ -356,7 +364,26 @@ namespace projecten3_1920_backend_klim03.Data
 
                 project1.AddProduct(pr1);
                 project1.AddGroup(groep1);
+                project1.AddGroup(groep3);
                 cr.AddProject(project1);
+
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    Title="Eerste ronde"
+                });
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    Title = "Tweede ronde"
+                });
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    Title = "Derde ronde"
+                });
+
+
                 _dbContext.SaveChanges();
 
                 //Project dat gestart is met 1 groep en 3 producten
@@ -424,33 +451,31 @@ namespace projecten3_1920_backend_klim03.Data
                 _dbContext.SaveChanges();
 
 
-                schoolGO.AddPupil(new Pupil
+                groep1.AddPupil(
+                new Pupil
                 {
-                    FirstName = "Daan",
-                    Surname = "Dedecker"
-                    
+                        FirstName = "Daan",
+                        Surname = "Dedecker",
+                        SchoolId = schoolGO.SchoolId
+                        
                 });
 
-                schoolGO.AddPupil(new Pupil
+                groep1.AddPupil(
+                new Pupil
                 {
                     FirstName = "Rambo",
-                    Surname = "Jansens"
+                    Surname = "Jansens",
+                    SchoolId = schoolGO.SchoolId
 
                 });
 
-                schoolGO.AddPupil(new Pupil
+                groep1.AddPupil(
+                new Pupil
                 {
                     FirstName = "Piet",
-                    Surname = "Petter"
+                    Surname = "Petter",
+                    SchoolId = schoolGO.SchoolId
                 });
-
-
-
-
-
-
-
-
 
 
 
