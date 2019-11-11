@@ -15,6 +15,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public bool Extra { get; set; } // deze die nog niet als standaard bij een project zijn geconfigureerd
 
+        public long EvaluationCritereaId { get; set; }
+
 
 
         public EvaluationDTO(Evaluation e)
@@ -23,8 +25,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
             DescriptionPrivate = e.DescriptionPrivate;
             DescriptionPupil = e.DescriptionPupil;
-
             Extra = e.Extra;
+
+            EvaluationCritereaId = e.EvaluationCritereaId;
         }
     }
 }

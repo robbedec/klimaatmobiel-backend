@@ -368,19 +368,42 @@ namespace projecten3_1920_backend_klim03.Data
                 cr.AddProject(project1);
 
 
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    Title="Eerste ronde"
-                });
+                
 
                 project1.EvaluationCritereas.Add(new EvaluationCriterea
                 {
+                    EvaluationCritereaId = 1,
+                    Title="Eerste ronde"
+                });;
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 2,
                     Title = "Tweede ronde"
                 });
 
                 project1.EvaluationCritereas.Add(new EvaluationCriterea
                 {
+                    EvaluationCritereaId = 3,
                     Title = "Derde ronde"
+                });
+
+
+                _dbContext.SaveChanges();
+
+                groep1.AddEvaluation(new Evaluation { 
+                    DescriptionPupil = "evaluatie voor de leerling, eerste ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, eerste ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 1
+                });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, tweede ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, tweede ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 2
                 });
 
 

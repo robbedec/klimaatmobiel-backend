@@ -15,6 +15,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public bool Extra { get; set; } // deze die nog niet als standaard bij een project zijn geconfigureerd
 
+        public long EvaluationCritereaId { get; set; }
+        public EvaluationCriterea EvaluationCriterea { get; set; }
+
 
         public Evaluation()
         {
