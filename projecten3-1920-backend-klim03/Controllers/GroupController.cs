@@ -78,5 +78,31 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
 
         }
+
+        /// <summary>
+        /// Adds an evaluation to a group
+        /// </summary>
+        /// <param name="dto">The project template details</param>
+        /// <param name="groupId">the id of the school</param>
+        /// <returns>The added project template</returns>
+        [HttpPost("addEvaluation/{groupId}")]
+        public ActionResult<EvaluationDTO> AddProject([FromBody]EvaluationDTO dto, long groupId)
+        {
+            try
+            {
+                Group s = _groups.GetById(groupId);
+                Evaluation pt = new Evaluation(dto); 
+
+                s.AddEvaluation(pt);
+                _groups.SaveChanges();
+
+                return new EvaluationDTO(pt);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
+            }
+
+        }
     }
 }

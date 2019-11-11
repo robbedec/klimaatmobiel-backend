@@ -53,7 +53,14 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             if(dto.Groups != null)
             {
                 dto.Groups.ToList().ForEach(g => AddGroup(new Group(g, schoolId)));
-            }      
+            }
+
+            if (dto.EvaluationCritereas != null)
+            {
+                dto.EvaluationCritereas.ToList().ForEach(g => AddEvaluationCriterea(new EvaluationCriterea(g)));
+            }
+
+
         }
 
         public Project(ProjectTemplate pt)
@@ -67,6 +74,10 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             pt.ProductTemplateProjectTemplates.ToList().ForEach(g => AddProduct(new Product(g.ProductTemplate)));
         }
 
+        public void AddEvaluationCriterea(EvaluationCriterea p)
+        {
+            EvaluationCritereas.Add(p);
+        }
 
         public void AddProduct(Product p)
         {

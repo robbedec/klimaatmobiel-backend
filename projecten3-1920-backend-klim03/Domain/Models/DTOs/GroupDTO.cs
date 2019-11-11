@@ -17,6 +17,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string UniqueGroupCode { get; set; }
 
         public ICollection<PupilDTO> Pupils { get; set; } = new List<PupilDTO>();
+        public ICollection<EvaluationDTO> Evaluations { get; set; } = new List<EvaluationDTO>();
 
         public GroupDTO()
         {
@@ -35,6 +36,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             }
 
             Pupils = group.PupilGroups.Select(g => new PupilDTO(g.Pupil)).ToList();
+            Evaluations = group.Evaluations.Select(g => new EvaluationDTO(g)).ToList();
 
         }
     }

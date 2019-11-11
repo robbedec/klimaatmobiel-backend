@@ -32,7 +32,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public ICollection<ProductDTO> Products { get; set; } = new List<ProductDTO>();
         public ICollection<GroupDTO> Groups { get; set; } = new List<GroupDTO>();
-
+        public ICollection<EvaluationCritereaDTO> EvaluationCritereas { get; set; } = new List<EvaluationCritereaDTO>();
 
         public ProjectDTO()
         {
@@ -61,6 +61,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             
             Products = project.Products.Select(g => new ProductDTO(g)).ToList();
             Groups = project.Groups.Select(g => new GroupDTO(g)).ToList();
+            EvaluationCritereas = project.EvaluationCritereas.Select(g => new EvaluationCritereaDTO(g)).ToList();
         }
 
 

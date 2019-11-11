@@ -21,7 +21,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public Project Project { get; set; }
 
         public ICollection<PupilGroup> PupilGroups { get; set; } = new List<PupilGroup>();
-
         public ICollection<Evaluation> Evaluations { get; set; } = new List<Evaluation>();
 
         public string GroupCode { get; set; } // this code is not unique so always use UniqueGroupCode
@@ -37,7 +36,19 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             GroupName = dto.GroupName;
             GroupCode = Guid.NewGuid().ToString().Substring(0,4);
 
-            dto.Pupils.Where(g => g.FirstName != "").ToList().ForEach(g => AddPupil(new Pupil(g, schoolId)));
+            if (dto.Pupils != null)
+            {
+                dto.Pupils.Where(g => g.FirstName != "").ToList().ForEach(g => AddPupil(new Pupil(g, schoolId)));
+            }
+
+            if (dto.Evaluations != null)
+            {
+                dto.Evaluations.ToList().ForEach(g => AddEvaluation(new Evaluation(g)));
+            }
+
+
+
+
 
             InitOrder();
         }
@@ -49,6 +60,11 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
                 Pupil = p,
                 Group = this
             });
+        }
+
+        public void AddEvaluation(Evaluation e)
+        {
+            Evaluations.Add(e);
         }
 
 
