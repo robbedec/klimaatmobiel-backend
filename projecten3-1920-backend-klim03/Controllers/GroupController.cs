@@ -82,16 +82,22 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <summary>
         /// Adds an evaluation to a group
         /// </summary>
-        /// <param name="dto">The project template details</param>
-        /// <param name="groupId">the id of the school</param>
-        /// <returns>The added project template</returns>
+        /// <param name="dto">The evaluation to add</param>
+        /// <param name="groupId">the id of the group</param>
+        /// <returns>The added evaluation</returns>
         [HttpPost("addEvaluation/{groupId}")]
-        public ActionResult<EvaluationDTO> AddProject([FromBody]EvaluationDTO dto, long groupId)
+        public ActionResult<EvaluationDTO> AddEvaluation([FromBody]EvaluationDTO dto, long groupId)
         {
             try
             {
-                Group s = _groups.GetById(groupId);
-                Evaluation pt = new Evaluation(dto); 
+                dto.Extra = true; // evaluations that get addded this way are always extra
+
+                Group s = _groups.GetByIdToAddEvaluation(groupId);
+                Evaluation pt = new Evaluation(dto);
+
+                pt.EvaluationCriterea = null;
+                pt.EvaluationCritereaId = null;
+
 
                 s.AddEvaluation(pt);
                 _groups.SaveChanges();
@@ -102,7 +108,49 @@ namespace projecten3_1920_backend_klim03.Controllers
             {
                 return NotFound(new CustomErrorDTO("Groep niet gevonden"));
             }
-
         }
+        //GetByIdToEditEvaluation
+
+
+
+
+        /// <summary>
+        /// Edits an evaluation in a group
+        /// </summary>
+        /// <param name="dto">The evaluation to edit</param>
+        /// <param name="groupId">the id of the group</param>
+        /// <param name="evaluationId">the id of the evaluation</param>
+        /// <returns>The edited evaluation</returns>
+        [HttpPut("editEvaluation/{groupId}/{evaluationId}")]
+        public ActionResult<EvaluationDTO> EditEvaluation([FromBody]EvaluationDTO dto, long groupId, long evaluationId)
+        {
+            try
+            {
+
+                Group s = _groups.GetByIdToEditEvaluation(groupId);
+
+                var e = s.GetEvaluationById(evaluationId);
+
+                if (e.Extra)
+                {
+                    e.Title = dto.Title;
+                }
+
+                e.DescriptionPupil = dto.DescriptionPupil;
+                e.DescriptionPrivate = dto.DescriptionPrivate;
+
+                _groups.SaveChanges();
+
+                return new EvaluationDTO(e);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
+            }
+        }
+
+
+
+
     }
 }

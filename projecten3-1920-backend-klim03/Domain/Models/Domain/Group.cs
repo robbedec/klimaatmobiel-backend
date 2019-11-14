@@ -70,6 +70,12 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         }
 
 
+        public Evaluation GetEvaluationById(long evaluationId)
+        {
+            return Evaluations.ToList().SingleOrDefault(g => g.EvaluationId == evaluationId);
+        }
+
+
 
 
         public void InitOrder()

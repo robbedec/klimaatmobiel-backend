@@ -60,5 +60,17 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                 .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
                 .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
         }
+
+        public Group GetByIdToAddEvaluation(long groupId)
+        {
+            return _groups
+                 .SingleOrDefault(g => g.GroupId == groupId);
+        }
+
+        public Group GetByIdToEditEvaluation(long groupId)
+        {
+            return _groups.Include(g => g.Evaluations).ThenInclude(g => g.EvaluationCriterea)
+               .SingleOrDefault(g => g.GroupId == groupId);
+        }
     }
 }
