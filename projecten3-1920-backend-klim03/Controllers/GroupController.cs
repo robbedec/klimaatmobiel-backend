@@ -39,6 +39,8 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             
         }
+
+
         /// <summary>
         /// Get the group for a given groupCode with its order
         /// </summary>
@@ -69,6 +71,32 @@ namespace projecten3_1920_backend_klim03.Controllers
             try
             {
                 return new AppGroupDTO(_groups.GetByUniqueGroupCodeWithProjectAndOrder(groupCode));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
+            }
+
+        }
+
+        /// <summary>
+        /// Adds an evaluation to a group
+        /// </summary>
+        /// <param name="dto">The project template details</param>
+        /// <param name="groupId">the id of the school</param>
+        /// <returns>The added project template</returns>
+        [HttpPost("addEvaluation/{groupId}")]
+        public ActionResult<EvaluationDTO> AddProject([FromBody]EvaluationDTO dto, long groupId)
+        {
+            try
+            {
+                Group s = _groups.GetById(groupId);
+                Evaluation pt = new Evaluation(dto); 
+
+                s.AddEvaluation(pt);
+                _groups.SaveChanges();
+
+                return new EvaluationDTO(pt);
             }
             catch (ArgumentNullException)
             {

@@ -57,6 +57,28 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
 
+      
+        /// <summary>
+        /// Get the project with given id
+        /// </summary>
+        /// <param name="projectId">the id of the project</param>
+        /// <returns>The project to diplay its progress</returns>
+        [HttpGet("progress/{projectId}")]
+        public ActionResult<ProjectDTO> GetProjectProgress(long projectId)
+        {
+            try
+            {
+                return new ProjectDTO(_projects.GetForProjectProgress(projectId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project niet gevonden"));
+            }
+        }
+
+
+
+
 
         /// <summary>
         /// updates a project
@@ -109,5 +131,9 @@ namespace projecten3_1920_backend_klim03.Controllers
                 return NotFound(new CustomErrorDTO("Project niet gevonden"));
             }
         }
+
+
+
+
     }
 }

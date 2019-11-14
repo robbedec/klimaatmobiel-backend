@@ -75,12 +75,12 @@ namespace projecten3_1920_backend_klim03.Controllers
                 Project p = new Project(dto, cr.SchoolId);
 
 
+              
 
                 cr.AddProject(p);
 
 
                 _classRooms.SaveChanges();
-                var a = p;
                 return new ProjectDTO(p);
             }
             catch (ArgumentNullException)

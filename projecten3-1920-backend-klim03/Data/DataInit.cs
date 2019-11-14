@@ -339,7 +339,15 @@ namespace projecten3_1920_backend_klim03.Data
                     GroupCode = "12345"
                 };
 
+                Group groep3 = new Group
+                {
+                    GroupName = "Groep 3",
+                    GroupCode = "azert"
+                };
+                
+
                 groep2.InitOrder();
+                groep3.InitOrder();
 
                 //Projecten toevoegen
 
@@ -356,7 +364,49 @@ namespace projecten3_1920_backend_klim03.Data
 
                 project1.AddProduct(pr1);
                 project1.AddGroup(groep1);
+                project1.AddGroup(groep3);
                 cr.AddProject(project1);
+
+
+                
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 1,
+                    Title="Eerste ronde"
+                });;
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 2,
+                    Title = "Tweede ronde"
+                });
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 3,
+                    Title = "Derde ronde"
+                });
+
+
+                _dbContext.SaveChanges();
+
+                groep1.AddEvaluation(new Evaluation { 
+                    DescriptionPupil = "evaluatie voor de leerling, eerste ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, eerste ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 1
+                });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, tweede ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, tweede ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 2
+                });
+
+
                 _dbContext.SaveChanges();
 
                 //Project dat gestart is met 1 groep en 3 producten
@@ -424,33 +474,31 @@ namespace projecten3_1920_backend_klim03.Data
                 _dbContext.SaveChanges();
 
 
-                schoolGO.AddPupil(new Pupil
+                groep1.AddPupil(
+                new Pupil
                 {
-                    FirstName = "Daan",
-                    Surname = "Dedecker"
-                    
+                        FirstName = "Daan",
+                        Surname = "Dedecker",
+                        SchoolId = schoolGO.SchoolId
+                        
                 });
 
-                schoolGO.AddPupil(new Pupil
+                groep1.AddPupil(
+                new Pupil
                 {
                     FirstName = "Rambo",
-                    Surname = "Jansens"
+                    Surname = "Jansens",
+                    SchoolId = schoolGO.SchoolId
 
                 });
 
-                schoolGO.AddPupil(new Pupil
+                groep1.AddPupil(
+                new Pupil
                 {
                     FirstName = "Piet",
-                    Surname = "Petter"
+                    Surname = "Petter",
+                    SchoolId = schoolGO.SchoolId
                 });
-
-
-
-
-
-
-
-
 
 
 
