@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Linq;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models;
@@ -42,6 +43,41 @@ namespace projecten3_1920_backend_klim03.Controllers
         }
 
 
+        /// <summary>
+        /// Get the project templates from a school 
+        /// </summary>
+        /// <param name="schoolId">the id of the school</param>
+        /// <returns>The project templates from the school</returns>
+        [HttpGet("projectTemplates/{schoolId}")]
+        public ActionResult<ICollection<ProjectTemplateDTO>> ProjectTemplatesFromSchool(long schoolId)
+        {
+            try
+            {
+                return _schools.GetByIdWithTemplates(schoolId).ProjectTemplates.Select(p => new ProjectTemplateDTO(p)).ToList();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("School niet gevonden"));
+            }
+        }
+
+        /// <summary>
+        /// Get the product templates from a school 
+        /// </summary>
+        /// <param name="schoolId">the id of the school</param>
+        /// <returns>The product templates from the school</returns>
+        [HttpGet("productTemplates/{schoolId}")]
+        public ActionResult<ICollection<ProductTemplateDTO>> ProductTemplatesFromSchool(long schoolId)
+        {
+            try
+            {
+                return _schools.GetByIdWithTemplates(schoolId).ProductTemplates.Select(prod => new ProductTemplateDTO(prod)).ToList();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("School niet gevonden"));
+            }
+        }
 
 
         /// <summary>
