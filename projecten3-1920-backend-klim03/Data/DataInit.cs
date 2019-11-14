@@ -406,6 +406,14 @@ namespace projecten3_1920_backend_klim03.Data
                     EvaluationCritereaId = 2
                 });
 
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, tweede ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, tweede ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 3
+                });
+
 
                 _dbContext.SaveChanges();
 
