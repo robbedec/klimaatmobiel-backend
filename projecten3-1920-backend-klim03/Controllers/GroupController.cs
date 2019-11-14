@@ -149,12 +149,11 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <summary>
         /// Deletes an evaluation in a group
         /// </summary>
-        /// <param name="dto">The evaluation to delete</param>
         /// <param name="groupId">the id of the group</param>
         /// <param name="evaluationId">the id of the evaluation</param>
         /// <returns>The deleted evaluation</returns>
         [HttpDelete("deleteEvaluation/{groupId}/{evaluationId}")]
-        public ActionResult<EvaluationDTO> DeleteEvaluation([FromBody]EvaluationDTO dto, long groupId, long evaluationId)
+        public ActionResult<EvaluationDTO> DeleteEvaluation(long groupId, long evaluationId)
         {
             try
             {
