@@ -16,7 +16,7 @@ namespace projecten3_1920_backend_klim03.Data.Mapping
             builder.HasKey(g => g.EvaluationId);
 
 
-            builder.HasOne(g => g.EvaluationCriterea).WithMany().HasForeignKey(g => g.EvaluationCritereaId);
+            
 
         }
     }

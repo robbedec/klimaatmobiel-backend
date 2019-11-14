@@ -75,11 +75,7 @@ namespace projecten3_1920_backend_klim03.Controllers
                 Project p = new Project(dto, cr.SchoolId);
 
 
-                p.Groups.ToList().ForEach(g =>
-                {
-                    g.AddEvaluation(new Evaluation());
-
-                });
+              
 
                 cr.AddProject(p);
 

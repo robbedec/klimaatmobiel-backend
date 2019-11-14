@@ -10,6 +10,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
     {
         public long EvaluationId { get; set; }
 
+        public string Title { get; set; } // enkel gebruiken als extra == true
+
         public string DescriptionPrivate { get; set; }
         public string DescriptionPupil { get; set; }
 
@@ -17,6 +19,9 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public long EvaluationCritereaId { get; set; }
         public EvaluationCriterea EvaluationCriterea { get; set; }
+
+        public long GroupId { get; set; }
+        public Group Group { get; set; }
 
 
         public Evaluation()
@@ -26,6 +31,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public Evaluation(EvaluationDTO dto)
         {
+            Title = dto.Title;
             DescriptionPrivate = dto.DescriptionPrivate;
             DescriptionPupil = dto.DescriptionPupil;
 

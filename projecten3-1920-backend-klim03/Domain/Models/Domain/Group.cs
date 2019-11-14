@@ -41,10 +41,12 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
                 dto.Pupils.Where(g => g.FirstName != "").ToList().ForEach(g => AddPupil(new Pupil(g, schoolId)));
             }
 
-            if (dto.Evaluations != null)
+
+            //evaluaties worden pas later toegevoegd
+            /*if (dto.Evaluations != null)
             {
                 dto.Evaluations.ToList().ForEach(g => AddEvaluation(new Evaluation(g)));
-            }
+            }*/ // 
 
 
 

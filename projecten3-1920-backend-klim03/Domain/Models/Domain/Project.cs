@@ -57,10 +57,20 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
             if (dto.EvaluationCritereas != null)
             {
-                dto.EvaluationCritereas.ToList().ForEach(g => AddEvaluationCriterea(new EvaluationCriterea(g)));
+                dto.EvaluationCritereas.ToList().ForEach(g =>
+                {
+                    var ec = new EvaluationCriterea(g);
+                    Groups.ToList().ForEach(j =>
+                    {
+                        j.AddEvaluation(new Evaluation { 
+                            Group = j,
+                            EvaluationCriterea = ec
+                        });
+                    });
+                    AddEvaluationCriterea(ec);
+                }     
+                );
             }
-
-
         }
 
         public Project(ProjectTemplate pt)
