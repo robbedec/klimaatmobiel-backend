@@ -126,22 +126,49 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             try
             {
-
                 Group s = _groups.GetByIdToEditEvaluation(groupId);
-
                 var e = s.GetEvaluationById(evaluationId);
-
                 if (e.Extra)
                 {
                     e.Title = dto.Title;
                 }
-
                 e.DescriptionPupil = dto.DescriptionPupil;
                 e.DescriptionPrivate = dto.DescriptionPrivate;
 
                 _groups.SaveChanges();
 
                 return new EvaluationDTO(e);
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Groep niet gevonden"));
+            }
+        }
+
+
+        /// <summary>
+        /// Deletes an evaluation in a group
+        /// </summary>
+        /// <param name="dto">The evaluation to delete</param>
+        /// <param name="groupId">the id of the group</param>
+        /// <param name="evaluationId">the id of the evaluation</param>
+        /// <returns>The deleted evaluation</returns>
+        [HttpDelete("deleteEvaluation/{groupId}/{evaluationId}")]
+        public ActionResult<EvaluationDTO> DeleteEvaluation([FromBody]EvaluationDTO dto, long groupId, long evaluationId)
+        {
+            try
+            {
+                Group s = _groups.GetByIdToEditEvaluation(groupId);
+                var ev = s.GetEvaluationById(evaluationId);
+                if (ev.Extra)
+                {
+                    s.RemoveEvaluationById(ev.EvaluationId);
+
+                    _groups.SaveChanges();
+
+                    return new EvaluationDTO(ev);
+                } 
+                return NotFound(new CustomErrorDTO("Een standaard evaluatie criteria kan je niet verwijderen!")); // dit moet een betere statuscode teruggeven
             }
             catch (ArgumentNullException)
             {

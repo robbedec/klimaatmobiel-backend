@@ -69,14 +69,16 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             Evaluations.Add(e);
         }
 
+        public void RemoveEvaluationById(long evaluationId)
+        {
+            Evaluations.Remove(GetEvaluationById(evaluationId));
+        }
+
 
         public Evaluation GetEvaluationById(long evaluationId)
         {
             return Evaluations.ToList().SingleOrDefault(g => g.EvaluationId == evaluationId);
         }
-
-
-
 
         public void InitOrder()
         {
