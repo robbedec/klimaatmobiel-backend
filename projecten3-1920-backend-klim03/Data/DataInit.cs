@@ -337,18 +337,21 @@ namespace projecten3_1920_backend_klim03.Data
 
                 Group groep1 = new Group
                 {
+                    GroupId = 1,
                     GroupName = "Groep 1",
                     GroupCode ="abcde"
                 };
 
                 Group groep2 = new Group
                 {
+                    GroupId = 2,
                     GroupName = "Groep 2",
                     GroupCode = "12345"
                 };
 
                 Group groep3 = new Group
                 {
+                    GroupId = 3,
                     GroupName = "Groep 3",
                     GroupCode = "azert"
                 };
