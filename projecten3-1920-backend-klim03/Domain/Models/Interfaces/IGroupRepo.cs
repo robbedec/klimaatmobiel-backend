@@ -7,5 +7,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Interfaces
     {
         Group GetByUniqueGroupCodeWithOrder(string uniqueGroupCode);
         Group GetByUniqueGroupCodeWithProjectAndOrder(string uniqueGroupCode);
+        Group GetByIdToAddEvaluation(long groupId);
+        Group GetByIdToEditEvaluation(long groupId);
     }
 }

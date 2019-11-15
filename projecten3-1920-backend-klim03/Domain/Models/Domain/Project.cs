@@ -84,6 +84,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             pt.ProductTemplateProjectTemplates.ToList().ForEach(g => AddProduct(new Product(g.ProductTemplate)));
         }
 
+
         public void AddEvaluationCriterea(EvaluationCriterea p)
         {
             EvaluationCritereas.Add(p);

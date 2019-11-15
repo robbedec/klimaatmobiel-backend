@@ -11,6 +11,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public long EvaluationCritereaId { get; set; }
         public string Title { get; set; }
 
+
         public ICollection<Evaluation> Evaluations { get; set; } = new List<Evaluation>();
 
 

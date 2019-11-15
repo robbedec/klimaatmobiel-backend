@@ -377,8 +377,6 @@ namespace projecten3_1920_backend_klim03.Data
                 project1.AddGroup(groep1);
                 project1.AddGroup(groep3);
                 cr.AddProject(project1);
-
-
                 
 
                 project1.EvaluationCritereas.Add(new EvaluationCriterea
@@ -402,7 +400,12 @@ namespace projecten3_1920_backend_klim03.Data
 
                 _dbContext.SaveChanges();
 
-                groep1.AddEvaluation(new Evaluation { 
+
+                #region Add evaluations for group 1 and 3
+
+
+                groep1.AddEvaluation(new Evaluation
+                {
                     DescriptionPupil = "evaluatie voor de leerling, eerste ronde",
                     DescriptionPrivate = "evaluatie voor de leerkracht, eerste ronde",
                     Extra = false,
@@ -416,6 +419,58 @@ namespace projecten3_1920_backend_klim03.Data
                     Extra = false,
                     EvaluationCritereaId = 2
                 });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, derde ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, derde ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 3
+                });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    Title = "Extra evaluatie",
+                    DescriptionPupil = "Extra leerling",
+                    DescriptionPrivate = "Extra leerkracht",
+                    Extra = true
+                });
+
+
+
+
+                groep3.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "",
+                    DescriptionPrivate = "",
+                    Extra = false,
+                    EvaluationCritereaId = 1
+                });
+
+                groep3.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "",
+                    DescriptionPrivate = "",
+                    Extra = false,
+                    EvaluationCritereaId = 2
+                });
+
+                groep3.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "",
+                    DescriptionPrivate = "",
+                    Extra = false,
+                    EvaluationCritereaId = 3
+                });
+
+
+                #endregion
+
+
+
+
+              
+
 
 
                 _dbContext.SaveChanges();
@@ -478,7 +533,7 @@ namespace projecten3_1920_backend_klim03.Data
                         }
                     }
                 };
-
+                
 
 
 
