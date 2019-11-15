@@ -120,6 +120,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is karton",
                     AddedByGO = true,
                     ProductImage = "https://karton.com",
+                    Score = 9,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -154,6 +155,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is lijm",
                     AddedByGO = true,
                     ProductImage = "https://lijm.com",
+                    Score = 6,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -187,6 +189,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is Plakband",
                     AddedByGO = true,
                     ProductImage = "https://plakband.com",
+                    Score = 5,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -221,6 +224,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is hout",
                     AddedByGO = true,
                     ProductImage = "https://hout.com",
+                    Score = 8,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -297,6 +301,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Hout",
                     Description = "Algemene beschrijving van hout",
                     Price = 5,
+                    Score = 8,
                     ProductImage = "https://d16m3dafbknje9.cloudfront.net/imagescaler/9048544313374-500-500.jpg"
                 };
 
@@ -306,6 +311,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Papier",
                     Description = "Algemene beschrijving van papier",
                     Price = 3,
+                    Score = 7,
                     ProductImage = "http://tmib.com/wp-content/uploads/2014/08/stack-of-paper.jpg"
                 };
 
@@ -315,6 +321,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Plastiek",
                     Description = "Algemene beschrijving van plastiek",
                     Price = 10,
+                    Score = 2,
                     ProductImage = "https://img.etimg.com/thumb/msid-70477420,width-640,resizemode-4,imgsize-251889/the-most-recycled-plastic.jpg"
                 };
 
@@ -324,6 +331,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Plakband",
                     Description = "Algemene beschrijving van plakband",
                     Price = 10,
+                    Score = 6,
                     ProductImage = "https://discountoffice.nl/productImages/8/large/Q800250-3.jpg"
                 };
 
@@ -374,7 +382,7 @@ namespace projecten3_1920_backend_klim03.Data
                 {
                     EvaluationCritereaId = 1,
                     Title="Eerste ronde"
-                });;
+                });
 
                 project1.EvaluationCritereas.Add(new EvaluationCriterea
                 {

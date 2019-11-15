@@ -17,7 +17,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string Description { get; set; }
 
         public double Price { get; set; }
-
+        public int Score { get; set; }
 
         public long ProjectId { get; set; }
         public Project Project { get; set; }
@@ -38,6 +38,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProductImage = dto.ProductImage;
             Price = dto.Price;
             CategoryId = dto.CategoryId;
+            Score = dto.Score;
         }
 
         public Product(ProductTemplate pt)
@@ -45,6 +46,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProductImage = pt.ProductImage;
             Description = pt.Description;
             ProductName = pt.ProductName;
+            Score = pt.Score;
 
             Category = new Category(pt.CategoryTemplate); // will have to match categories on name since id will be different every time (fix later)
 
