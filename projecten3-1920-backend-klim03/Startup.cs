@@ -72,6 +72,7 @@ namespace projecten3_1920_backend_klim03
 
             if (Env.IsDevelopment())
             {
+
                 string connectionString = $"Server=127.0.0.1;Database=db_klim_local;User=root;Password=rootroot";
                 services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
                 //services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
@@ -79,6 +80,14 @@ namespace projecten3_1920_backend_klim03
                 //    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
                 //}
                 //));
+
+                //string connectionString = $"Server=127.0.0.1;Database=db_klim_local;User=root;Password=root";
+                //services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
+                //{
+                ////    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
+                ////}
+                ////));
+
             }
             else
             {
@@ -164,6 +173,7 @@ namespace projecten3_1920_backend_klim03
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProjectRepo, ProjectRepo>();
             services.AddScoped<ISchoolRepo, SchoolRepo>();
+            services.AddScoped<IPupilRepo, PupilRepo>();
             services.AddScoped<IApplicationDomainRepo, ApplicationDomainRepo>();
 
             services.AddScoped<IProjectTemplateRepo, ProjectTemplateRepo>();

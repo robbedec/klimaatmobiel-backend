@@ -1,4 +1,5 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using projecten3_1920_backend_klim03.Domain.Models;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.Domain.enums;
 using System;
@@ -119,6 +120,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is karton",
                     AddedByGO = true,
                     ProductImage = "https://karton.com",
+                    Score = 9,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -153,6 +155,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is lijm",
                     AddedByGO = true,
                     ProductImage = "https://lijm.com",
+                    Score = 6,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -186,6 +189,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is Plakband",
                     AddedByGO = true,
                     ProductImage = "https://plakband.com",
+                    Score = 5,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -220,6 +224,7 @@ namespace projecten3_1920_backend_klim03.Data
                     Description = "Dit is hout",
                     AddedByGO = true,
                     ProductImage = "https://hout.com",
+                    Score = 8,
                     HasMultipleDisplayVariations = true,
                     CategoryTemplateId = ct1.CategoryTemplateId,
                     SchoolId = schoolGO.SchoolId,
@@ -296,6 +301,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Hout",
                     Description = "Algemene beschrijving van hout",
                     Price = 5,
+                    Score = 8,
                     ProductImage = "https://d16m3dafbknje9.cloudfront.net/imagescaler/9048544313374-500-500.jpg"
                 };
 
@@ -305,6 +311,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Papier",
                     Description = "Algemene beschrijving van papier",
                     Price = 3,
+                    Score = 7,
                     ProductImage = "http://tmib.com/wp-content/uploads/2014/08/stack-of-paper.jpg"
                 };
 
@@ -314,6 +321,7 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Plastiek",
                     Description = "Algemene beschrijving van plastiek",
                     Price = 10,
+                    Score = 2,
                     ProductImage = "https://img.etimg.com/thumb/msid-70477420,width-640,resizemode-4,imgsize-251889/the-most-recycled-plastic.jpg"
                 };
 
@@ -323,22 +331,34 @@ namespace projecten3_1920_backend_klim03.Data
                     ProductName = "Plakband",
                     Description = "Algemene beschrijving van plakband",
                     Price = 10,
+                    Score = 6,
                     ProductImage = "https://discountoffice.nl/productImages/8/large/Q800250-3.jpg"
                 };
 
                 Group groep1 = new Group
                 {
+                    GroupId = 1,
                     GroupName = "Groep 1",
                     GroupCode ="abcde"
                 };
 
                 Group groep2 = new Group
                 {
+                    GroupId = 2,
                     GroupName = "Groep 2",
                     GroupCode = "12345"
                 };
 
+                Group groep3 = new Group
+                {
+                    GroupId = 3,
+                    GroupName = "Groep 3",
+                    GroupCode = "azert"
+                };
+                
+
                 groep2.InitOrder();
+                groep3.InitOrder();
 
                 //Projecten toevoegen
 
@@ -355,7 +375,104 @@ namespace projecten3_1920_backend_klim03.Data
 
                 project1.AddProduct(pr1);
                 project1.AddGroup(groep1);
+                project1.AddGroup(groep3);
                 cr.AddProject(project1);
+                
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 1,
+                    Title="Eerste ronde"
+                });
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 2,
+                    Title = "Tweede ronde"
+                });
+
+                project1.EvaluationCritereas.Add(new EvaluationCriterea
+                {
+                    EvaluationCritereaId = 3,
+                    Title = "Derde ronde"
+                });
+
+
+                _dbContext.SaveChanges();
+
+
+                #region Add evaluations for group 1 and 3
+
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, eerste ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, eerste ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 1
+                });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, tweede ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, tweede ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 2
+                });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "evaluatie voor de leerling, derde ronde",
+                    DescriptionPrivate = "evaluatie voor de leerkracht, derde ronde",
+                    Extra = false,
+                    EvaluationCritereaId = 3
+                });
+
+                groep1.AddEvaluation(new Evaluation
+                {
+                    Title = "Extra evaluatie",
+                    DescriptionPupil = "Extra leerling",
+                    DescriptionPrivate = "Extra leerkracht",
+                    Extra = true
+                });
+
+
+
+
+                groep3.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "",
+                    DescriptionPrivate = "",
+                    Extra = false,
+                    EvaluationCritereaId = 1
+                });
+
+                groep3.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "",
+                    DescriptionPrivate = "",
+                    Extra = false,
+                    EvaluationCritereaId = 2
+                });
+
+                groep3.AddEvaluation(new Evaluation
+                {
+                    DescriptionPupil = "",
+                    DescriptionPrivate = "",
+                    Extra = false,
+                    EvaluationCritereaId = 3
+                });
+
+
+                #endregion
+
+
+
+
+              
+
+
+
                 _dbContext.SaveChanges();
 
                 //Project dat gestart is met 1 groep en 3 producten
@@ -416,11 +533,43 @@ namespace projecten3_1920_backend_klim03.Data
                         }
                     }
                 };
-
+                
 
 
 
                 _dbContext.SaveChanges();
+
+
+                groep1.AddPupil(
+                new Pupil
+                {
+                        FirstName = "Daan",
+                        Surname = "Dedecker",
+                        SchoolId = schoolGO.SchoolId
+                        
+                });
+
+                groep1.AddPupil(
+                new Pupil
+                {
+                    FirstName = "Rambo",
+                    Surname = "Jansens",
+                    SchoolId = schoolGO.SchoolId
+
+                });
+
+                groep1.AddPupil(
+                new Pupil
+                {
+                    FirstName = "Piet",
+                    Surname = "Petter",
+                    SchoolId = schoolGO.SchoolId
+                });
+
+
+
+                _dbContext.SaveChanges();
+
             }
         }
 
