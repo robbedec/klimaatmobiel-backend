@@ -76,6 +76,25 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
         }
 
+        /// <summary>
+        /// Get product from a project
+        /// </summary>
+        /// <param name="projectId">the id of the project that contains the product</param>
+        /// <param name="productId">the id of the expected product</param>
+        /// <returns>The product</returns>
+        [HttpGet("{projectId}/products/{productId}")]
+        public ActionResult<ProductDTO> GetProductFromProject(long projectId, long productId)
+        {
+            try
+            {
+                return new ProductDTO(_projects.GetProductFromProject(projectId, productId));
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Product niet gevonden"));
+            }
+        }
+
 
 
 

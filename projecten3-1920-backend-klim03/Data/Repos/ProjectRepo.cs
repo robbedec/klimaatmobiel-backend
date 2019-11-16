@@ -69,6 +69,11 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                .SingleOrDefault(g => g.ProjectId == id);
         }
 
+        public Product GetProductFromProject(long projectId, long productId)
+        {
+            return _projects.Include(p => p.Products).ThenInclude(p => p.Category).SingleOrDefault(p => p.ProjectId == projectId).Products.SingleOrDefault(p => p.ProductId == productId);
+        }
+
         public void Remove(Project obj)
         {
             _projects.Remove(obj);
