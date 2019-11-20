@@ -40,6 +40,24 @@ namespace projecten3_1920_backend_klim03.Controllers
             
         }
 
+        /// <summary>
+        /// Get the project templates with given schoolid
+        /// </summary>
+        /// <param name="schoolId">the id of the school</param>
+        /// <returns>The project templates of the given school</returns>
+        [HttpGet("projecttemplates/{schoolId}")]
+        public ActionResult<ICollection<ProjectTemplateDTO>> GetProjectTemplates(long schoolId)
+        {
+            try
+            {
+                return _projectTemplates.GetAll().Where(t => t.SchoolId == schoolId).Select(p => new ProjectTemplateDTO(p)).ToList();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Project concepten niet gevonden voor deze school"));
+            }
+
+        }
 
         /// <summary>
         /// updates a project template
