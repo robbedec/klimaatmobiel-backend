@@ -26,7 +26,11 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public ICollection<ProjectTemplate> GetAll()
         {
-            return _projectTemplates.ToList();
+            return _projectTemplates
+                .Include(g => g.ApplicationDomain)
+                .Include(g => g.ProductTemplateProjectTemplates).ThenInclude(g => g.ProductTemplate).ThenInclude(g => g.CategoryTemplate)
+                .Include(g => g.ProductTemplateProjectTemplates).ThenInclude(g => g.ProductTemplate).ThenInclude(g => g.ProductVariationTemplates)
+                .ToList();
         }
 
         public ProjectTemplate GetById(long id)
