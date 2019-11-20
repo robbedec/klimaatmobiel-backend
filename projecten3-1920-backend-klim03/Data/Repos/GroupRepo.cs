@@ -31,7 +31,8 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public Group GetById(long id)
         {
-            return _groups.Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product)
+            return _groups.Include(g => g.PupilGroups)
+                .Include(g => g.Order).ThenInclude(g => g.OrderItems).ThenInclude(g => g.Product)
                 .SingleOrDefault(g => g.GroupId == id);
         }
 
@@ -58,6 +59,18 @@ namespace projecten3_1920_backend_klim03.Data.Repos
                 .Include(g => g.Project).ThenInclude(g => g.Products).ThenInclude(g => g.Category)
                 .Include(g => g.Project).ThenInclude(g => g.ApplicationDomain)
                 .SingleOrDefault(g => g.UniqueGroupCode == uniqueGroupCode);
+        }
+
+        public Group GetByIdToAddEvaluation(long groupId)
+        {
+            return _groups
+                 .SingleOrDefault(g => g.GroupId == groupId);
+        }
+
+        public Group GetByIdToEditEvaluation(long groupId)
+        {
+            return _groups.Include(g => g.Evaluations).ThenInclude(g => g.EvaluationCriterea)
+               .SingleOrDefault(g => g.GroupId == groupId);
         }
     }
 }
