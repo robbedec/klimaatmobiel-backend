@@ -269,6 +269,8 @@ namespace projecten3_1920_backend_klim03.Data
                     ProjectImage = "image",
                     ProjectName = "Energie kennismaking",
                     SchoolId = schoolGO.SchoolId,
+                    Budget = 20,
+                    MaxScore = 25,
                     ApplicationDomainId = energie.ApplicationDomainId
                 };
 
