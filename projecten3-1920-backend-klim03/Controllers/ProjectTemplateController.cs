@@ -50,7 +50,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             try
             {
-                return _projectTemplates.GetAll().Where(t => t.SchoolId == schoolId).Select(p => new ProjectTemplateDTO(p)).ToList();
+                return _projectTemplates.GetAllBySchoolid(schoolId).Select(g => new ProjectTemplateDTO(g)).ToList();
             }
             catch (ArgumentNullException)
             {
