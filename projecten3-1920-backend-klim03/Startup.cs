@@ -1,13 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
-using System.Net;
 using System.Text;
 using System.Threading.Tasks;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpOverrides;
 using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
@@ -30,19 +28,13 @@ namespace projecten3_1920_backend_klim03
 {
     public class Startup
     {
-        public IConfiguration Configuration { get; }
-        public IHostingEnvironment Env { get; set; }
-
-        public Startup(IConfiguration configuration, IHostingEnvironment env)
+        public Startup(IConfiguration configuration)
         {
             Configuration = configuration;
-            Env = env;
         }
 
-       
+        public IConfiguration Configuration { get; }
 
-
-        // test
         // This method gets called by the runtime. Use this method to add services to the container.
         public void ConfigureServices(IServiceCollection services)
         {
@@ -52,11 +44,6 @@ namespace projecten3_1920_backend_klim03
                        .AllowAnyMethod()
                        .AllowAnyHeader();
             }));
-
-            services.Configure<ForwardedHeadersOptions>(options =>
-            {
-                options.KnownProxies.Add(IPAddress.Parse("178.62.218.48"));
-            });
 
             services.AddMvc()
                 .SetCompatibilityVersion(CompatibilityVersion.Version_2_2)
@@ -68,39 +55,13 @@ namespace projecten3_1920_backend_klim03
                 });
 
             //services.AddDbContext<ApplicationDbContext>(options =>options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
-            //
 
-            if (Env.IsDevelopment())
+            string connectionString = $"Server=178.62.218.48;Database=db_dev_klimaatmobiel;User=dbklimuser;Password=pwklimuser";
+            services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
             {
-
-                string connectionString = $"Server=127.0.0.1;Database=db_klim_local;User=root;Password=rootroot";
-                services.AddDbContext<ApplicationDbContext>(options => options.UseSqlServer(Configuration.GetConnectionString("KlimaatMobielContext")));
-                //services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
-                //{
-                //    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
-                //}
-                //));
-
-                //string connectionString = $"Server=127.0.0.1;Database=db_klim_local;User=root;Password=root";
-                //services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
-                //{
-                ////    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
-                ////}
-                ////));
-
+                mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
             }
-            else
-            {
-                string connectionString = $"Server=178.62.218.48;Database=db_dev_klim_v2;User=dbklimuser;Password=pwklimuser";
-                services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
-                {
-                    mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();
-                }
-                ));
-            }
-
-
-         
+            ));
 
             // Swagger configuration
             // Swagger authentication is included and configured, add [Authorize(AuthenticationSchemes = JwtBearerDefaults.AuthenticationScheme)]
@@ -173,7 +134,6 @@ namespace projecten3_1920_backend_klim03
             services.AddScoped<IProductRepo, ProductRepo>();
             services.AddScoped<IProjectRepo, ProjectRepo>();
             services.AddScoped<ISchoolRepo, SchoolRepo>();
-            services.AddScoped<IPupilRepo, PupilRepo>();
             services.AddScoped<IApplicationDomainRepo, ApplicationDomainRepo>();
 
             services.AddScoped<IProjectTemplateRepo, ProjectTemplateRepo>();
@@ -197,15 +157,8 @@ namespace projecten3_1920_backend_klim03
                 app.UseHsts();
             }
 
-            app.UseHttpsRedirection();
-
-            app.UseForwardedHeaders(new ForwardedHeadersOptions
-            {
-                ForwardedHeaders = ForwardedHeaders.XForwardedFor | ForwardedHeaders.XForwardedProto
-            });
-
+            //app.UseHttpsRedirection();
             app.UseAuthentication();
-
             app.UseCors("AllCors");
             app.UseMvc();
 
