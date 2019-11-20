@@ -180,6 +180,7 @@ namespace projecten3_1920_backend_klim03
 
 
             // pdf generating
+            services.AddScoped<PdfGenerator>();
 
             services.AddSingleton(typeof(IConverter), new SynchronizedConverter(new PdfTools()));
             //services.AddScoped<TicketPdfGenerator>();
