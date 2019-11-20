@@ -1,6 +1,8 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Mvc;
+using Newtonsoft.Json;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 using projecten3_1920_backend_klim03.helpers;
 using System;
@@ -28,19 +30,26 @@ namespace projecten3_1920_backend_klim03.Controllers
 
 
 
-        
-
-          
-        [HttpGet("custompdf/{projectId}")]
-        public ActionResult GetCustompdf(long projectId)
+        /// <summary>
+        /// Generate a pdf with evaluations
+        /// </summary>
+        /// <param name="projectId">the id of the project</param>
+        /// <param name="showTeacher">if the teacher evaluation should be shown</param>
+        /// <param name="showPupil">if the pupil evaluation should be shown</param>
+        /// <param name="groupNums">the numbers of the groups to show in the pdf</param>
+        /// <returns>The pdf file</returns>
+        [HttpGet("custompdf/params")]
+        public ActionResult GetCustompdf([FromQuery(Name = "projectId")] long  projectId, [FromQuery(Name = "showPupil")] bool showPupil
+            , [FromQuery(Name = "showTeacher")] bool showTeacher, [FromQuery(Name = "groupNums")] string groupNums)
         {
-        
+            return File(_pdfGenerator.GenerateCustomPdf(_projects.GetForProjectProgress(projectId), new PdfSettings{
+                GroupsToShow = JsonConvert.DeserializeObject<List<int>>(groupNums),
+                ShowPupil = showPupil,
+                ShowTeacher = showTeacher
+            }), "application/pdf"); 
 
 
-
-            return File(_pdfGenerator.GenerateCustomPdf(_projects.GetForProjectProgress(projectId)), "application/pdf"); 
-
-            //return File(_tpg.GenerateTicketPdf(ticket, ticket.Event.CreatedTicket), "application/pdf");
+     
         }
 
 

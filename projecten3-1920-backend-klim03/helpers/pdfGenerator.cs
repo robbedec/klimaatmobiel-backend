@@ -2,6 +2,7 @@
 using DinkToPdf.Contracts;
 using Microsoft.AspNetCore.Hosting;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
+using projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs;
 using System;
 using System.Collections.Generic;
 using System.Linq;
@@ -21,7 +22,7 @@ namespace projecten3_1920_backend_klim03.helpers
         }
 
 
-        public byte[] GenerateCustomPdf(Project project)
+        public byte[] GenerateCustomPdf(Project project, PdfSettings Pdfsettings)
         {
 
 

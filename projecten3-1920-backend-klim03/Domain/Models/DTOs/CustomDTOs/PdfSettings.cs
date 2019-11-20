@@ -7,5 +7,16 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs
 {
     public class PdfSettings
     {
+        public List<int> GroupsToShow { get; set; }
+
+        public bool ShowPupil { get; set; }
+        public bool ShowTeacher { get; set; }
+
+        public PdfSettings()
+        {
+
+        }
+
+
     }
 }
