@@ -7,6 +7,7 @@ using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 using projecten3_1920_backend_klim03.helpers;
 using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Threading.Tasks;
 
@@ -47,10 +48,24 @@ namespace projecten3_1920_backend_klim03.Controllers
                 ShowPupil = showPupil,
                 ShowTeacher = showTeacher
             }), "application/pdf"); 
-
-
      
         }
+
+
+        
+       /* [HttpGet("custompdf/{projectId}")]
+        public ActionResult GetExcel(long projectId)
+        {
+
+          
+
+
+
+
+
+
+        }*/
+
 
 
     }

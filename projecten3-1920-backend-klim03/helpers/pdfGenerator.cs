@@ -34,12 +34,8 @@ namespace projecten3_1920_backend_klim03.helpers
 
             string klimImageStyle = "float: right; width: 235px; height 235px;";
             string pageSize = "width: 28cm; height: 411.8mm;";
-            string groupDiv = "";
 
-            string colorRed = "background-color:red;";
-            string colorGreen = "background-color:green;";
-            string colorThemeKlim = "background-color:#C3004A;";
-            string themeColor= "color:#C3004A;";
+            //string themeColor= "color:#C3004A;";
              
 
 
@@ -55,7 +51,7 @@ namespace projecten3_1920_backend_klim03.helpers
                 {
                     sb.AppendFormat(@"<img style='{0}' src='{1}'>", klimImageStyle, _env.WebRootPath.ToString() + "\\images\\logo_klimaatmobiel.JPG");
                     sb.AppendFormat(@"<div style='{0}'>", pageSize);
-                    sb.AppendFormat(@"<div style='{0}'>", groupDiv);
+                    sb.Append(@"<div style=''>");
 
                     sb.AppendFormat(@"<table>
                         <tr>
@@ -82,10 +78,13 @@ namespace projecten3_1920_backend_klim03.helpers
                     {
                         sb.Append(@"<div style='width=100%;margin-top:10px;margin-bottom:10px'>");
 
-                        sb.AppendFormat(@"<span style=''>{0}</span><br>", (!item.Extra) ? item.EvaluationCriterea.Title : item.Title) ;
+                        sb.AppendFormat(@"<span style='font-size:40px; '>{0}</span><br>", (!item.Extra) ? item.EvaluationCriterea.Title : item.Title) ;
 
-                        sb.AppendFormat(@"<span style=''>{0}</span><br>", (item.DescriptionPrivate == "") ? "--" : item.DescriptionPrivate) ;
-                        sb.AppendFormat(@"<span style=''>{0}</span><br>", (item.DescriptionPupil == "") ? "--" : item.DescriptionPupil);
+                        sb.Append(@"<span style='font-size:22px;font-weight: bold;'>Leerkracht</span><br>");
+                        sb.AppendFormat(@"<span style='font-size:21px;'>{0}</span><br>", (item.DescriptionPrivate == "") ? "--" : item.DescriptionPrivate) ;
+
+                        sb.Append(@"<span style='font-size:22px;font-weight: bold;'>Leerling</span><br>");
+                        sb.AppendFormat(@"<span style='font-size:21px;'>{0}</span><br>", (item.DescriptionPupil == "") ? "--" : item.DescriptionPupil);
 
 
                         sb.Append(@"</div>");
@@ -131,7 +130,7 @@ namespace projecten3_1920_backend_klim03.helpers
                 PagesCount = true,
                 HtmlContent = sb.ToString(),
                 WebSettings = { DefaultEncoding = "utf-8" },
-                HeaderSettings = { FontSize = 16, Left = "Project: " + project.ProjectName, Line = true, Spacing = 0 }
+                HeaderSettings = { FontSize = 16, Left = "Project: " + project.ProjectName + " - Budget: " + project.ProjectBudget, Line = true, Spacing = 0 }
                 }
             }
             };
