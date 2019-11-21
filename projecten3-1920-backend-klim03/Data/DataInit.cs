@@ -370,7 +370,6 @@ namespace projecten3_1920_backend_klim03.Data
                 Project project1 = new Project
                 {
                     ProjectBudget = 200,
-                    TargetScore = 7,
                     ProjectDescr = "Dit is een project over energie waar je iets leert over hechtingen, licht en schaduw via Reus en Dwerg.",
                     ProjectImage = "image",
                     ProjectName = "Ontdekdozen (hechtingen + licht/schaduw)",
@@ -484,7 +483,6 @@ namespace projecten3_1920_backend_klim03.Data
                 Project project2 = new Project
                 {
                     ProjectBudget = 100,
-                    TargetScore = 6,
                     ProjectDescr = "Dit is een project over informatie en communicatie waarbij je leert seinen en blazen.",
                     ProjectImage = "image",
                     ProjectName = "Ontdekdozen (leren blazen + seinen)",
@@ -504,7 +502,6 @@ namespace projecten3_1920_backend_klim03.Data
                 Project project3 = new Project
                 {
                     ProjectBudget = 300,
-                    TargetScore = 9,
                     ProjectDescr = "Dit is een project over constructie waarbij je een muurtje maakt via het verhaal van de 3 biggetjes",
                     ProjectImage = "image",
                     ProjectName = "Ontdekdozen (bouwen)",
@@ -519,7 +516,6 @@ namespace projecten3_1920_backend_klim03.Data
                 Project project4 = new Project
                 {
                     ProjectBudget = 300,
-                    TargetScore = 7,
                     ProjectDescr = "Dit is een project over transport waarbij je een beetje maakt.",
                     ProjectImage = "image",
                     ProjectName = "Ontdekdozen (drijven/zinken)",

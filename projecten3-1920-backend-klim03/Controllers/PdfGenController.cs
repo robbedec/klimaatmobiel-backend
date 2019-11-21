@@ -39,7 +39,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// <param name="showPupil">if the pupil evaluation should be shown</param>
         /// <param name="groupNums">the numbers of the groups to show in the pdf</param>
         /// <returns>The pdf file</returns>
-        [HttpGet("custompdf/params")]
+        [HttpGet("custompdf/evaluaties")]
         public ActionResult GetCustompdf([FromQuery(Name = "projectId")] long  projectId, [FromQuery(Name = "showPupil")] bool showPupil
             , [FromQuery(Name = "showTeacher")] bool showTeacher, [FromQuery(Name = "groupNums")] string groupNums)
         {

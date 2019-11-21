@@ -19,7 +19,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
         public string ProjectImage { get; set; }
         [Required]
         public decimal ProjectBudget { get; set; }
-        public decimal TargetScore { get; set; }
         [Required]
         public ESchoolGrade ESchoolYear { get; set; }
         [Required]
@@ -49,7 +48,6 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
             ProjectImage = project.ProjectImage;
             ESchoolYear = project.ESchoolGrade;
             ProjectBudget = project.ProjectBudget;
-            TargetScore = project.TargetScore;
             Closed = project.Closed;
 
             ClassRoomId = project.ClassRoomId;
@@ -60,6 +58,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
                 ApplicationDomain = new ApplicationDomainDTO(project.ApplicationDomain);
             }
             
+
             Products = project.Products.Select(g => new ProductDTO(g)).ToList();
             Groups = project.Groups.Select(g => new GroupDTO(g)).ToList();
 
