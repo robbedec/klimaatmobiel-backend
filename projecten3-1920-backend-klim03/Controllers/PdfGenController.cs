@@ -43,7 +43,7 @@ namespace projecten3_1920_backend_klim03.Controllers
             , [FromQuery(Name = "showTeacher")] bool showTeacher, [FromQuery(Name = "groupNums")] string groupNums)
         {
             return File(_pdfGenerator.GenerateCustomPdf(_projects.GetForProjectProgress(projectId), new PdfSettings{
-                GroupsToShow = JsonConvert.DeserializeObject<List<int>>(groupNums),
+                GroupsToShow = JsonConvert.DeserializeObject<List<long>>(groupNums),
                 ShowPupil = showPupil,
                 ShowTeacher = showTeacher
             }), "application/pdf"); 

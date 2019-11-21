@@ -216,6 +216,7 @@ namespace projecten3_1920_backend_klim03
                 app.UseHsts();
             }
 
+
             app.UseHttpsRedirection();
 
             app.UseForwardedHeaders(new ForwardedHeadersOptions
