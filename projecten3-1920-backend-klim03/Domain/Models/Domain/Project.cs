@@ -15,6 +15,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
         public string ProjectDescr { get; set; }
         public string ProjectImage { get; set; }
         public decimal ProjectBudget { get; set; }
+        public decimal TargetScore { get; set; }
         public ESchoolGrade ESchoolGrade { get; set; }
         public bool Closed { get; set; }
 
@@ -42,6 +43,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProjectImage = dto.ProjectImage;
             ProjectBudget = dto.ProjectBudget;
             ESchoolGrade = dto.ESchoolYear;
+            TargetScore = dto.TargetScore;
 
             Closed = dto.Closed;
 
@@ -78,6 +80,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
             ProjectDescr = pt.ProjectDescr;
             ProjectImage = pt.ProjectImage;
             ESchoolGrade = ESchoolGrade.ALGEMEEN;
+            TargetScore = pt.MaxScore;
 
             ApplicationDomain = pt.ApplicationDomain;
 

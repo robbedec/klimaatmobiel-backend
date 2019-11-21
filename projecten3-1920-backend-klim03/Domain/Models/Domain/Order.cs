@@ -21,6 +21,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.Domain
 
         public decimal GetOrderPrice => (decimal)OrderItems.Select(g => g.Product.Price * g.Amount).Sum();
 
+        public decimal GetOrderScore => (OrderItems.Count != 0) ? (decimal)OrderItems.Select(g => g.Product.Score).Average() : 0 ;
+
         public Order()
         {
 
