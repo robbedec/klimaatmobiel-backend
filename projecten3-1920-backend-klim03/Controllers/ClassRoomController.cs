@@ -50,7 +50,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         {
             try
             {
-                return _classRooms.GetAll().Select(c => new ClassRoomDTO(c)).ToList();
+                return _classRooms.GetAll().Select(c => new ClassRoomDTO(c, false)).ToList();
             }
             catch (ArgumentNullException)
             {
