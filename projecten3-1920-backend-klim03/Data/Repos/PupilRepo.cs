@@ -33,7 +33,7 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public Pupil GetById(long id)
         {
-            throw new NotImplementedException();
+            return _pupils.SingleOrDefault(g => g.PupilId == id);
         }
 
         public Pupil GetByNameInSchool(string firstname, string surname, long schoolId)
