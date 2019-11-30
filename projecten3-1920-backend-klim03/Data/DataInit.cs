@@ -110,7 +110,13 @@ namespace projecten3_1920_backend_klim03.Data
                     Name = "Klas 1",
                     SchoolId = schoolGO.SchoolId
                 };
+                ClassRoom cr2 = new ClassRoom
+                {
+                    Name = "Klas 2",
+                    SchoolId = schoolGO.SchoolId
+                };
                 schoolGO.ClassRooms.Add(cr);
+                schoolGO.ClassRooms.Add(cr2);
 
                 #region ProductTemplates
 
@@ -377,6 +383,8 @@ namespace projecten3_1920_backend_klim03.Data
                     ESchoolGrade = ESchoolGrade.ALGEMEEN,
                 };
 
+               
+
                 project1.AddProduct(pr1);
                 project1.AddGroup(groep1);
                 project1.AddGroup(groep3);
@@ -574,6 +582,20 @@ namespace projecten3_1920_backend_klim03.Data
 
                 _dbContext.SaveChanges();
 
+
+                Project projectCr2 = new Project
+                {
+                    ProjectBudget = 200,
+                    ProjectDescr = "Een project van klas 2",
+                    ProjectImage = "image",
+                    ProjectName = "Ontdekdozen ",
+                    ApplicationDomainId = energie.ApplicationDomainId,
+                    ESchoolGrade = ESchoolGrade.ALGEMEEN,
+                };
+                cr2.AddProject(projectCr2);
+
+
+                _dbContext.SaveChanges();
             }
         }
 
