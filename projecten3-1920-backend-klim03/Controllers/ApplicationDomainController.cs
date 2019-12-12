@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
@@ -11,6 +12,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
+    [Authorize]
     public class ApplicationDomainController : ControllerBase
     {
         private readonly IApplicationDomainRepo _applicationDomains;

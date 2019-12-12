@@ -1,5 +1,6 @@
 ﻿using DinkToPdf;
 using DinkToPdf.Contracts;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Newtonsoft.Json;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs;
@@ -17,6 +18,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
+    [AllowAnonymous]
     public class PdfGenController : ControllerBase
     {
         private readonly IProjectRepo _projects;

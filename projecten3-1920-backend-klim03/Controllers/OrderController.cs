@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.CustomExceptions;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
@@ -8,6 +9,7 @@ using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
 
 namespace projecten3_1920_backend_klim03.Controllers
 {
+    [AllowAnonymous]
     [Route("api/[controller]")] // misschien niet nodig als je vanuit een groep gaat
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
@@ -128,6 +130,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="orderId">the id of the order</param>
         /// <returns>The order</returns>
+        [Authorize]
         [HttpPost("approveOrder/{orderId}")]
         public ActionResult<OrderDTO> ApproveOrder(long orderId)
         {
