@@ -86,7 +86,7 @@ namespace projecten3_1920_backend_klim03
             }
             else
             {
-                string connectionString = $"Server=178.62.218.48;Database=db_dev_klim_v2;User=dbklimuser;Password=pwklimuser";
+                string connectionString = $"Server=178.62.218.48;Database=db_dev_klim_v2;User=usrklimtwo;Password=klimpw";
                 services.AddDbContextPool<ApplicationDbContext>(options => options.UseMySql(connectionString, mySqlOptions =>
                 {
                     mySqlOptions.ServerVersion(new Version(8, 0, 17), ServerType.MySql).DisableBackslashEscaping();

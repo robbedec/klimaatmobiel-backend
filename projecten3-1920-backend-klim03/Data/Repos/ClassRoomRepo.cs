@@ -26,7 +26,8 @@ namespace projecten3_1920_backend_klim03.Data.Repos
 
         public ICollection<ClassRoom> GetAll()
         {
-            throw new NotImplementedException();
+            return _classRooms
+               .Include(g => g.Projects).ToList();
         }
 
 

@@ -9,6 +9,7 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs
     public class RemoveOrAddedOrderItemDTO
     {
         public decimal TotalOrderPrice { get; set; }
+        public decimal AvgScore { get; set; }
         public OrderItemDTO RemovedOrAddedOrderItem { get; set; } // this is the orderItem that has been added or removed
 
 
@@ -20,7 +21,8 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs
         public RemoveOrAddedOrderItemDTO(Order o, OrderItem oi)
         {
             TotalOrderPrice = o.GetOrderPrice;
-            RemovedOrAddedOrderItem = new OrderItemDTO(oi);
+            AvgScore = o.GetOrderScore;
+        RemovedOrAddedOrderItem = new OrderItemDTO(oi);
         }
     }
 }

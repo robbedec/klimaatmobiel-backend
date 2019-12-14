@@ -1,4 +1,5 @@
 ﻿using System;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
@@ -10,6 +11,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")] 
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
+    [Authorize]
     public class GroupController : ControllerBase
     {
         private readonly IGroupRepo _groups;
@@ -26,6 +28,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="groupId">the id of the group</param>
         /// <returns>The project</returns>
+        [AllowAnonymous]
         [HttpGet("{groupId}")]
         public ActionResult<GroupDTO> GetGroep(long groupId)
         {
@@ -46,6 +49,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
         /// <returns>The group with it's order</returns>
+        [AllowAnonymous]
         [HttpGet("groupCode/{groupCode}")]
         public ActionResult<AppGroupDTO> GetGroepFromCode(string groupCode)
         {
@@ -65,6 +69,7 @@ namespace projecten3_1920_backend_klim03.Controllers
         /// </summary>
         /// <param name="groupCode">the code of the group</param>
         /// <returns>The group wit the project</returns>
+        [AllowAnonymous]
         [HttpGet("project/{groupCode}")]
         public ActionResult<AppGroupDTO> GetGroupWithProjectAndOrder(string groupCode)
         {

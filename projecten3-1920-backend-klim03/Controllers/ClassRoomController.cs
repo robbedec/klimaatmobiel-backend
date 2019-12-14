@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.Interfaces;
@@ -12,6 +13,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")] // misschien niet nodig als je vanuit een groep gaat
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
+    [Authorize]
     public class ClassRoomController : ControllerBase
     {
         private readonly IClassRoomRepo _classRooms;
@@ -39,6 +41,28 @@ namespace projecten3_1920_backend_klim03.Controllers
             }
             
         }
+
+        /// <summary>
+        /// Get the classRoom with its projects for given id
+        /// </summary>
+        /// <param name="classRoomId">the id of the classroom</param>
+        /// <returns>The classroom with its projects</returns>
+        [HttpGet("classRooms")]
+        public ActionResult<ICollection<ClassRoomDTO>> GetClassRooms(long classRoomId)
+        {
+            try
+            {
+                return _classRooms.GetAll().Select(c => new ClassRoomDTO(c, false)).ToList();
+            }
+            catch (ArgumentNullException)
+            {
+                return NotFound(new CustomErrorDTO("Klas niet gevonden"));
+            }
+
+        }
+
+
+
 
         /// <summary>
         /// Get the project from a classroom

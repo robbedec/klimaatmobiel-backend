@@ -110,7 +110,13 @@ namespace projecten3_1920_backend_klim03.Data
                     Name = "Klas 1",
                     SchoolId = schoolGO.SchoolId
                 };
+                ClassRoom cr2 = new ClassRoom
+                {
+                    Name = "Klas 2",
+                    SchoolId = schoolGO.SchoolId
+                };
                 schoolGO.ClassRooms.Add(cr);
+                schoolGO.ClassRooms.Add(cr2);
 
                 #region ProductTemplates
 
@@ -377,30 +383,12 @@ namespace projecten3_1920_backend_klim03.Data
                     ESchoolGrade = ESchoolGrade.ALGEMEEN,
                 };
 
+               
+
                 project1.AddProduct(pr1);
                 project1.AddGroup(groep1);
                 project1.AddGroup(groep3);
                 cr.AddProject(project1);
-                
-
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    EvaluationCritereaId = 1,
-                    Title="Eerste ronde"
-                });
-
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    EvaluationCritereaId = 2,
-                    Title = "Tweede ronde"
-                });
-
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    EvaluationCritereaId = 3,
-                    Title = "Derde ronde"
-                });
-
 
                 _dbContext.SaveChanges();
 
@@ -408,64 +396,11 @@ namespace projecten3_1920_backend_klim03.Data
                 #region Add evaluations for group 1 and 3
 
 
-                groep1.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "Een eerste evaluatie voor de leerling",
-                    DescriptionPrivate = "Een eerste evaluatie voor de leerkracht",
-                    Extra = false,
-                    EvaluationCritereaId = 1
-                });
-
-                groep1.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "Een eerste evaluatie voor de leerling",
-                    DescriptionPrivate = "Een eerste evaluatie voor de leerkracht",
-                    Extra = false,
-                    EvaluationCritereaId = 2
-                });
-
-                groep1.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "Een eerste evaluatie voor de leerling",
-                    DescriptionPrivate = "Een eerste evaluatie voor de leerkracht",
-                    Extra = false,
-                    EvaluationCritereaId = 3
-                });
-
-                groep1.AddEvaluation(new Evaluation
-                {
-                    Title = "Extra evaluatie",
-                    DescriptionPupil = "Evaluatie op het eindproduct voor de leerling",
-                    DescriptionPrivate = "Evaluatie op het eindproduct voor de leerkracht",
-                    Extra = true
-                });
+            
 
 
 
 
-                groep3.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "",
-                    DescriptionPrivate = "",
-                    Extra = false,
-                    EvaluationCritereaId = 1
-                });
-
-                groep3.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "",
-                    DescriptionPrivate = "",
-                    Extra = false,
-                    EvaluationCritereaId = 2
-                });
-
-                groep3.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "",
-                    DescriptionPrivate = "",
-                    Extra = false,
-                    EvaluationCritereaId = 3
-                });
 
 
                 #endregion
@@ -574,6 +509,20 @@ namespace projecten3_1920_backend_klim03.Data
 
                 _dbContext.SaveChanges();
 
+
+                Project projectCr2 = new Project
+                {
+                    ProjectBudget = 200,
+                    ProjectDescr = "Een project van klas 2",
+                    ProjectImage = "image",
+                    ProjectName = "Ontdekdozen ",
+                    ApplicationDomainId = energie.ApplicationDomainId,
+                    ESchoolGrade = ESchoolGrade.ALGEMEEN,
+                };
+                cr2.AddProject(projectCr2);
+
+
+                _dbContext.SaveChanges();
             }
         }
 

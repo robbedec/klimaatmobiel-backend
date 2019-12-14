@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs;
 using projecten3_1920_backend_klim03.Domain.Models.DTOs.CustomDTOs;
@@ -13,6 +14,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")] 
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
+    [AllowAnonymous]
     public class OrderItemController : ControllerBase
     {
         private readonly IOrderItemRepo _orderItems;

@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Linq;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using projecten3_1920_backend_klim03.Domain.Models;
 using projecten3_1920_backend_klim03.Domain.Models.Domain;
@@ -13,6 +14,7 @@ namespace projecten3_1920_backend_klim03.Controllers
     [Route("api/[controller]")]
     [ApiController]
     [ApiConventionType(typeof(DefaultApiConventions))]
+    [Authorize]
     public class SchoolController : ControllerBase
     {
         private readonly ISchoolRepo _schools;

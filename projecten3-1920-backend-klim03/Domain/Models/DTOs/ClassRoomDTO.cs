@@ -16,17 +16,23 @@ namespace projecten3_1920_backend_klim03.Domain.Models.DTOs
 
         public ICollection<ProjectDTO> Projects { get; set; } = new List<ProjectDTO>();
 
+        public int ProjectsAmount { get; set; }
+
         public ClassRoomDTO()
         {
 
         }
 
-        public ClassRoomDTO(ClassRoom c)
+        public ClassRoomDTO(ClassRoom c, bool includeProjects = true)
         {
             ClassRoomId = c.ClassRoomId;
             Name = c.Name;
             SchoolId = c.SchoolId;
-            Projects = c.Projects.Select(g => new ProjectDTO(g)).ToList();
+            if (includeProjects)
+            {
+                Projects = c.Projects.Select(g => new ProjectDTO(g)).ToList();
+            }
+            ProjectsAmount = c.Projects.Count;
         }
     }
 }
