@@ -389,26 +389,6 @@ namespace projecten3_1920_backend_klim03.Data
                 project1.AddGroup(groep1);
                 project1.AddGroup(groep3);
                 cr.AddProject(project1);
-                
-
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    EvaluationCritereaId = 1,
-                    Title="Eerste ronde"
-                });
-
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    EvaluationCritereaId = 2,
-                    Title = "Tweede ronde"
-                });
-
-                project1.EvaluationCritereas.Add(new EvaluationCriterea
-                {
-                    EvaluationCritereaId = 3,
-                    Title = "Derde ronde"
-                });
-
 
                 _dbContext.SaveChanges();
 
@@ -416,64 +396,11 @@ namespace projecten3_1920_backend_klim03.Data
                 #region Add evaluations for group 1 and 3
 
 
-                groep1.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "Een eerste evaluatie voor de leerling",
-                    DescriptionPrivate = "Een eerste evaluatie voor de leerkracht",
-                    Extra = false,
-                    EvaluationCritereaId = 1
-                });
-
-                groep1.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "Een eerste evaluatie voor de leerling",
-                    DescriptionPrivate = "Een eerste evaluatie voor de leerkracht",
-                    Extra = false,
-                    EvaluationCritereaId = 2
-                });
-
-                groep1.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "Een eerste evaluatie voor de leerling",
-                    DescriptionPrivate = "Een eerste evaluatie voor de leerkracht",
-                    Extra = false,
-                    EvaluationCritereaId = 3
-                });
-
-                groep1.AddEvaluation(new Evaluation
-                {
-                    Title = "Extra evaluatie",
-                    DescriptionPupil = "Evaluatie op het eindproduct voor de leerling",
-                    DescriptionPrivate = "Evaluatie op het eindproduct voor de leerkracht",
-                    Extra = true
-                });
+            
 
 
 
 
-                groep3.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "",
-                    DescriptionPrivate = "",
-                    Extra = false,
-                    EvaluationCritereaId = 1
-                });
-
-                groep3.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "",
-                    DescriptionPrivate = "",
-                    Extra = false,
-                    EvaluationCritereaId = 2
-                });
-
-                groep3.AddEvaluation(new Evaluation
-                {
-                    DescriptionPupil = "",
-                    DescriptionPrivate = "",
-                    Extra = false,
-                    EvaluationCritereaId = 3
-                });
 
 
                 #endregion
