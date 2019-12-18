@@ -3,6 +3,8 @@
 
 These instruction will allow you to run a copy of the project on your local machine for development and testing.
 
+The api is publicly available @ https://klimapi.daandedecker.com/swagger/index.html
+
 ### Prerequisits
 
 ```
