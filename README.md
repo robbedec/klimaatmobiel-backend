@@ -53,10 +53,6 @@ Or open in Visual Studio and use the test explorer.
 
 * **Daan Dedecker**
 * **Robbe Decorte**
-* **Florian Landuyt**
-* **Keelan Savat**
-* **Thomas Schuddinck**
-* **Sofie Seru**
 
 
 
